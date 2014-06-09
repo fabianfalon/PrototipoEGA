@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'SistemaEGA.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^', include('apps.alumno.urls')),
+    url(r'^', include('apps.alumno.urls', namespace='alumnos')),
     #url(r'^', include('apps.bedel.urls')),
     #url para trabajar con imagenes
     url(r'^media/(?P<path>.*)$','django.views.static.serve',

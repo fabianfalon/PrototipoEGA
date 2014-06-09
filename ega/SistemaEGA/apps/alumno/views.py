@@ -4,3 +4,7 @@ from django.views.generic import TemplateView
 class IndexView(TemplateView):
 
 	template_name = 'alumno/index.html'
+
+class PerfilView(TemplateView):
+	
+	template_name = 'alumno/perfil.html'
