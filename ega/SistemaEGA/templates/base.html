@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	{% load static from staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css2/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css2/main.css' %}">
+	
+    <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+	 <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div class="row-fluid">
+
+<div class="container">
+	<div class="page-header" style="text-align: center;">
+  		
+			 	<div style="text-align: center;">
+						<h1>E.G.A
+						  <ul class="nav navbar-nav navbar-right">
+							  <li class="contenido-imagen-perfil">   
+								     
+								
+								   <li class="dropdown">
+								  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{MEDIA_URL}}perfil.jpg" class="foto-perfil"><b class="caret"></b></a>
+									<ul class="dropdown-menu ">
+										<li><a href="perfil.html">Perfil</a></li>
+										<li class="divider"></li>
+										<li><a href="login.html">Salir</a></li>
+									</ul>
+								</ul> 
+							     </li>
+							</ul>
+							  
+						  </ul>
+						</h1>
+				</div>
+</div>
+ 
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Cambiar Navegacion</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="" class="navbar-brand">E.G.A</a>
+	</div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">	
+			<li ><a href="">Perfil</a></li>
+			<li><a href="historia.html">Historial Academico</a></li>
+			<li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscripciones <b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="examen.html">Examen Final</a></li>
+					<li><a href="">Materia Por Cursar</a></li>
+					<li class="divider"></li>
+          			<li><a href="#">Acción #4</a></li>
+				</ul>
+            </ul> 
+          </li>
+		</ul>
+
+</nav>		
+
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+			<aside>
+				 {% block content %}
+	
+				 {% endblock %}
+
+			</aside>
+		 </section>
+			
+	</section>
+
+	<footer>
+	 <p> <img src="ima/ega.png"/ width="80px" height= "50px"> </P>
+	</footer>
+</body>
+</html>
