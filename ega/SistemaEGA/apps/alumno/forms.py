@@ -11,7 +11,6 @@ class AlumnoForm(ModelForm):
 		fields = ('carrera','nombre_apellido','dni','edad','lugar_nacimiento','fecha_nacimiento',
 			'ciudad_actual','domicilio_actial','usuario','email','imagen')
 
-	
 
 	nombre_apellido = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
