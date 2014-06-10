@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E.G.A</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 {% load static from staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css2/login.css' %}">
+</head>
+<body>
+
+<div class="container header1">
+	<div class="page-header " style="text-align: center;">
+  		
+			 	<div style="text-align: center;">
+						<h1>E.G.A</h1>
+				</div>
+	</div>
+</div>
+		<div style="text-align: center;">
+			<h1>Entorno de Gestión Académica</h1>
+			<h3>ISFD Dr. Jose S. Salinas</h3>
+		</div>
+<!-- COmienza el Login -->
+    <div class="row-fluid">
+				<div class="col-md-6 col-md-push-3">
+					<div class="span3">
+  						<div class="jumbotron loginbox">
+						<legend>Datos Personales</legend>
+						<img src="/static/ima/photo.png" class="profile-img">
+							<form>
+								  <label>Usuario :</label> 
+								    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" class="form-control" placeholder="Ingrese su Usuario" required autofocus />
+                                   </div>
+				                   <br>
+      							  <label>Contraseña :</label>
+                                    <div class="input-group">
+                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                         <input type="password" class="form-control" placeholder="Ingrese su Contraseña" required />
+								    </div>
+									<br>
+									
+									<div class="row">
+													
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<button type="submit" class="btn btn-labeled btn-success">
+												<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Aceptar</button>
+												<button type="button" class="btn btn-labeled btn-danger">
+												<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+											</div>
+											<a href="{% url 'alumnos:preinscripcion' %}" style = "background-color:black">Preinscripcion</a>
+											</div>
+									
+                                   
+							</form>
+
+						</div>
+					</div>
+				</div>
+				
+		</div>	
+
+  						
+</body>
+</html>
