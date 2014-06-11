@@ -19,7 +19,8 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
 		'apps.alumno',
-		'apps.bedel',		
+		'apps.bedel',
+				
 			
   )
 
@@ -40,6 +41,7 @@ WSGI_APPLICATION = 'SistemaEGA.wsgi.application'
 
 LANGUAGE_CODE = 'es-AR'
 
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -51,3 +53,5 @@ USE_TZ = True
 MEDIA_URL = 'http://localhost:8000/media/'
 
 TEMPLATE_DIRS = [BASE_DIR.child('templates')]
+
+AUTH_USER_MODEL = 'alumno.User'

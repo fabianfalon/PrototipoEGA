@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	 {% load static from staticfiles %}
+	 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css2/login.css' %}">
 </head>
@@ -29,19 +30,10 @@
   						<div class="jumbotron loginbox">
 						<legend>Datos Personales</legend>
 						<img src="/static/ima/photo.png" class="profile-img">
-							<form>
-								  <label>Usuario :</label> 
-								    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" class="form-control" placeholder="Ingrese su Usuario" required autofocus />
-                                   </div>
-				                   <br>
-      							  <label>Contraseña :</label>
-                                    <div class="input-group">
-                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                         <input type="password" class="form-control" placeholder="Ingrese su Contraseña" required />
-								    </div>
-									<br>
+							<form method="POST">{% csrf_token %} 
+								{{ form.as_p}}
+								  
+
 									
 									<div class="row">
 													
