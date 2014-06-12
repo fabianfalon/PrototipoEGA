@@ -7,6 +7,8 @@
 	 {% load static from staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css2/login.css' %}">
+	<script type="text/javascript" href="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 </head>
 <body>
 
@@ -41,8 +43,8 @@
 											<div class="col-xs-6 col-sm-6 col-md-6">
 												<button type="submit" class="btn btn-labeled btn-success">
 												<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Aceptar</button>
-												<button type="button" class="btn btn-labeled btn-danger">
-												<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+												<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
+												<span class="btn-label"><i class="glyphicon glyphicon-remove" ></i></span>Cancelar</button>
 											</div>
 											<a href="{% url 'alumnos:preinscripcion' %}" style = "background-color:black">Preinscripcion</a>
 											</div>
@@ -55,7 +57,16 @@
 				</div>
 				
 		</div>	
+  				
 
-  						
+<script>
+   function apreteCancelar(){
+   		
+		window.location='/';
+     
+
+      }
+</script>
+
 </body>
 </html>

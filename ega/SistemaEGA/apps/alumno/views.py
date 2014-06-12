@@ -3,7 +3,8 @@ from django.shortcuts import render_to_response, redirect, render
 from django.views.generic import TemplateView, FormView
 
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
 
 from .forms import UserForm, LoginForm
@@ -13,8 +14,8 @@ def index(request):
 	if request.method == 'POST':
 		form = AuthenticationForm(data=request.POST)
 		if form.is_valid():
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
+			username = request.POST['username']
+			password = request.POST['password']
 			user = authenticate(username=username, password=password)
 			if user is not None and user.is_active:
 				login(request, user)
@@ -27,6 +28,12 @@ def index(request):
 		form = AuthenticationForm()
 		ctx = {'form':form}
 		return render(request, 'alumno/login.html', ctx )
+
+@login_required(login_url='/')
+def cerrar(request):
+	logout(request)
+	return HttpResponseRedirect('/')
+
 
 
 class LoginView(TemplateView):

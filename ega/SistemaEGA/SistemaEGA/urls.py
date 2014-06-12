@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'SistemaEGA.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'apps.alumno.views.index'),
+    url(r'^cerrar/$', 'apps.alumno.views.cerrar'),
+
     url(r'^', include('apps.alumno.urls', namespace='alumnos')),
    	
     #url para trabajar con imagenes
