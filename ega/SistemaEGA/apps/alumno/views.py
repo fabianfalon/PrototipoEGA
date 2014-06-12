@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, FormView
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
+from braces.views import LoginRequiredMixin
 
 from .forms import UserForm, LoginForm
 
@@ -49,11 +50,12 @@ class PreinscripcionView(FormView):
 		return super(PreinscripcionView, self).form_invalid(form)
 
 
-
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
 
 	template_name = 'alumno/index.html'
+	login_url = '/'
 
-class PerfilView(TemplateView):
+class PerfilView(LoginRequiredMixin, TemplateView):
 	
 	template_name = 'alumno/perfil.html'
+	login_url = '/'

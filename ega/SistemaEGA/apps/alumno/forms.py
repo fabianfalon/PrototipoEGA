@@ -10,7 +10,7 @@ class UserForm(ModelForm):
 		model = User
 		fields = ('username','email','carrera', 'nombre_apellido', 
 				   'dni', 'lugar_nacimiento', 'fecha_nacimiento','ciudad_actual',
-				   'domicilio_actual' ,'password1' ,'imagen')
+				   'domicilio_actual' ,'imagen', 'password')
 
 
 	username = forms.CharField(widget = forms.TextInput(attrs={
@@ -64,15 +64,11 @@ class UserForm(ModelForm):
 					'required' : 'required'
 				}))
 
-
-
-	password1 = forms.CharField(widget = forms.PasswordInput(attrs={
+	password = forms.CharField(widget = forms.PasswordInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su Usuario',
+					'placeholder' : 'Ingrese su Contraseña',
 					'required' : 'required'
 				}))
-
-
 
 	imagen = forms.ImageField(widget=forms.FileInput(attrs={
 					'class' : 'form-control',
@@ -80,15 +76,18 @@ class UserForm(ModelForm):
 					'required' : 'required'
 
 				}))
+
+
+
 	
 class LoginForm(forms.Form):
 
 	username = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su Domicilio Actual',
+					'placeholder' : 'Ingrese su Usuario',
 					'required' : 'required'
 				}))
-	password = forms.CharField(widget=forms.PasswordInput(render_value=False))
+	password = forms.CharField(widget=forms.PasswordInput())
 
 
 
