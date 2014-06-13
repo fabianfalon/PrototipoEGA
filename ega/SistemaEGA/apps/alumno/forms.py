@@ -39,7 +39,7 @@ class UserForm(ModelForm):
 
 	dni = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su Edad',
+					'placeholder' : 'Ingrese su DNI',
 					'required' : 'required'
 				}))
 
@@ -84,10 +84,16 @@ class LoginForm(forms.Form):
 
 	username = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
+					'name' : 'username',
 					'placeholder' : 'Ingrese su Usuario',
 					'required' : 'required'
 				}))
-	password = forms.CharField(widget=forms.PasswordInput())
+	password = forms.CharField(widget = forms.PasswordInput(attrs={
+					'class' : 'form-control',
+					'name' : 'password',
+					'placeholder' : 'Ingrese su Contraseña',
+					'required' : 'required'
+				}))
 
 
 

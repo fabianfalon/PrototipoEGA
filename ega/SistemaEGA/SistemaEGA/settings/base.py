@@ -13,13 +13,14 @@ DJANGO_APPS = (
 	)
 
 THIRD_PARTY_APPS = (
-	   'south',
+	   #'south',
+	   'djrill',
 
 	)
 
 LOCAL_APPS = (
 		'apps.alumno',
-		'apps.bedel',
+		'apps.home',
 				
 			
   )
@@ -55,3 +56,7 @@ MEDIA_URL = 'http://localhost:8000/media/'
 TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 
 AUTH_USER_MODEL = 'alumno.User'
+
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
+

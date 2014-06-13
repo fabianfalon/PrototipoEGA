@@ -7,25 +7,25 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
 
+
 from .forms import UserForm, LoginForm
 
 
 def index(request):
 	if request.method == 'POST':
-		form = AuthenticationForm(data=request.POST)
-		if form.is_valid():
-			username = request.POST['username']
-			password = request.POST['password']
-			user = authenticate(username=username, password=password)
-			if user is not None and user.is_active:
-				login(request, user)
-				return redirect('/index')
-			else:
-				return HttpResponse('Algo salio mal')
-		else: 
-			return HttpResponse('El formulario no es valido')
+		form = LoginForm(request.POST)
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(username=username, password=password)
+		if user is not None and user.is_active:
+			login(request,user)
+			return redirect('/index')
+		else:
+			return HttpResponse('Algo salio mal')
+		#else: 
+		#	return HttpResponse('El formulario no es valido')
 	else:
-		form = AuthenticationForm()
+		form = LoginForm()
 		ctx = {'form':form}
 		return render(request, 'alumno/login.html', ctx )
 
@@ -48,8 +48,10 @@ class PreinscripcionView(FormView):
 	
 
 	def form_valid(self, form):
-		
-		form.save()
+
+		user = form.save()
+		user.set_password(form.cleaned_data['password'])
+		user.save()
 		return super(PreinscripcionView, self).form_valid(form)
 
 	def form_invalid(self, form):
@@ -66,3 +68,5 @@ class PerfilView(LoginRequiredMixin, TemplateView):
 	
 	template_name = 'alumno/perfil.html'
 	login_url = '/'
+
+
