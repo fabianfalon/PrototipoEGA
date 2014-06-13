@@ -1,4 +1,13 @@
+from .email_info import EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT
 from unipath import Path
+
+EMAIL_USE_TLS= EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
+
+
 BASE_DIR = Path(__file__).ancestor(3)
 
 SECRET_KEY = '98_x--00^13)h%6td6%5o70&d6su-014$31xo*hr84pji8t3i3'
@@ -57,6 +66,6 @@ TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 
 AUTH_USER_MODEL = 'alumno.User'
 
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+#EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
 

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row" >
+        <h2>Contactanos</h2>
+        <div class="col-md-6">
+        	<div class="contenedorform">
+		            <div class="formulariocontacto">
+		                    <form action="." method="POST">{% csrf_token %}
+		                
+			                 <div class="form-group">
+				                {{ form.as_p }}                              
+				               <button type="submit" class="btn btn-primary pull-right" class="btn-contacto">
+				                        Enviar Mensaje
+				                </button>
+				              </div>
+				              </form>
+		            </div>
+		    </div>
+        </div>
+        <div class="col-md-4">
+        <div class="contenedorcont">
+		        <div class="infocontacto">
+				            <form>
+				            <legend><span class="glyphicon glyphicon-globe"></span>Nuestro Establecimiento</legend>
+				            <address>
+				                <strong>I.S.F.D Dr. José S. Salinas.</strong><br>
+				                Calle Mariano Moreno 450<br>
+				                Dpto General Belgrano - 5300<br>
+				                <abbr title="Phone">
+				                    P:</abbr>
+				                (3827)654181
+				            </address>
+				            <address>
+				                <strong>Nombre</strong><br>
+				                <a href="mailto:#">informacion@ega.com</a>
+				            </address>
+				            </form>
+			        </div>
+	    </div>
+	    </div>
+    </div>
+</div>
+
+{% endblock %}

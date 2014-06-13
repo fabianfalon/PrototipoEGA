@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+			<aside>
+				<div class="perfil">
+				<img  src="{{MEDIA_URL}}{{usuario.imagen}}" alt="Perfil" class="imaperfil" width="200" >
+				</div>
+				
+				<div class="datos">
+				<label>Carrera: </label>{{usuario.carrera}}<br>
+				<label>Nombre Y Apellido:</label> {{usuario.nombre_apellido}}<br>
+				<label>Nombre de Usuario: </label>{{usuario.username}}<br>
+				<label>Email: </label>{{usuario.email}}<br>
+				<label>DNI: </label>{{usuario.dni}}<br>
+
+							<input type="button" value="Modificar Datos" class="btn" >
+						<input type="button" value="BOTON" class="btn" >
+				</div>
+					
+					
+						
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

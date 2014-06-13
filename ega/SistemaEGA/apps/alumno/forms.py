@@ -97,6 +97,25 @@ class LoginForm(forms.Form):
 
 
 
+class ContactForm(forms.Form):
+	Email = forms.EmailField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Email',
+					'required' : 'required'
+				}))
+
+	Titulo = forms.CharField(widget=forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Asunto',
+					'required' : 'required'
+
+				}))
+	Texto = forms.CharField(widget=forms.Textarea(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Texto',
+					'required' : 'required'
+				}))
+	
 
 
 
