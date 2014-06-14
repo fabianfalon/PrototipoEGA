@@ -28,18 +28,6 @@ section#principal{
    
 }
 
-footer{
-  background: #1e6381;
-  color:#000;
-  font-size:0.85em;
-  border-radius: 0.5em;
-  margin: 0.5em auto;
-  max-width: 1102px; 
-  max-height:60px;
-  padding: 0.75em;
-  text-align: center;
-}
-
 aside{
    width:60%;
    background: #1e6381;
@@ -55,6 +43,32 @@ aside{
 }
 aside img{
  border-radius: 0.5em;
+}
+
+.contenedorform{
+  background-color: white;
+  border-radius: 0.5em;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+  padding: 1.2em;  
+  width: 500px;
+  height:450px;
+
+}
+.contenedorcont{
+  float: right;
+  padding-right: 8em;
+  padding: 2em;
+  display: inline-block;
+
+}
+
+.datos{
+  padding-top: 4em;
+  margin-right: 15em;
+
+
 }
 
 .error1{
@@ -82,49 +96,72 @@ aside img{
   padding: 0.5em 0.5em 0 0;
 }
 
-.perfil{
+.formulariocontacto{
+  width: 450px;
+  height: 350px;
+}
 
+.formedit{
   float: left;
-  margin-left: 5em
-}
-
-.datos{
-  padding-top: 4em;
-  margin-right: 15em;
-  float:right;
+  width: 550px;
+  padding: 5em;
 
 }
+.imagenedit{
+  float: right;
+}
+
+.imaedit{
+  margin-top: 12em;
+  height: 260px;
+  width: 260px;
+}
+
 .imaperfil{
   border-radius: 0.5em;
   box-shadow: 10px 20px 90px black;
   height: 300px;
   width: 260px;
 }
-.contenedorform{
-  background-color: white;
-  border-radius: 0.5em;
-  display: inline-block;
-  float: left;
-  overflow: hidden;
-  padding: 1.2em;  
-  width: 500px;
-  height:450px;
 
-}
-.formulariocontacto{
-  width: 450px;
-  height: 350px;
-}
 .infocontacto{
   width:200px ;
   height:300px;
   float: right;
   margin-left: 10em; 
 }
-.contenedorcont{
-  float: right;
-  padding-right: 8em;
-  padding: 2em;
-  display: inline-block;
 
+.navegadorperfil{
+  float: right;
+
+}
+
+.perfil{
+
+  float: left;
+  margin-left: 5em
+}
+
+
+.username{
+  color: black;
+  font-size: 15px;
+  font-style: italic;
+  font-family: fantasy;
+  padding-top:1.5em;
+  padding-right: 0.5em;
+  
+}
+
+
+footer{
+  background: #1e6381;
+  color:#000;
+  font-size:0.85em;
+  border-radius: 0.5em;
+  margin: 0.5em auto;
+  max-width: 1102px; 
+  max-height:60px;
+  padding: 0.75em;
+  text-align: center;
 }

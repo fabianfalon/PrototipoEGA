@@ -18,19 +18,59 @@
 <body>
 <div class="row-fluid">
 
+
+		{% block perfil %}
+		{% if user.is_authenticated %}
+
 <div class="container">
 	<div class="page-header" style="text-align: center;">
-  		
-			 	<div style="text-align: center;">
-						<h1>E.G.A
+
+					 	<div style="text-align: center;">
+						<h1>E.G.A</h1>
+						
+						
+				</div>
+
+  		 
+	
+</div>
+ 	<nav class="navbar navbar-default" role="navigation" >
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Cambiar Navegacion</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="{% url 'alumnos:index' %}" class="navbar-brand">E.G.A</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">	
+
+				<li ><a href=" {% url 'alumnos:user_detail' user.username %} ">Perfil</a></li>
+				<li><a href="historia.html">Historial Academico</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscripciones <b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li><a href="examen.html">Examen Final</a></li>
+						<li><a href="">Materia Por Cursar</a></li>
+						<li class="divider"></li>
+	          			<li><a href="#">Consultar Inscripciones</a></li>
+					</ul>
+					<li><a href="{% url 'alumnos:contacto' %}">Contacto</a></li>
+	            </ul> 
+	          </li>
+			</ul>
+			<div class="navegadorperfil">
 						  <ul class="nav navbar-nav navbar-right">
 							  <li class="contenido-imagen-perfil">   
-								     <p></p>
-								
+							  	<div class="username">
+								     <p>{{user.username}}</p>
+								</div>
 								   <li class="dropdown">
-								  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{MEDIA_URL}}{{usuario.imagen}}" class="foto-perfil"><b class="caret"></b></a>
+								  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{MEDIA_URL}}{{user.imagen}}" class="foto-perfil"><b class="caret"></b></a>
 									<ul class="dropdown-menu ">
-										<li><a href="{% url 'alumnos:user_detail' user.id %}">Perfil</a></li>
+										<li><a href="{% url 'alumnos:user_detail' user.username %}">Perfil</a></li>
 										<li class="divider"></li>
 										<li><a href="/cerrar/">Salir</a></li>
 									</ul>
@@ -39,40 +79,12 @@
 							</ul>
 							  
 						  </ul>
-						</h1>
-				</div>
-</div>
- 
-<nav class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			<span class="sr-only">Cambiar Navegacion</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a href="{% url 'alumnos:index' %}" class="navbar-brand">E.G.A</a>
-	</div>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav">	
+						 </div>
 
-			<li ><a href=" {% url 'alumnos:user_detail' user.id %} ">Perfil</a></li>
-			<li><a href="historia.html">Historial Academico</a></li>
-			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscripciones <b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="examen.html">Examen Final</a></li>
-					<li><a href="">Materia Por Cursar</a></li>
-					<li class="divider"></li>
-          			<li><a href="#">Consultar Inscripciones</a></li>
-				</ul>
-				<li><a href="{% url 'alumnos:contacto' %}">Contacto</a></li>
-            </ul> 
-          </li>
-		</ul>
+	</nav>		
+			{% endif %}
 
-</nav>		
-
+		{% endblock %}
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 			<aside>

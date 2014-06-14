@@ -15,7 +15,7 @@ class UserForm(ModelForm):
 
 	username = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su Nombre y Apellido',
+					'placeholder' : 'Ingrese su Usuario',
 					'required' : 'required'
 				}))
 
@@ -28,12 +28,12 @@ class UserForm(ModelForm):
 
 	carrera = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su DNI',
+					'placeholder' : 'Ingrese la Carrera ',
 					'required' : 'required'
 				}))
 	nombre_apellido = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su DNI',
+					'placeholder' : 'Ingrese su Nombre y Apellido',
 					'required' : 'required'
 				}))
 
@@ -72,7 +72,7 @@ class UserForm(ModelForm):
 
 	imagen = forms.ImageField(widget=forms.FileInput(attrs={
 					'class' : 'form-control',
-					'placeholder' : 'Ingrese su Asunto',
+					'placeholder' : 'Ingrese su Imagen de Pefil',
 					'required' : 'required'
 
 				}))
@@ -118,5 +118,56 @@ class ContactForm(forms.Form):
 	
 
 
+class EditForm(forms.Form):
 
+	username = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su NOmbre de Usuario',
+					'required' : 'required'
+				}))
+
+	email = forms.EmailField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Email',
+					'required' : 'required'
+				}))
+
+	nombre_apellido = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Nombre y Apellido',
+					'required' : 'required'
+				}))
+
+	dni = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su DNI',
+					'required' : 'required'
+				}))
+
+	lugar_nacimiento = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su lugar de Nacimiento',
+					'required' : 'required'
+				}))
+
+	fecha_nacimiento = forms.DateField(widget= forms.widgets.DateInput(format= '%d.%m.%Y')) 
+
+
+	ciudad_actual = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese la ciudad donde recide actualmente',
+					'required' : 'required'
+				}))
+
+	domicilio_actual = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Domicilio Actual',
+					'required' : 'required'
+				}))
+
+	imagen = forms.ImageField(widget=forms.FileInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Imagen de Perfil'
+
+				}))
 
