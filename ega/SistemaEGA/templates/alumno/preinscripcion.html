@@ -30,7 +30,7 @@
 					<div class="span3">
   						<div class="jumbotron loginbox">
 						<legend>Ingrese sus datos personales</legend>
-							<form  method="POST" enctype="multipart/form-data">{% csrf_token %} 
+							<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
 								 
 								 {{ form.as_p }}
 				

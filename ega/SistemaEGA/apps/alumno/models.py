@@ -32,7 +32,7 @@ class User(AbstractBaseUser,PermissionsMixin):
 	nombre_apellido = models.CharField(max_length=800)
 	dni = models.CharField(max_length=10, blank=True, null=True)
 	lugar_nacimiento = models.CharField(max_length=500)
-	fecha_nacimiento = models.DateField(auto_now=True, auto_now_add=True)
+	fecha_nacimiento = models.DateField(auto_now_add=True)
 	ciudad_actual = models.CharField(max_length=500)
 	domicilio_actual = models.CharField(max_length=500)
 	tipo_usuario = models.IntegerField(blank=True, null=True)

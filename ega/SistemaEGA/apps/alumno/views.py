@@ -163,8 +163,7 @@ def edit_alumno(request, id_alumno):
 	ctx = {'form':form, 'alumno':alumno}
 	return render_to_response('alumno/editar_datos.html', ctx, context_instance=RequestContext(request))		
 
-
-
-
-
-
+#Visualizar el Historial Academico
+class HistorialAcademicoView(TemplateView):
+	
+	template_name = 'alumno/historial_academico.html'
