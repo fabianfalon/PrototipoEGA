@@ -4,6 +4,7 @@
 {% block content %}
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
+
 				<div class="formedit">
 					<legend>Modifique Sus Datos</legend>
 					<form role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
@@ -21,11 +22,14 @@
 				    	</div>
 					</form>
 				</div>
+				<div class="jumbotron" class ="datos1">
+					<div class="container">
 				<div class="imagenedit">
 
 						<img  src="{{MEDIA_URL}}{{alumno.imagen}}" alt="Perfil" class="imaedit">
 
 				</div>
+			</div>
 		</div>
 
 

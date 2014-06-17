@@ -34,16 +34,16 @@
 								 
 								 {{ form.as_p }}
 				
-									<div class="row">
-													
-											<div class="col-xs-6 col-sm-6 col-md-6">
-												<button type="submit" class="btn btn-labeled btn-success">
-												<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
-												<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
-												<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+						<div class="row">
+												
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
+							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
+							<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
+							<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
 											</div>
-											
-											</div>
+									
+									</div>
 									
                                    
 							</form>
@@ -54,6 +54,12 @@
 				
 		</div>	
 <script>
+
+function Guardar(){
+
+	window.location='/pre_detail/{{usuario.username}}'
+}
+
    function apreteCancelar(){
    		if (confirm("¿realmente desea cancelar la preinscripción?"))
 	{

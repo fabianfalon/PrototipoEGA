@@ -73,7 +73,7 @@ class UserForm(ModelForm):
 	imagen = forms.ImageField(widget=forms.FileInput(attrs={
 					'class' : 'form-control',
 					'placeholder' : 'Ingrese su Imagen de Pefil',
-					'required' : 'required'
+					
 
 				}))
 
@@ -170,4 +170,3 @@ class EditForm(forms.Form):
 					'placeholder' : 'Ingrese su Imagen de Perfil'
 
 				}))
-

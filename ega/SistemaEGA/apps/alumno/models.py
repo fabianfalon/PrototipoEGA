@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from PIL import Image
@@ -24,12 +25,12 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser,PermissionsMixin):
-
+	
+	nombre_apellido = models.CharField(max_length=800)
 	username = models.CharField(max_length=50, unique=True)
 	email = models.EmailField(max_length=50, unique=True)
 	cod_alumno = models.IntegerField(blank=True, null=True)
-	carrera = models.CharField(max_length=50)
-	nombre_apellido = models.CharField(max_length=800)
+	carrera = models.CharField(max_length=50)	
 	dni = models.CharField(max_length=10, blank=True, null=True)
 	lugar_nacimiento = models.CharField(max_length=500)
 	fecha_nacimiento = models.DateField(auto_now_add=True)
@@ -38,7 +39,7 @@ class User(AbstractBaseUser,PermissionsMixin):
 	tipo_usuario = models.IntegerField(blank=True, null=True)
 	documentacion_completa = models.BooleanField(default=False)
 	fecha = models.DateField(auto_now=True, auto_now_add=True)
-	imagen = models.ImageField(upload_to='alumnos/', blank=True, null=True)
+	imagen = models.ImageField(upload_to='perfiles/', blank=True, null=True)
 	
 	is_active = models.BooleanField(default= True)
 	is_staff = models.BooleanField(default= False)

@@ -23,8 +23,8 @@
 						<label>DNI: </label>{{usuario.dni}}<br>
 						<label>Usted Se logueo el dia:  </label>{{usuario.fecha}}<br>
 
-						<a href="{% url 'alumnos:edit' user.id %}"><input type="button" value="Modificar Datos" class="btn btn-primary btn-lg" ></a>
-					
+						<a href="{% url 'alumnos:user_update' user.username %}"><input type="button" value="Modificar Datos" class="btn btn-primary btn-lg" ></a>	
+				
 						</div>
 					</div>
 				</div>
