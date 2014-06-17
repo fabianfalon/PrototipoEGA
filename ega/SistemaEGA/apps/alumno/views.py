@@ -182,8 +182,10 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 	success_url = '/index'
 	context_object_name = 'usuario'
 
+	def get_object(self, queryset=None): 
+		return self.request.user
+	
 	def form_valid(self, form):
-
 		user = form.save() #asignamos a la variabe user el formulario
 		user.set_password(form.cleaned_data['password']) #guardamos la clave encriptada
 		user.save() #guardamos el formulario
