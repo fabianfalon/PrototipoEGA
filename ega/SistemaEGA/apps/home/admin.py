@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Carrera, Materia, Reglascorrelatividades, Profesor, InscripcionFinal
+from .models import Carrera, Materia, Profesor, InscripcionFinal, MesaFinal, InscripcionMateria
 
 class MateriaAdmin(admin.ModelAdmin):
 	list_display = ('nombre', 'carrera', 'duracion', 'cod_materia')
@@ -13,7 +13,8 @@ class CarreraAdmin(admin.ModelAdmin):
 
 admin.site.register(Carrera, CarreraAdmin)
 admin.site.register(Materia, MateriaAdmin)
-admin.site.register(Reglascorrelatividades)
 admin.site.register(Profesor)
 admin.site.register(InscripcionFinal)
+admin.site.register(MesaFinal)
+admin.site.register(InscripcionMateria)
 

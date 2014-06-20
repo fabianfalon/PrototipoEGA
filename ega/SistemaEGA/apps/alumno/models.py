@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from PIL import Image
 from django.core.mail import EmailMessage
 
-
 class UserManager(BaseUserManager):
 	def _create_user(self, username, email, password, is_staff,
 			    is_superuser, **extra_fields):
@@ -30,10 +29,10 @@ class User(AbstractBaseUser,PermissionsMixin):
 	username = models.CharField(max_length=50, unique=True)
 	email = models.EmailField(max_length=50, unique=True)
 	cod_alumno = models.IntegerField(blank=True, null=True)
-	carrera = models.CharField(max_length=50)	
+	#carrera = models.CharField(max_length=50)	
 	dni = models.CharField(max_length=10, blank=True, null=True)
 	lugar_nacimiento = models.CharField(max_length=500)
-	fecha_nacimiento = models.DateField(auto_now_add=True)
+	fecha_nacimiento = models.DateField(blank=True, null=True)
 	ciudad_actual = models.CharField(max_length=500)
 	domicilio_actual = models.CharField(max_length=500)
 	tipo_usuario = models.IntegerField(blank=True, null=True)
@@ -50,5 +49,4 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 	def get_short_name(self):
 		return self.username
-
 

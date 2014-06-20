@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^cerrar/$', 'apps.alumno.views.cerrar'),
 
     url(r'^', include('apps.alumno.urls', namespace='alumnos')),
+    url(r'^', include('apps.home.urls', namespace='home')),
    	
     #url para trabajar con imagenes
     url(r'^media/(?P<path>.*)$','django.views.static.serve',

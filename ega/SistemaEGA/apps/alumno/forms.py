@@ -5,10 +5,16 @@ from .models import User
 
 class UserForm(ModelForm):
 
+	MY_CHOICES = (
+	    ('Tecnologia', 'Tecnologia'),
+	    ('Geografia', 'Geografia'),
+	    ('Profesor en enseñanza primaria', 'Profesor en enseñanza primaria'),
+	)
+
 	class Meta:
 
 		model = User
-		fields = ('username','email','carrera', 'nombre_apellido', 
+		fields = ('username','email', 'nombre_apellido', 
 				   'dni', 'lugar_nacimiento', 'fecha_nacimiento','ciudad_actual',
 				   'domicilio_actual' ,'imagen', 'password')
 
@@ -26,11 +32,8 @@ class UserForm(ModelForm):
 				}))
 
 
-	carrera = forms.CharField(widget = forms.TextInput(attrs={
-					'class' : 'form-control',
-					'placeholder' : 'Ingrese la Carrera ',
-					'required' : 'required'
-				}))
+	carrera = forms.ChoiceField(choices=MY_CHOICES)
+
 	nombre_apellido = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
 					'placeholder' : 'Ingrese su Nombre y Apellido',

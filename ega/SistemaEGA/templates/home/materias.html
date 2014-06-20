@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<legend>{{ materias.carrera }} </legend>
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover materias">
+							<tr>
+								<th>Codigo</th>
+								<th>Materia</th>
+								<th>Nota</th>
+								<th>Fecha de Final</th>
+							</tr>
+							
+							{% for materia in materias %}
+							<tr>
+								<td>{{materia.cod_materia}}</td>
+								<td><a href="{% url 'home:final' %}" class="materiaslink">{{materia.nombre}}</a></td>
+								<td>{{materia.carrera}}</td>
+								<td>{{materia.duracion}}</td>
+							</tr>
+							{% endfor %}
+					
+						</table>
+					</div>
+					
+					
+				
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

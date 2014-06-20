@@ -9,7 +9,7 @@ class Carrera(models.Model):
 	nombre = models.CharField(max_length=500)
 	resolucion = models.CharField(max_length=500, blank=True, null=True)
 	duracion = models.IntegerField()
-
+	alumno = models.ManyToManyField(User)
 	def __unicode__(self):
 		return self.nombre
 
@@ -33,22 +33,37 @@ class Profesor(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-class InscripcionFinal(models.Model):
 
-	cod_inscripcion = models.IntegerField(unique=True)
-	carrera = models.ForeignKey(Carrera)
+class MesaFinal(models.Model):
+
+	fecha = models.DateField()
 	materia = models.ForeignKey(Materia)
-	alumno = models.ForeignKey(User)
-	profesor = models.ForeignKey(Profesor)
-	fecha = models.DateField(auto_now_add=True)
-
-
-
-
-class Reglascorrelatividades(models.Model):
-
-	carrera = models.ForeignKey(Carrera)
-	materiacursar = models.ForeignKey(Materia)
+	#profesor = models.ForeignKey(Profesor)
+	turno = models.CharField(max_length=100)
+	cod_mesa = models.IntegerField()
 
 	def __unicode__(self):
-		return self.carreracursar
+		return self.turno
+
+
+
+from apps.alumno.models import User
+
+
+class InscripcionMateria(models.Model):
+
+	alumno= models.ForeignKey(User)
+	materia = models.ForeignKey(Materia)
+	regular = models.BooleanField(default=False)
+
+
+class InscripcionFinal(models.Model):
+
+	cod_inscripcion = models.CharField(max_length=60,  unique=True)
+	alumno = models.ForeignKey(User)
+	materia = models.ForeignKey(Materia)
+	mesa = models.ForeignKey(MesaFinal)
+	
+# isncripcion = InscripcionFinal.objects.filter(user = request.user )
+# inscripcion.materia
+# inscripcion.materia.carrera

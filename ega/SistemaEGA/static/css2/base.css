@@ -105,7 +105,7 @@ aside img{
 
 .formedit{
   float: left;
-  padding: 5em;
+  padding: 1.5em;
 
 }
 .imagenedit{
@@ -113,10 +113,11 @@ aside img{
 }
 
 .imaedit{
-  margin-top: 12em;
+  box-shadow: 10px 20px 90px black;
+  margin-top: 10em;
   margin-right: 5em;
-  height: 260px;
-  width: 260px;
+  height: 360px;
+  width: 340px;
 }
 
 .imaperfil{
@@ -179,3 +180,14 @@ footer{
   padding: 0.75em;
   text-align: center;
 }
+.materias{
+  color: black;
+  text-decoration: none;
+}
+.materiaslink{
+  color: black;
+    font-size: 15px;
+  font-style: italic;
+}
+
+

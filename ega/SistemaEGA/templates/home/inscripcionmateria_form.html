@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<legend>Eligé la materia en la que deseas inscribirte 
+	         		a cursar</legend>
+					<div class="jumbotron" class ="datos1">
+					 <div class="container">
+					<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+								 
+								 {{ form.as_p }}
+
+								<button type="submit" class="btn btn-labeled btn-success">
+							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Inscribirse</button>
+					</form>
+					</div>
+				</div>
+				
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

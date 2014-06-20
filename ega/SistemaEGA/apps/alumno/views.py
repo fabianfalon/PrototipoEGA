@@ -78,7 +78,7 @@ class PerfilView(LoginRequiredMixin, TemplateView):
 	login_url = '/'
 
 #Vista para el Perfil de Usuario
-class UserDetailView(DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView):
 
 	model = User
 	context_object_name = 'usuario'
@@ -121,60 +121,15 @@ class ErrorDatosView(TemplateView):
 
 	template_name = 'errores/error_datos.html'
 
-# #vista para editar alumno
-# @login_required(login_url='/') #Para que los alumnos logueados puedan ver esto
-# def edit_alumno(request, id_alumno):
-# 	alumno = User.objects.get(id = id_alumno)
-# 	if request.method == 'POST':
-# 		form = EditForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			username = form.cleaned_data['username']
-# 			email = form.cleaned_data['email']
-# 			nombre_apellido = form.cleaned_data['nombre_apellido']
-# 			dni = form.cleaned_data['dni']
-# 			lugar_nacimiento = form.cleaned_data['lugar_nacimiento']
-# 			fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
-# 			ciudad_actual = form.cleaned_data['ciudad_actual']
-# 			domicilio_actual = form.cleaned_data['domicilio_actual']
-# 			imagen = form.cleaned_data['imagen']
-# 			alumno.username = username
-# 			alumno.email = email
-# 			alumno.nombre_apellido = nombre_apellido
-# 			alumno.dni = dni
-# 			alumno.lugar_nacimiento = lugar_nacimiento
-# 			alumno.fecha_nacimiento = fecha_nacimiento
-# 			alumno.ciudad_actual = ciudad_actual
-# 			alumno.domicilio_actual = domicilio_actual
-# 			if imagen:
-# 				alumno.imagen = imagen
-# 			alumno.save()
-# 			return redirect('/usuario/%s' %(alumno.username))
-
-# 	if request.method == 'GET':
-# 			form = EditForm(initial={
-# 					'username' : alumno.username,
-# 					'email' : alumno.email,
-# 					'nombre_apellido': alumno.nombre_apellido,
-# 					'dni': alumno.dni,
-# 					'lugar_nacimiento': alumno.lugar_nacimiento,
-# 					'fecha_nacimiento': alumno.fecha_nacimiento,
-# 					'ciudad_actual': alumno.ciudad_actual,
-# 					'domicilio_actual': alumno.domicilio_actual,
-# 					'imagen': alumno.imagen,
-
-# 			})
-# 	ctx = {'form':form, 'alumno':alumno}
-# 	return render_to_response('alumno/editar_datos.html', ctx, context_instance=RequestContext(request))		
-
 #Visualizar el Historial Academico
 class HistorialAcademicoView(TemplateView):
 	
 	template_name = 'alumno/historial_academico.html'
 
-
+#Vista para que el alumno pueda modificar sus datos
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 
-	model = User
+	model = User 
 	form_class = UserForm
 	slug_field = 'username'
 	fields = ['nombre_apellido','username', 'email', 'dni', 'lugar_nacimiento','fecha_nacimiento', 'ciudad_actual', 'domicilio_actual', 'imagen', 'password']
@@ -194,5 +149,3 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 	def form_invalid(self, form):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
-
-
