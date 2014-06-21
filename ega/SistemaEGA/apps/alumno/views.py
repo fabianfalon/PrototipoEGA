@@ -3,13 +3,16 @@ from django.core.mail import  EmailMessage, EmailMultiAlternatives
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, redirect, render, RequestContext
 from django.views.generic import TemplateView, FormView, DetailView, UpdateView 
+from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
 from apps.alumno.models import User
+from apps.home.models import HistorialAcademico
 from .forms import UserForm, LoginForm, ContactForm, EditForm
+
 
 #Vista de Login 
 def index(request):
@@ -123,8 +126,19 @@ class ErrorDatosView(TemplateView):
 
 #Visualizar el Historial Academico
 class HistorialAcademicoView(TemplateView):
-	
+
+	models = HistorialAcademico
 	template_name = 'alumno/historial_academico.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(HistorialAcademicoView, self).get_context_data(**kwargs)
+		context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
+		#print context
+		return context
+        #historial_materias = HistorialAcademico.objects.filter(alumno = request.user)
+        #context['historial_materias'] = historial_materias
+    	
 
 #Vista para que el alumno pueda modificar sus datos
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
@@ -149,3 +163,16 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 	def form_invalid(self, form):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
+
+class ImprimirHistorial(PDFTemplateView):
+       filename = 'historial.pdf'
+       template_name = 'pfd/pdfhistorial.html'
+       cmd_options = {
+           'margin-top': 3,
+       }
+       
+       def get_context_data(self, **kwargs):
+		   context = super(ImprimirHistorial, self).get_context_data(**kwargs)
+		   context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
+		  # context['historial']=Articulo.objects.get(id=kwargs['pk'])
+		   return context

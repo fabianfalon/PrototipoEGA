@@ -5,18 +5,26 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
-	         	<legend>Eligé la materia en la que deseas inscribirte 
+	         	<legend>Selecciona la materia en la que deseas inscribirte 
 	         		a cursar</legend>
-					<div class="jumbotron" class ="datos1">
+					<div class="jumbotron">
 					 <div class="container">
-					<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
-								 
-								 {{ form.as_p }}
-
-								<button type="submit" class="btn btn-labeled btn-success">
-							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Inscribirse</button>
-					</form>
+					 	<table class="table table-bordered table-striped table-hover materias">
+							<tr >
+								<th align="center"><center>Materias</center></th>
+							</tr>
+							
+							{% for mate in total_materias %}
+							<tr>
+                  <td><a href="{% url 'home:materia_detail' mate.id %}">{{mate.nombre}}<br></a></td><br>
+                  </tr>
+                     		{% endfor %}
+												
+						</table>
 					</div>
+                    
+								 
+						</div>
 				</div>
 				
 			</aside>

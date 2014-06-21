@@ -5,61 +5,36 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
+
 	         	<legend>Historial Academico {{user.nombre_apellido}}</legend>
 					<div class="table-responsive">
+                 
 						<table class="table table-bordered table-striped table-hover">
 							<tr>
-								<th>Codigo</th>
+								<th>Alumno</th>
 								<th>Materia</th>
 								<th>Nota</th>
 								<th>Fecha de Final</th>
 							</tr>
+					  {% for historial in historial_materias  %}
+							
 							<tr>
-								<td>0001</td>
-								<td>Analisis Matematico I</td>
-								<td>8</td>
-								<td>12/04/2013</td>
+								<td>{{ historial.alumno}}</td>
+								<td>{{ historial.materia}}</td>
+								<td>{{ historial.nota}}</td>
+								<td>{{ historial.fecha}}</td>
 							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Analisis Matematico II</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Analisis Matematico III</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Fisica I</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Fisica II</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Fisica III</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-							<tr>
-								<td>0003</td>
-								<td>Analisis Matematico II</td>
-								<td>8</td>
-								<td>12/04/2013</td>
-							</tr>
-					
+							
+						
+						{% endfor %}
+
+							
 						</table>
+
 					</div>
-					
+			<div class="imprimir">
+		  	    <a href="{% url 'imprimir-historial' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" alt="Descargar"></a>
+		   </div>
 					
 				
 			</aside>

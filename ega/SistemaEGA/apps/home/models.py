@@ -20,6 +20,7 @@ class Materia(models.Model):
 	nombre = models.CharField(max_length=500)
 	carrera = models.ForeignKey(Carrera)
 	duracion = models.CharField(max_length=25)
+	inscripto = models.BooleanField(default=False)
 
 
 	def __unicode__(self):
@@ -63,6 +64,14 @@ class InscripcionFinal(models.Model):
 	alumno = models.ForeignKey(User)
 	materia = models.ForeignKey(Materia)
 	mesa = models.ForeignKey(MesaFinal)
+
+class HistorialAcademico(models.Model):
+
+	alumno = models.ForeignKey(User)
+	materia = models.ForeignKey(Materia)
+	nota = models.IntegerField()
+	fecha = models.DateField()
+
 	
 # isncripcion = InscripcionFinal.objects.filter(user = request.user )
 # inscripcion.materia

@@ -108,6 +108,13 @@ aside img{
   padding: 1.5em;
 
 }
+.historial-alumno{
+  float: right;
+  height: 50px;
+  width:50px;
+}
+
+
 .imagenedit{
   float: right;
 }
@@ -126,6 +133,13 @@ aside img{
   height: 300px;
   width: 260px;
 }
+.imprimir{
+  
+  margin-right: 34px;
+  margin-top: 10px;
+
+}
+
 
 .infocontacto{
   width:200px ;
@@ -134,6 +148,11 @@ aside img{
   margin-left: 10em; 
 }
 
+.materias{
+
+  margin-top: -5em;
+  margin-bottom: 1em;
+}
 .navegadorperfil{
   float: right;
 
@@ -145,6 +164,13 @@ aside img{
   margin-left: 5em
 }
 
+.pdf{
+  padding-top: -5em;
+  height: 50px;
+  width: 50px;
+  float: right;
+
+}
 
 .username{
   color: black;
@@ -165,8 +191,7 @@ aside img{
      height: 550px; 
      width: 3px;
      float: center;
-     border-right: 2px ;
-  
+     border-right: 2px ;  
 }
 
 footer{
@@ -179,15 +204,6 @@ footer{
   max-height:60px;
   padding: 0.75em;
   text-align: center;
-}
-.materias{
-  color: black;
-  text-decoration: none;
-}
-.materiaslink{
-  color: black;
-    font-size: 15px;
-  font-style: italic;
 }
 
 
