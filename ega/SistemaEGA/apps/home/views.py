@@ -1,7 +1,7 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import redirect
 from braces.views import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, CreateView, DetailView
+from django.views.generic import FormView, CreateView, DetailView
 from .models import Materia, User, InscripcionFinal, InscripcionMateria, Carrera
 from .forms import FinalForm, MateriaForm
 
@@ -54,37 +54,11 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
     form_class = MateriaForm
     context_object_name = 'materia'
 
-    def form_valid(form, self):
-        alumno = form.cleaned_data['self.request.user']
-        materia = form.cleaned_data['tecnologia1']
-        form.save()
-        return super(MateriaDetailView, self).form_valid(form)
+    def post(self, request, *args, **kwargs):
 
-    def form_invalid(self, form):
-        
-        return super(MateriaDetailView, self).form_invalid(form)
-
-
-
-
-# def guardar_inscripcion(request):
-
-#     form_class = MateriaForm
-#     alumno = ""
-#     materia = ""
-#     if request.method == 'POST':
-#         formulario = MateriaForm(request.POST)
-#         if formulario.is_valid():
-#             alumno = formulario.cleaned_data['request.user']
-#             materia = formulario.cleaned_data['']
-#             return redirect('/create_materia')
-
-#         else: 
-#             formulario = MateriaForm()
-#             ctx = {'form':formulario}
-#             return render_to_response('home/materia_detail.html',ctx, context_instance=RequestContext(request))
-
-
-
-       
+        inscripcion = InscripcionMateria()
+        inscripcion.alumno = request.user
+        inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
+        inscripcion.save()
+        return redirect('/inscripcion-materias')
 

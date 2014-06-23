@@ -53,11 +53,17 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscripciones <b class="caret"></b></a>
 					<ul class="dropdown-menu ">
 						<li><a href="{% url 'home:final_create' %}">Examen Final</a></li>
-						<li><a href="{% url 'home:create_materia' %}">Materia Por Cursar</a></li>
-						<li class="divider"></li>
-	          			<li><a href="#">Consultar Inscripciones</a></li>
+						<li><a href="{% url 'home:create_materia' %}">Materia Por Cursar</a></li>  	
+				   </ul>
+				<li class="dropdown">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultar Inscripciones <b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li><a href="">Consultar Inscripcion a Examen Final</a></li>
+						<li><a href="">Consultar Inscripcion a Materia Por Cursar</a></li>		
 					</ul>
 					<li><a href="{% url 'alumnos:contacto' %}">Contacto</a></li>
+
+					
 	            </ul> 
 	          </li>
 			</ul>
