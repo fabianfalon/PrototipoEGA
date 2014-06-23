@@ -202,5 +202,30 @@ class ListaFinalView(TemplateView):
         context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
         return context
 
+#imprime las materias a cursar
+class ImprimirMaterias(PDFTemplateView):
+       filename = 'historial.pdf'
+       template_name = 'pfd/pdfmaterias.html'
+       cmd_options = {
+           'margin-top': 3,
+       }
+       
+       def get_context_data(self, **kwargs):
+		   context = super(ImprimirMaterias, self).get_context_data(**kwargs)
+		   context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
+		   return context
+
+#imprime las materias a rendir FInal
+class ImprimirFinales(PDFTemplateView):
+       filename = 'historial.pdf'
+       template_name = 'pfd/pdfmaterias.html'
+       cmd_options = {
+           'margin-top': 3,
+       }
+       
+       def get_context_data(self, **kwargs):
+		   context = super(ImprimirFinales, self).get_context_data(**kwargs)
+		   context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
+		   return context
 
 
