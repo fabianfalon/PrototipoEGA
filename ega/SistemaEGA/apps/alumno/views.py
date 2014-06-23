@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
 from apps.alumno.models import User
-from apps.home.models import HistorialAcademico
+from apps.home.models import HistorialAcademico, InscripcionMateria, InscripcionFinal
 from .forms import UserForm, LoginForm, ContactForm, EditForm
 
 
@@ -176,3 +176,31 @@ class ImprimirHistorial(PDFTemplateView):
 		   context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
 		  # context['historial']=Articulo.objects.get(id=kwargs['pk'])
 		   return context
+
+
+#Me muestra todas las materias en las que el alumno se inscribio para cursar
+class ListaMateriasView(TemplateView):
+
+    models = InscripcionMateria
+    template_name = 'alumno/lista_materias.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(ListaMateriasView, self).get_context_data(**kwargs)
+        context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
+        return context
+
+#Me muestra todas las materias en las que el alumno se inscribio para rendir final
+class ListaFinalView(TemplateView):
+
+    models = InscripcionFinal
+    template_name = 'alumno/lista_finales.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(ListaFinalView, self).get_context_data(**kwargs)
+        context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
+        return context
+
+
+

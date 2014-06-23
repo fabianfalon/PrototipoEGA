@@ -7,7 +7,7 @@ class FinalForm(ModelForm):
 	class Meta:
 
 		model = InscripcionFinal
-		fields = ('cod_inscripcion', 'materia', 'alumno', 'mesa')
+		fields = ('cod_inscripcion','mesa')
 
 
 		cod_inscripcion = forms.CharField(widget = forms.TextInput(attrs={
@@ -16,18 +16,6 @@ class FinalForm(ModelForm):
 	 				'required' : 'required'
 	 			}))
 
-	 	alumno = forms.CharField(widget = forms.TextInput(attrs={
-	 				'class' : 'form-control',
-	 				'placeholder' : 'Ingrese su Domicilio Actual',
-	 				
-	 			}))
-
-
-	 	materia = forms.CharField(widget = forms.TextInput(attrs={
-	 				'class' : 'form-control',
-	 				'placeholder' : 'Ingrese su Domicilio Actual',
-	 				'required' : 'required'
-	 			}))
 
 	 	mesa = forms.CharField(widget = forms.TextInput(attrs={
 	 				'class' : 'form-control',
@@ -35,11 +23,6 @@ class FinalForm(ModelForm):
     				'required' : 'required'
 	 			}))
 
-		carrera = forms.CharField(widget = forms.TextInput(attrs={
-	 				'class' : 'form-control',
-	 				'placeholder' : 'Ingrese su Domicilio Actual',
-	 			
-	 			}))
 
 class MateriaForm(ModelForm):
 

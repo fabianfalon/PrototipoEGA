@@ -1,39 +1,51 @@
 import random
 from django.shortcuts import redirect
 from braces.views import LoginRequiredMixin
-from django.views.generic import FormView, CreateView, DetailView
-from .models import Materia, User, InscripcionFinal, InscripcionMateria, Carrera
+from django.views.generic import FormView, CreateView, DetailView, TemplateView
+from .models import Materia, User, InscripcionFinal, InscripcionMateria, Carrera, MesaFinal
 from .forms import FinalForm, MateriaForm
 
-
+#Mostrar lista de materias para rendir examen Final
 class FinalCreateView(LoginRequiredMixin, CreateView):
 
-    model = InscripcionFinal
+    model = Materia
+
+    def get_context_data(self, **kwargs):
+
+        context = super(FinalCreateView, self).get_context_data(**kwargs)
+        carrera = Carrera.objects.get(alumno__in = [self.request.user])
+        context['total_materias_finales'] = Materia.objects.filter(carrera = carrera)
+        return context
+
+#Muestra el detalle de la materia para inscribirse al examen final
+class FinalDetailView(LoginRequiredMixin, DetailView):
+
+    template_name = 'home/create_final.html'
+    model = Materia
     form_class = FinalForm
-    cod_alumno = ""
-    alumno = ""
-    materia = ""
-    mesa =""
-    carrera = ""
-    success_url = '/index'
+    context_object_name = 'materia'
 
-    numero =  random.randint (1, 20)
+    def get_context_data(self, **kwargs):
+        mesa = MesaFinal()    
+        context = super(FinalDetailView, self).get_context_data(**kwargs)
+        context['mesa'] =mesa.turno
+        return context
 
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
 
-        cod_inscripcion = form.cleaned_data['cod_inscripcion']
-        alumno = form.cleaned_data['alumno']
-        materia = form.cleaned_data['materia']
-        mesa = form.cleaned_data['mesa']
-        form.save()
-        return super(FinalCreateView, self).form_valid(form)
-
-    def form_invalid(self, form):
-        
-        return super(FinalCreateView, self).form_invalid(form)
-
+        inscripcionfinal = InscripcionFinal()
+        inscripcionfinal.alumno = request.user
+        inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])
+        #inscripcionfinal.mesa = request.POST['kwargs']
+        cpu = random.choice(range(10000))
+        materia = inscripcionfinal.materia
+        numero = cpu , materia
+        inscripcionfinal.cod_inscripcion = numero
+        inscripcionfinal.save()
+        return redirect('/inscripcion-materias')
 
 
+#Muestra lista de materias para inscribirse a cursar
 class MateriaCreateView(LoginRequiredMixin, CreateView):
 
     model = InscripcionMateria
@@ -48,6 +60,7 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
         #materias = Materia.objects.filter(carrera = carrera)
         #context['total_materias'] = materias
 
+#Muestra el detalle de las materias a inscribirse a cursar
 class MateriaDetailView(LoginRequiredMixin, DetailView):
 
     model = Materia
@@ -56,9 +69,11 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
 
     def post(self, request, *args, **kwargs):
 
+
         inscripcion = InscripcionMateria()
         inscripcion.alumno = request.user
         inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
+        inscripcion.regular = 'True'
         inscripcion.save()
         return redirect('/inscripcion-materias')
 

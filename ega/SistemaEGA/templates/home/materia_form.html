@@ -16,7 +16,7 @@
 							
 							{% for materias in total_materias_finales %}
 							<tr>
-                  <td><a href="{% url 'home:create_final' %}">{{materias.nombre}}<br></a></td><br>
+                  <td><a href="{% url 'home:create_final' materias.id %}">{{materias.nombre}}<br></a></td><br>
                   </tr>
                      		{% endfor %}
 												

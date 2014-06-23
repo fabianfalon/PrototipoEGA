@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+
+	         	<legend>Historial Academico {{user.nombre_apellido}}</legend>
+					<div class="table-responsive">
+                 
+						<table class="table table-bordered table-striped table-hover">
+							<tr>
+								<th>Alumno</th>
+								<th>Materia</th>
+								<th>Nota</th>
+								<th>Fecha de Final</th>
+							</tr>
+					  {% for materias in lista_materias  %}
+							
+							<tr>
+								<td>{{ materias.alumno}}</td>
+								<td>{{ materias.materia}}</td>
+								<td>{{ materias.nota}}</td>
+								<td>{{ materias.fecha}}</td>
+							</tr>
+							
+						
+						{% endfor %}
+
+							
+						</table>
+
+					</div>
+			<div class="imprimir">
+		  	    <a href="{% url 'imprimir-historial' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" alt="Descargar"></a>
+		   </div>
+					
+				
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

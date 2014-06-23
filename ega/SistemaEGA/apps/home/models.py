@@ -63,7 +63,7 @@ class InscripcionFinal(models.Model):
 	cod_inscripcion = models.CharField(max_length=60,  unique=True)
 	alumno = models.ForeignKey(User)
 	materia = models.ForeignKey(Materia)
-	mesa = models.ForeignKey(MesaFinal)
+	mesa = models.DateField(blank=True, null=True)
 
 class HistorialAcademico(models.Model):
 

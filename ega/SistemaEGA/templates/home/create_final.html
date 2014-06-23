@@ -10,25 +10,29 @@
 					 <div class="container">
 					 	<div class="table-responsive">
 					 <form method="POST">{% csrf_token %}
+							{{ form.as_p }}
 						<table class="table table-bordered table-striped table-hover">
 							<tr>
 								<th>Carrera</th>
 								<th>Materia</th>
 								<th>Duracion</th>
+								<th>Mesa</th>
 							</tr>
 							<tr>
 								<td> {{ object.carrera }}</td>
-								<td>{{ object.nombre }}</td>
-								<td> {{object.duracion}}</td>
+								<td>{{ materia.nombre }}</td>
+								<td> {{materia.duracion}}</td>
+								<td><select>
+								{% for m in mesa %}
+								   {m.fecha}
+								{% endfor %}
+  								</select></td>
 							</tr>					
 						</table>
 
 					</div>
-
 					<div class="col-xs-6 col-sm-6 col-md-6">
 
-		
-				
 							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
 							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Inscribirse</button>
 							<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
