@@ -64,4 +64,14 @@ class UserForm(ModelForm):
 
 
 
+class HistorialForm(ModelForm):
+
+	class Meta:
+
+		model = HistorialAcademico
+
+
+
+
+
 

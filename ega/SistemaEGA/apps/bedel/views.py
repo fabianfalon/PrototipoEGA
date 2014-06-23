@@ -4,7 +4,7 @@ from braces.views import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from apps.alumno.models import User
 from apps.home.models import Carrera, Materia, HistorialAcademico, InscripcionMateria, InscripcionFinal
-from .forms import CarreraForm, MateriaForm, UserForm
+from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm
 
 
 class BedelView(LoginRequiredMixin, TemplateView):
@@ -166,3 +166,28 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
 	
+def consulta(request):
+
+	alumnos = User.objects.filter(titulo__icontains = request.GET['consulta'])
+	dic = {'alumnos': alumnos }
+	if alumnos:
+		return render(request, 'bedel/busqueda.html', dic)
+	else: 
+		return render(request, 'error/busquedaerror.html', dic)
+
+#Agregar Historial Academico
+class HistorialAcademicoView(LoginRequiredMixin, FormView):
+
+	template_name = 'bedel/agregar_nota_final.html'
+	form_class = HistorialForm
+	success_url = '/index-bedel/'
+	
+	def form_valid(self, form):
+
+		user = form.save() #asignamos a la variabe user el formulario
+		user.save() #guardamos el formulario
+		return super(HistorialAcademicoView, self).form_valid(form)
+
+	def form_invalid(self, form):
+		
+		return super(HistorialAcademicoView, self).form_invalid(form)

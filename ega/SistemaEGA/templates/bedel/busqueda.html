@@ -6,30 +6,21 @@
 		<section id="principal" text-align="center" >
 	         <aside>
 	         	<legend>Lista de Alumnos inscriptos</legend>
-					<div class="jumbotron">
-						<img src="/static/ima/materias.png" class="ima-materia">
-					 <div class="container">
-
-					 	<table class="table table-bordered table-striped table-hover materias">
-			<div class="buscador">
-    	       <form action="/consulta/" method="GET">  		
-  				<div class="input-group" style="height:20px;">	
-  				<input  class="form-control" type="search" name="consulta" placeholder="Buscar alumno...">
-  				<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-  			</form>
-  		</div>					
-
-					<tr >
+				  <div class="jumbotron">
+				     	 <div class="container">
+				    <table class="table table-bordered table-striped table-hover materias">
+				     <h3>Los resultados obtenidos para su busqueda son:</h3>
+				     	<tr >
 								<th align="center"><center>Carrera</center></th>
 								<th align="center"><center>Nombre</center></th>
 								<th align="center"><center>Eliminar</center></th>
 								<th align="center"><center>Modificar</center></th>
-							</tr>
+						</tr>
 							
-							{% for alumnos in lista_alumnos %}
+							{% for a in alumnos %}
 							<tr>
-                  <td>{{alumnos.carrera}}<br></td><br>
-                  <td>{{alumnos.nombre_apellido}}<br></td><br>
+                  <td>{{a.carrera}}<br></td><br>
+                  <td>{{a.nombre_apellido}}<br></td><br>
 				 <td><a href=""><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a>
 				 </td>
 				<td><a href="{% url 'bedel:user_update' alumnos.username %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a>
@@ -42,9 +33,10 @@
 						</table>
 					</div>
                     
-								 
-						</div>
-				</div>
+
+					     </div>
+				  </div>
+
 				
 			</aside>
 		 </section>
