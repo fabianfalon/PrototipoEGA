@@ -35,7 +35,7 @@ class User(AbstractBaseUser,PermissionsMixin):
 	fecha_nacimiento = models.DateField(blank=True, null=True)
 	ciudad_actual = models.CharField(max_length=500)
 	domicilio_actual = models.CharField(max_length=500)
-	tipo_usuario = models.IntegerField(blank=True, null=True)
+	tipo_usuario = models.BooleanField(default=False)
 	documentacion_completa = models.BooleanField(default=False)
 	fecha = models.DateField(auto_now=True, auto_now_add=True)
 	imagen = models.ImageField(upload_to='perfiles/', blank=True, null=True)

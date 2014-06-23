@@ -12,14 +12,14 @@ from django.conf.urls.static import static
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'SistemaEGA.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+
     url(r'^$', 'apps.alumno.views.index'),
     url(r'^cerrar/$', 'apps.alumno.views.cerrar'),
 
+    #APlicaciones
     url(r'^', include('apps.alumno.urls', namespace='alumnos')),
     url(r'^', include('apps.home.urls', namespace='home')),
+    url(r'^', include('apps.bedel.urls', namespace='bedel')),
    	
     #url para trabajar con imagenes
     url(r'^media/(?P<path>.*)$','django.views.static.serve',

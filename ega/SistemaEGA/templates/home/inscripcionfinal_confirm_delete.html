@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<div class="jumbotron">
+					<div class="container">
+	         				<h2>Eliminar Inscripcion a Examen Final</h2>
+
+	         		<form  method="post">{% csrf_token %}
+    					<p>Esta seguro de eliminar inscripcion a"{{ object.materia }}" con 
+    						codigo "{{ object.id }}"?</p>
+    				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />
+    				<a href="{% url 'alumnos:materias-final' %}">No,cancelar.</a>
+				</form>
+			</div>
+		</div>
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<legend>Lista de Materias</legend>
+					<div class="jumbotron">
+						<img src="/static/ima/materias.png" class="ima-materia">
+					 <div class="container">
+
+					 	<table class="table table-bordered table-striped table-hover materias">
+							<tr >
+								<th align="center"><center>Carreras</center></th>
+								<th align="center"><center>Materias</center></th>
+								<th align="center"><center>Eliminar</center></th>
+								<th align="center"><center>Modificar</center></th>
+							</tr>
+							
+							{% for materia in lista_materias %}
+							<tr>
+				<td>{{ materia.carrera }}</td>								
+                  <td>{{materia.nombre}}<br></td><br>
+				 <td><a href="{% url 'bedel:materia_confirm_delete' materia.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a>
+				 </td>
+				<td><a href="{% url 'bedel:editar_materia' materia.id %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a>
+				 </td>
+						
+                 			 </tr>
+
+                     		{% endfor %}
+							
+						</table>
+					</div>
+                    
+								 
+						</div>
+				</div>
+				
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

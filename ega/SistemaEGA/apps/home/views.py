@@ -1,7 +1,7 @@
 import random
-from django.shortcuts import redirect
+from django.shortcuts import redirect, HttpResponseRedirect
 from braces.views import LoginRequiredMixin
-from django.views.generic import FormView, CreateView, DetailView, TemplateView
+from django.views.generic import FormView, CreateView, DetailView, TemplateView, DeleteView
 from .models import Materia, User, InscripcionFinal, InscripcionMateria, Carrera, MesaFinal
 from .forms import FinalForm, MateriaForm
 
@@ -71,9 +71,27 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
 
 
         inscripcion = InscripcionMateria()
-        inscripcion.alumno = request.user
-        inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
-        inscripcion.regular = 'True'
-        inscripcion.save()
-        return redirect('/inscripcion-materias')
+
+        if inscripcion.regular == False:
+            inscripcion.alumno = request.user
+            inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
+            inscripcion.regular = 'True'
+            inscripcion.save()
+            return redirect('/inscripcion-materias')
+
+class BedelView(LoginRequiredMixin, TemplateView):
+
+    template_name = 'bedel/menu_bedel.html'
+
+
+class FinalDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = InscripcionFinal
+    success_url = '/inscripcion-finales'
+
+    def delete(self, request, *args, **kwargs):
+
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
 

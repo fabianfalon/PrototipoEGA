@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<div class="jumbotron">
+					<div class="container">
+	         				<h2>Eliminar Carrera</h2>
+
+	         		<form  method="post">{% csrf_token %}
+    					<p>Esta seguro de eliminar la carrera"{{ object.nombre }}" con 
+    						codigo "{{ object.cod_carrera }}"?</p>
+    				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />
+    				<a href="{% url 'bedel:bedel' %}">No,cancelar.</a>
+				</form>
+			</div>
+		</div>
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

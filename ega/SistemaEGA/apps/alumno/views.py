@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.core.mail import  EmailMessage, EmailMultiAlternatives
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, redirect, render, RequestContext
-from django.views.generic import TemplateView, FormView, DetailView, UpdateView 
+from django.views.generic import TemplateView, FormView, DetailView, UpdateView, DeleteView 
 from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -22,11 +23,16 @@ def index(request):
 		password = request.POST['password']
 		user = authenticate(username=username, password=password)
 		if user is not None: #si los datos son correctos
-			if user.is_active and user.documentacion_completa == True: #preguntamos si el usuario esta activo y si presento la documentacion
+			if user.is_active and user.documentacion_completa == True and user.tipo_usuario == True: #preguntamos si el usuario esta activo y si presento la documentacion
 				login(request,user) #se loguea
-				return redirect('/index') #lo redirecciona al index
+				return redirect('/index-bedel') #lo redirecciona al index
 			else:
-				return redirect('/documentacion')
+				if user.is_active and user.documentacion_completa == True:
+
+					login(request,user) #se loguea
+					return redirect('/index') #lo redirecciona al index
+				else:
+					return redirect('/documentacion')
 		
 		else:
 			return redirect('/error')
@@ -227,5 +233,3 @@ class ImprimirFinales(PDFTemplateView):
 		   context = super(ImprimirFinales, self).get_context_data(**kwargs)
 		   context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
 		   return context
-
-

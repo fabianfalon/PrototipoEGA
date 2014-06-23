@@ -77,6 +77,13 @@ aside img{
 
 }
 
+.eliminar{
+  padding-top: -5em;
+  height: 10px;
+  width: 10px;
+
+
+}
 .error1{
 
   height: 390px;
@@ -114,7 +121,14 @@ aside img{
   width:50px;
 }
 
+.ima-materia{
+  float: left;
+  margin-top: -2em;
+  margin-left: -3em;
+  height: 55px;
+  width: 55px;
 
+}
 .imagenedit{
   float: right;
 }
