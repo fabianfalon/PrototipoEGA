@@ -7,6 +7,8 @@ djrill==1.1.1
 django-braces==1.4.0
 sorl-thumbnail==11.12
 wkhtmltopdf==0.2
+requests==2.3.0
+django-wkhtmltopdf==2.0.0
 
 
 

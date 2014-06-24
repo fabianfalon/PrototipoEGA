@@ -162,6 +162,14 @@ aside img{
   margin-left: 10em; 
 }
 
+.ima-footer{
+  padding-left: 15em;
+}
+
+.ima-header{
+  padding-left: 15em;
+}
+
 .materias{
 
   margin-top: -5em;
@@ -215,7 +223,7 @@ footer{
   border-radius: 0.5em;
   margin: 0.5em auto;
   max-width: 1102px; 
-  max-height:60px;
+  max-height:150px;
   padding: 0.75em;
   text-align: center;
 }
