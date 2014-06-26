@@ -10,7 +10,7 @@
 	         				<h2>Eliminar Materia</h2>
 
 	         		<form  method="post">{% csrf_token %}
-    					<p>Esta seguro de eliminar la Materia"{{ object.nombre }}" con 
+    					<p>Esta seguro de eliminar la Materia "{{ object.nombre }}" con 
     						codigo "{{ object.cod_materia }} y que pertenece a la 
     						carrera de "{{ object.carrera }}"?</p>
     				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />

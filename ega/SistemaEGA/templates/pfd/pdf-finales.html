@@ -264,33 +264,45 @@ table th[class*="col-"] {
 			</div>
 				<hr style="background-color:black;height:3px;width:850px; margin-top:6em;border-radius: 5em;">
 		</div>
+          <div class="jumbotron">
+          <div class="container">
+            <p><center><h1>PERMISO DE EXAMEN</h1></center></p>
+            </div>
+          </div>
+
           <div class="nota">
             <p><center>Conste por la presente que el alumno <strong>{{user.nombre_apellido}}</strong></center></p>
-              <p><center>Rindio el examen final de las materias que a continuacion se detallan.</center> 
+              <p><center>Esta habilitado para rendir las Asignaturas que indica a continuacion.</center> 
               </p> 
           </div>
 
 	         <aside>
 
 	         	<legend style="margin-top:4em;align=center; ">
-	         		<p><center><h1>HISTORIAL ACADEMICO</h1> </center></p>
+	         		<center> </center>
 	         	</legend>
 					<div class="table">
                  
 						<table class="table table-bordered table-striped table-hover">
 							<tr>
-								<th>Alumno</th>
-								<th>Materia</th>
-								<th>Nota</th>
-								<th>Fecha</th>
+								<th>N de Orden</th>
+								<th>Asignatura</th> 
+                <th>Curso</th>               
+                <th>Fecha</th>
+								<th>Calificacion</th>
+                <th>Firma presidente de mesa</th>
+								
 							</tr>
-					  {% for historial in historial_materias  %}
+					  {% for materias in lista_materias  %}
 							
 							<tr>
-								<td>{{ historial.alumno}}</td>
-								<td>{{ historial.materia}}</td>
-								<td>{{ historial.nota}}</td>
-								<td>{{ historial.fecha}}</td>
+                
+                <th>{{materias.id}}</th>
+								<td>{{ materias.materia}}</td>
+                <th></th>
+								<td>{{ materias.fecha}}</td>
+                <th></th>
+                <th></th>
 							</tr>
 							
 						
@@ -302,7 +314,15 @@ table th[class*="col-"] {
 					
 				
 			</aside>
+      <img src="/static/ima/FIRMA.png">
 		 </section>
+     <p><h1>NOTAS</h1>
+        1) Para poder rendir examen, el alumno debera presentar a la mesa examinadora este permiso
+        y su documento de Identidad
+     </p>
+     <p>
+      2) Los examenes escritos deben ser tachados con tinta.
+     </p>
 			
 	</section>
 </body>

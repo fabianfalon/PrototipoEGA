@@ -24,18 +24,18 @@ def index(request):
 		user = authenticate(username=username, password=password)
 		if user is not None: #si los datos son correctos
 			if user.is_active and user.documentacion_completa == True and user.tipo_usuario == True: #preguntamos si el usuario esta activo y si presento la documentacion
-				login(request,user) #se loguea
+				login(request,user) #se loguea como bedel
 				return redirect('/index-bedel') #lo redirecciona al index
 			else:
 				if user.is_active and user.documentacion_completa == True:
 
-					login(request,user) #se loguea
+					login(request,user) #se loguea como alumno
 					return redirect('/index') #lo redirecciona al index
 				else:
-					return redirect('/documentacion')
+					return redirect('/error')
 		
 		else:
-			return redirect('/error')
+			return redirect('/documentacion')
 
 	else:
 
@@ -107,7 +107,7 @@ def contacto_view(request):
 			email = formulario.cleaned_data['Email']
 			titulo = formulario.cleaned_data['Titulo']
 			texto = formulario.cleaned_data['Texto']
-			message = "Mensaje de : [%s]<br> Texto : [%s]"%(email,texto)
+			message = "Mensaje de : [%s][%s]<br> Texto : [%s]"%(request.user.nombre_apellido, email,texto)
 			msg = EmailMessage( subject= titulo, 
 							    body = message,
 							    from_email= email,
@@ -223,8 +223,8 @@ class ImprimirMaterias(PDFTemplateView):
 
 #imprime las materias a rendir FInal
 class ImprimirFinales(PDFTemplateView):
-       filename = 'historial.pdf'
-       template_name = 'pfd/pdfmaterias.html'
+       filename = 'acta.pdf'
+       template_name = 'pfd/pdf-finales.html'
        cmd_options = {
            'margin-top': 3,
        }

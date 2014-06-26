@@ -6,7 +6,9 @@
 		<section id="principal" text-align="center" >
 	         <aside>
 
-	         	<legend>Historial Academico {{user.nombre_apellido}}</legend>
+	         	<legend>
+	         <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+	         		Historial Academico {{user.nombre_apellido}}</legend>
 					<div class="table-responsive">
                  
 						<table class="table table-bordered table-striped table-hover">

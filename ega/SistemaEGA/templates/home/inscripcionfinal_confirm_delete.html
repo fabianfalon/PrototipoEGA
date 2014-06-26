@@ -10,8 +10,8 @@
 	         				<h2>Eliminar Inscripcion a Examen Final</h2>
 
 	         		<form  method="post">{% csrf_token %}
-    					<p>Esta seguro de eliminar inscripcion a"{{ object.materia }}" con 
-    						codigo "{{ object.id }}"?</p>
+    					<p>¿Esta seguro de eliminar inscripcion a "{{ object.materia }}" con 
+    						codigo "{{ object.cod_inscripcion }}" ?</p>
     				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />
     				<a href="{% url 'alumnos:materias-final' %}">No,cancelar.</a>
 				</form>

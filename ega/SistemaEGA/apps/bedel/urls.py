@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from apps.bedel.views import  BedelView, CarreraView, CarrerasListaView, CarreraDeleteView, CarreraUpdateView
 from apps.bedel.views import MateriasView, MateriasListaView, MateriaDeleteView, MateriaUpdateView
 from apps.bedel.views import AlumnosListaView, AlumnoUpdateView, HistorialAcademicoView
+from apps.bedel.views import ListaMateriasActaView, AlumnosListaActaView
 
 urlpatterns = patterns('',
 
@@ -25,6 +26,10 @@ urlpatterns = patterns('',
 
    #Historial Academico
    url(r'^index-bedel/agregar-Historial/$', HistorialAcademicoView.as_view(), name='agregar-historial'),
+
+   #Operaciones con Examenes finales
+   url(r'^index-bedel/lista-materias-acta/$', ListaMateriasActaView.as_view(), name='acta'),
+   url(r'^index-bedel/lista-materias-acta/(?P<pk>\d+)/$', AlumnosListaActaView.as_view(), name='alumnos_acta'),
 
    url(r'^consulta/$', 'apps.bedel.views.consulta'),
 

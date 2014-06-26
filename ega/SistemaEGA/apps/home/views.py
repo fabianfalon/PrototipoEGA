@@ -25,10 +25,13 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
     form_class = FinalForm
     context_object_name = 'materia'
 
-    def get_context_data(self, **kwargs):
-        mesa = MesaFinal()    
+    def get_context_data(self, *args, **kwargs):
+
+        mesa = MesaFinal()
+        form_class = FinalForm()    
         context = super(FinalDetailView, self).get_context_data(**kwargs)
-        context['mesa'] =mesa.turno
+        #materia = Materia.objects.filter(materia.id = kwargs['id'])
+        context['mesa'] = MesaFinal.objects.all()
         return context
 
     def post(self, request, *args, **kwargs):
@@ -36,10 +39,10 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         inscripcionfinal = InscripcionFinal()
         inscripcionfinal.alumno = request.user
         inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])
-        #inscripcionfinal.mesa = request.POST['kwargs']
+        inscripcionfinal.mesa = request.POST['fecha']
         cpu = random.choice(range(10000))
         materia = inscripcionfinal.materia
-        numero = cpu , materia
+        numero = cpu , inscripcionfinal.materia
         inscripcionfinal.cod_inscripcion = numero
         inscripcionfinal.save()
         return redirect('/inscripcion-materias')
@@ -55,6 +58,7 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
 
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
+        #context['total'] = Materia.objects.filter(regular = False)
         context['total_materias'] = Materia.objects.filter(carrera = carrera)
         return context
         #materias = Materia.objects.filter(carrera = carrera)

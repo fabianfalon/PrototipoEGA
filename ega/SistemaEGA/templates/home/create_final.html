@@ -10,7 +10,7 @@
 					 <div class="container">
 					 	<div class="table-responsive">
 					 <form method="POST">{% csrf_token %}
-							{{ form.as_p }}
+							
 						<table class="table table-bordered table-striped table-hover">
 							<tr>
 								<th>Carrera</th>
@@ -22,10 +22,15 @@
 								<td> {{ object.carrera }}</td>
 								<td>{{ materia.nombre }}</td>
 								<td> {{materia.duracion}}</td>
-								<td><select>
-								{% for m in mesa %}
-								   {m.fecha}
-								{% endfor %}
+								<td>
+<!-- 									{% for m in mesa %}
+									<select>{{m.mesa}}</select>
+
+									{% endfor %} -->
+
+									<select name="fecha">
+									<option value="2014-11-06">2014-11-06</option>
+									<option value="2014-10-06">2014-10-06</option>
   								</select></td>
 							</tr>					
 						</table>
@@ -61,7 +66,7 @@ function Guardar(){
    function apreteCancelar(){
    		if (confirm("¿realmente desea cancelar la preinscripción?"))
 	{
-		window.location='/inscripcion-materias/';
+		window.location='/inscripcion-finales/';
 	}
       
 

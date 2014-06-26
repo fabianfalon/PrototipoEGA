@@ -178,16 +178,49 @@ def consulta(request):
 #Agregar Historial Academico
 class HistorialAcademicoView(LoginRequiredMixin, FormView):
 
+	model = HistorialAcademico
 	template_name = 'bedel/agregar_nota_final.html'
 	form_class = HistorialForm
 	success_url = '/index-bedel/'
-	
-	def form_valid(self, form):
 
-		user = form.save() #asignamos a la variabe user el formulario
-		user.save() #guardamos el formulario
-		return super(HistorialAcademicoView, self).form_valid(form)
+	def post(self, request, *args, **kwargs):
+		post = super(HistorialAcademicoView, self).post(request, *args, **kwargs)
+		alumno = request.POST['alumno']
+		materia = request.POST['materia']
+		nota = request.POST['nota']
+		fecha = request.POST['fecha']
+		HistorialAcademico.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia), nota=nota, fecha=fecha)
+		return post
+
 
 	def form_invalid(self, form):
 		
 		return super(HistorialAcademicoView, self).form_invalid(form)
+
+
+#Lista de materias para generar Acta
+class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
+
+	models = Materia
+	template_name = 'bedel/lista_materias_acta.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(ListaMateriasActaView, self).get_context_data(**kwargs)
+		context['lista_materias_acta'] = Materia.objects.all()
+		return context
+
+
+#Mostrar Alumnos inscriptos en la materia que se hizo click
+class AlumnosListaActaView(LoginRequiredMixin, TemplateView):
+
+	models = InscripcionFinal
+	template_name = 'bedel/lista_alumnos_acta.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(AlumnosListaActaView, self).get_context_data(**kwargs)
+		carrera = Carrera.objects.filter(materia = self.request.GET[kwargs  ['pk']])
+		alumno = User.objects.filter(carrera = carrera)
+		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(alumno = alumno)
+		return context

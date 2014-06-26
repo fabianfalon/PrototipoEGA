@@ -1,29 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% block title %}E.G.A{% endblock %}
 
 {% block content %}
-	<section id="contenedor">
+<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
-	         	<legend>
-	         		        <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
-	         		Selecciona la materia en la que deseas inscribirte 
-	         		a cursar</legend>
+	         	<legend>Lista de Materias para generar acta de examen final</legend>
 					<div class="jumbotron">
 						<img src="/static/ima/materias.png" class="ima-materia">
 					 <div class="container">
 
 					 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
+								<th align="center"><center>Carreras</center></th>
 								<th align="center"><center>Materias</center></th>
 							</tr>
 							
-							{% for mate in total_materias %}
+							{% for materia in lista_materias_acta %}
 							<tr>
-                  <td><a href="{% url 'home:materia_detail' mate.id %}">{{mate.nombre}}<br></a></td><br>
-                  </tr>
+			  					<td>{{ materia.carrera }}</td>								
+              				    <td><a href="{% url 'bedel:alumnos_acta' materia.id %}">{{materia.nombre}}</a><br></td><br>
+						
+                 			 </tr>
+
                      		{% endfor %}
-												
+							
 						</table>
 					</div>
                     

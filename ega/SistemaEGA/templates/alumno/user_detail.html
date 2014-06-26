@@ -5,9 +5,12 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 			<aside>
-			<legend>Datos de {{usuario.nombre_apellido}}</legend>
+			<legend>
+				<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+				Datos de {{usuario.nombre_apellido}}</legend>
 				<div class="jumbotron" class ="datos1">
 					<div class="container">
+
 						<div  class="col-md-5" class="perfil">
 							
 							<img  src="{{MEDIA_URL}}{{usuario.imagen}}" alt="Perfil" class=" img-responsive imaperfil">

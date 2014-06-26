@@ -45,6 +45,12 @@ aside img{
  border-radius: 0.5em;
 }
 
+.boton-volver{
+  height: 50px;
+  width: 50px;
+  margin-top: -0.8em;
+  float: left;
+}
 .contenedorform{
   background-color: white;
   border-radius: 0.5em;
@@ -147,6 +153,27 @@ aside img{
   height: 300px;
   width: 260px;
 }
+
+.ima-footer{
+  padding-left: 2em;
+  height: 160px;
+  padding-right: 2em;
+  padding-top: -20em;
+}
+.ima-error{
+  
+  height: 750px;
+  width: 750px;
+  padding-right: 2em;
+
+}
+
+.ima-header{
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+
 .imprimir{
   
   margin-right: 34px;
@@ -162,13 +189,6 @@ aside img{
   margin-left: 10em; 
 }
 
-.ima-footer{
-  padding-left: 15em;
-}
-
-.ima-header{
-  padding-left: 15em;
-}
 
 .materias{
 
@@ -229,3 +249,4 @@ footer{
 }
 
 
+#id_fecha_nacimiento

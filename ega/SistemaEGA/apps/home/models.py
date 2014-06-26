@@ -1,8 +1,6 @@
 from django.db import models
 from apps.alumno.models import User
 
-
-
 class Carrera(models.Model):
 
 	cod_carrera = models.IntegerField()
@@ -63,7 +61,7 @@ class InscripcionFinal(models.Model):
 	cod_inscripcion = models.CharField(max_length=60,  unique=True)
 	alumno = models.ForeignKey(User)
 	materia = models.ForeignKey(Materia)
-	mesa = models.DateField(blank=True, null=True)
+	mesa = models.DateField()
 
 class HistorialAcademico(models.Model):
 

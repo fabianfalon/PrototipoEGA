@@ -3,10 +3,29 @@
 
 {% block content %}
 <div class="jumbotron loginbox">
-						<legend>Ingrese los datos de la carrera</legend>
+						<legend>Ingrese los datos del alumno a cargar en el historial</legend>
 							<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+
+								<p>
+								<label>Alumno</label>
+								<input type="text" name="alumno">
+								</p>
+								<p>
+								<label>Materia</label>
+								<input type="text" name="materia">
+								</p>
+								<p>
+								<label>Nota</label>
+								{{ form.nota }}
+								</p>
+								<p>
+								<label>Fecha</label>
+								{{ form.fecha }}
+								<h4>Introduzca la fecha en formato
+									AAAA-MM-DD
+								</h4>
+								</p>
 								 
-								 {{ form.as_p }}
 				
 						<div class="row">
 												

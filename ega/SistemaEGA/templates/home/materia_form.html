@@ -5,10 +5,13 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
-				<legend>Selecciona la materia en la que deseas inscribirte 
+				<legend>
+					        <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+					Selecciona la materia en la que deseas inscribirte 
 	         		a rendir Final</legend>
+	         		<h3>Examenes Finales</h3>
 					<div class="jumbotron">
-						<h3>Examenes Finales</h3>
+						
 					 <div class="container">
 					 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
