@@ -263,14 +263,27 @@ class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 
 
 #Mostrar Alumnos inscriptos en la materia que se hizo click
-class AlumnosListaActaDetailView(LoginRequiredMixin,DetailView):
+class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 
 	template_name = 'bedel/lista_alumnos_acta.html'
-	model = InscripcionFinal
+	model = InscripcionFinal	
 
-	def get_context_data(self, *args, **kwargs):
-
+	def get_context_data(self, **kwargs):
 		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
-		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia=context['object'])
+		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia= kwargs['pk'])
 		print context['total_alumnos_acta']
 		return context
+
+
+# class AlumnosListaActaDetailView(LoginRequiredMixin,DetailView):
+
+# 	template_name = 'bedel/lista_alumnos_acta.html'
+# 	model = InscripcionFinal
+
+# 	def get_context_data(self, *args, **kwargs):
+
+# 		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
+# 		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia=context['object'])
+# 		print inscripcionfinal
+# 		print context['total_alumnos_acta']
+# 		return context
