@@ -20,29 +20,24 @@
 								<th>Fecha de Final</th>
 								<th>Eliminar Inscripcion</th>
 							</tr>
-					  {% for materias in lista_materias  %}
-							
+					           {% for materias in lista_materias  %}	
 							<tr>
 								<td>{{ materias.alumno }}</td>
 								<td>{{ materias.cod_inscripcion}}</td>
 								<td>{{ materias.materia }}</td>
 								<td>{{ materias.nota }}</td>
 								<td>{{ materias.mesa }}</td>
-				<td><a href="{% url 'home:final_confirm_delete' materias.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></td></a>
+								<td><a href="{% url 'home:final_confirm_delete' materias.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></td></a>
 							</tr>
 							
 						
-						{% endfor %}
-
-							
+								{% endfor %}	
 						</table>
 
 					</div>
-			<div class="imprimir">
-		  	    <a href="{% url 'imprimir-finales' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" ></a>
-		   </div>
-					
-				
+					<div class="imprimir">
+				  	    <a href="{% url 'imprimir-finales' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" ></a>
+				   </div>
 			</aside>
 		 </section>
 			

@@ -3,45 +3,37 @@
 
 {% block content %}
 <div class="jumbotron loginbox">
-						<legend>Ingrese los datos del alumno a cargar en el historial</legend>
-							<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+	<legend>Ingrese los datos del alumno a cargar en el historial</legend>
+		<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
 
-								<p>
-								<label>Alumno</label>
-								<input type="text" name="alumno">
-								</p>
-								<p>
-								<label>Materia</label>
-								<input type="text" name="materia">
-								</p>
-								<p>
-								<label>Nota</label>
-								{{ form.nota }}
-								</p>
-								<p>
-								<label>Fecha</label>
-								{{ form.fecha }}
-								<h4>Introduzca la fecha en formato
-									AAAA-MM-DD
-								</h4>
-								</p>
-								 
-				
-						<div class="row">
-												
+					<p>
+						<label>Alumno</label>
+						<input type="text" name="alumno">
+					</p>
+					<p>
+						<label>Materia</label>
+						<input type="text" name="materia">
+					</p>
+					<p>
+						<label>Nota</label>
+				        	{{ form.nota }}
+					</p>
+					<p>
+					    <label>Fecha</label>
+						{{ form.fecha }}
+						<h4  style="color:red">Introduzca la fecha en formato AAAA-MM-DD</h4>	
+					</p>
+							 
+				 <div class="row">								
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
 							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
 							<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
 							<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
-											</div>
-									
-									</div>
-									
-                                   
-							</form>
-
 						</div>
+				  </div>
+		</form>
+</div>
 
 <script>
    function apreteCancelar(){

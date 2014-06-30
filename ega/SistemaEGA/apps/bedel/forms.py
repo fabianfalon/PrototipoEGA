@@ -71,7 +71,13 @@ class HistorialForm(ModelForm):
 		model = HistorialAcademico
 
 
+class MesaFinalForm(ModelForm):
 
+	class Meta:
+
+		model = MesaFinal
+
+		
 
 
 

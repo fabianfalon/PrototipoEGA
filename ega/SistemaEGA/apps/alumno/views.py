@@ -72,7 +72,7 @@ class PreinscripcionView(FormView):
 		
 		return super(PreinscripcionView, self).form_invalid(form)
 
-
+#Index Alumno
 class IndexView(LoginRequiredMixin, TemplateView):
 
 	template_name = 'alumno/index.html'
@@ -170,6 +170,7 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
 
+#Imprimir Historial Academico
 class ImprimirHistorial(PDFTemplateView):
        filename = 'historial.pdf'
        template_name = 'pfd/pdfhistorial.html'
@@ -182,31 +183,6 @@ class ImprimirHistorial(PDFTemplateView):
 		   context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
 		  # context['historial']=Articulo.objects.get(id=kwargs['pk'])
 		   return context
-
-
-#Me muestra todas las materias en las que el alumno se inscribio para cursar
-class ListaMateriasView(TemplateView):
-
-    models = InscripcionMateria
-    template_name = 'alumno/lista_materias.html'
-
-    def get_context_data(self, **kwargs):
-
-        context = super(ListaMateriasView, self).get_context_data(**kwargs)
-        context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
-        return context
-
-#Me muestra todas las materias en las que el alumno se inscribio para rendir final
-class ListaFinalView(TemplateView):
-
-    models = InscripcionFinal
-    template_name = 'alumno/lista_finales.html'
-
-    def get_context_data(self, **kwargs):
-
-        context = super(ListaFinalView, self).get_context_data(**kwargs)
-        context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
-        return context
 
 #imprime las materias a cursar
 class ImprimirMaterias(PDFTemplateView):
@@ -233,3 +209,27 @@ class ImprimirFinales(PDFTemplateView):
 		   context = super(ImprimirFinales, self).get_context_data(**kwargs)
 		   context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
 		   return context
+
+#Me muestra todas las materias en las que el alumno se inscribio para cursar
+class ListaMateriasView(TemplateView):
+
+    model = InscripcionMateria
+    template_name = 'alumno/lista_materias.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(ListaMateriasView, self).get_context_data(**kwargs)
+        context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
+        return context
+
+#Me muestra todas las materias en las que el alumno se inscribio para rendir final
+class ListaFinalView(TemplateView):
+
+    model = InscripcionFinal
+    template_name = 'alumno/lista_finales.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(ListaFinalView, self).get_context_data(**kwargs)
+        context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
+        return context

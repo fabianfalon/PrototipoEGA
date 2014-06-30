@@ -8,30 +8,24 @@
 	         	<legend>Lista de Materias para generar acta de examen final</legend>
 					<div class="jumbotron">
 						<img src="/static/ima/materias.png" class="ima-materia">
-					 <div class="container">
+					   <div class="container">
 
-					 	<table class="table table-bordered table-striped table-hover materias">
-							<tr >
-								<th align="center"><center>Carreras</center></th>
-								<th align="center"><center>Materias</center></th>
-							</tr>
+					 	  <table class="table table-bordered table-striped table-hover materias">
+							  <tr >
+								  <th align="center"><center>Carrera</center></th>
+								  <th align="center"><center>Materias</center></th>
+							  </tr>
 							
-							{% for materia in lista_materias_acta %}
-							<tr>
-			  					<td>{{ materia.carrera }}</td>								
-              				    <td><a href="{% url 'bedel:alumnos_acta' materia.id %}">{{materia.nombre}}</a><br></td><br>
-						
-                 			 </tr>
+							     {% for materias in lista_materias_acta %}
+							  <tr>
 
-                     		{% endfor %}
-							
+			  					  <td>{{ materias.carrera }}</td>								 	<td><a href="{% url 'bedel:alumnos_generar_acta' materias.id %}">
+              				    	{{materias.nombre}}</a></td><br>
+                			  </tr>
+                     		    {% endfor %}
 						</table>
-					</div>
-                    
-								 
-						</div>
-				</div>
-				
+					  </div>	 
+				  </div>
 			</aside>
 		 </section>
 			

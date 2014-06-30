@@ -6,9 +6,10 @@
 		<section id="principal" text-align="center" >
 	         <aside>
 	         	<legend>
-	         		        <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+	         		<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
 	         		Selecciona la materia en la que deseas inscribirte 
-	         		a cursar</legend>
+	         		a cursar
+	         	</legend>
 					<div class="jumbotron">
 						<img src="/static/ima/materias.png" class="ima-materia">
 					 <div class="container">
@@ -19,22 +20,16 @@
 								<th align="center"><center>Materias</center></th>
 							</tr>
 							
-							{% for mate in total_materias %}
+								{% for mate in total_materias %}
 							<tr>
 								<td>{{mate.anio}}</td>
-                  <td><a href="{% url 'home:materia_detail' mate.id %}">{{mate.nombre}}<br></a></td><br>
-                  </tr>
-                     		{% endfor %}
-												
+                 				 <td><a href="{% url 'home:materia_detail' mate.id %}">{{mate.nombre}}<br></a></td><br>
+                  			</tr>
+                     			{% endfor %}						
 						</table>
 					</div>
-                    
-								 
-						</div>
-				</div>
-				
+                   </div>
 			</aside>
-		 </section>
-			
+		</section>	
 	</section>
 {% endblock %}

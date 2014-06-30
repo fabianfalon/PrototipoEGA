@@ -2,11 +2,12 @@ from django.conf.urls import patterns, include, url
 from apps.bedel.views import  BedelView, CarreraView, CarrerasListaView, CarreraDeleteView, CarreraUpdateView
 from apps.bedel.views import MateriasView, MateriasListaView, MateriaDeleteView, MateriaUpdateView
 from apps.bedel.views import AlumnosListaView, AlumnoUpdateView, HistorialAcademicoView
-from apps.bedel.views import ListaMateriasActaView, AlumnosListaActaView
+from apps.bedel.views import ListaMateriasActaView, AlumnosListaActaDetailView
+from apps.bedel.views import MesaFinalListaView, MesaFinalDeleteView, MesaFinalUpdateView, MesaFinalAddView
 
 urlpatterns = patterns('',
 
-	url(r'^index-bedel/$', BedelView.as_view()  , name='bedel'),
+	 url(r'^index-bedel/$', BedelView.as_view()  , name='bedel'),
 
     #Operaciones con Carreras
     url(r'^index-bedel/agregar-carrera/$', CarreraView.as_view(), name='agregar_carrera'),
@@ -29,11 +30,14 @@ urlpatterns = patterns('',
 
    #Operaciones con Examenes finales
    url(r'^index-bedel/lista-materias-acta/$', ListaMateriasActaView.as_view(), name='acta'),
-   url(r'^index-bedel/lista-materias-acta/(?P<pk>\d+)/$', AlumnosListaActaView.as_view(), name='alumnos_acta'),
+   url(r'^index-bedel/lista-materias-acta/materia/(?P<pk>\d+)/$', AlumnosListaActaDetailView.as_view(), name='alumnos_generar_acta'),
 
-   url(r'^consulta/$', 'apps.bedel.views.consulta'),
+   #Operaciones con Mesas de Examenes finales
+   url(r'^index-bedel/agregar-lista-mesa-finales/$', MesaFinalAddView.as_view(), name='agregar_mesa_finales'), 
+   url(r'^index-bedel/lista-mesa-finales/$', MesaFinalListaView.as_view(), name='lista_mesas_finales'), 
+   url(r'^index-bedel/lista-mesa-finales/eliminar/(?P<pk>\d+)/$', MesaFinalDeleteView.as_view(), name='mesa_confirm_delete'),
+   url(r'^index-bedel/lista-mesa-finales/editar/(?P<pk>\d+)/$', MesaFinalUpdateView.as_view(), name='editar_mesa'),
 
-  
+
    
-  
 )

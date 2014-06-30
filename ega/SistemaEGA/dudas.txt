@@ -1,16 +1,17 @@
 1) Consulta para que me traiga la lista de alumnos inscriptos segun la materia 
-2) No me muestra la mesa de examen final en el detalle de la materia.
-3) Como puedo hacer que no se inscriba en una materia si es que no se inscribio en la anterior 
-4) Validar que la inscripcion se realice una sola vez
-
-Todos los alumnos inscriptos a rendir ese examen final pero que todavia no lo han rendido
-es para generar...
-Mediante el modelo InscripcionFInal ahi guardo las inscripciones
+2) Como puedo hacer que no se inscriba en una materia si es que no se inscribio en la anterior 
+3) Validar que la inscripcion se realice una sola vez
 
 
-									<select name="fecha">
-										{% for m in mesa %}
-										<option>{{m.fecha}}</option>
-									{% endfor %} 
+#Mostrar Alumnos inscriptos en la materia que se hizo click
+class AlumnosListaActaView(LoginRequiredMixin, DetailView):
 
-									
+	model = InscripcionFinal
+	template_name = 'bedel/lista_alumnos_acta.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(AlumnosListaActaView, self).get_context_data(**kwargs)
+		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia = context['object'])
+		print context['total_alumnos_acta']
+		return context

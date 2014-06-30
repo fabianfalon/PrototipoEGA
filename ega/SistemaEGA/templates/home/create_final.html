@@ -10,47 +10,40 @@
 					 <div class="container">
 					 	<div class="table-responsive">
 					 <form method="POST">{% csrf_token %}
-							
-						<table class="table table-bordered table-striped table-hover">
-							<tr>
-								<th>Carrera</th>
-								<th>Materia</th>
-								<th>Duracion</th>
-								<th>Mesa</th>
-							</tr>
-							<tr>
-								<td> {{ object.carrera }}</td>
-								<td>{{ materia.nombre }}</td>
-								<td> {{materia.duracion}}</td>
-								<td>
-									<select name="fecha">
-										{% for m in mesa %}
-										<option value"{{m.fecha|date:"Y-M-d"|lower}}">{{m.fecha|date:"Y-m-d"|lower}}</option>
-									{% endfor %} 
-								   </select></td>
-							</tr>					
-						</table>
+								
+							<table class="table table-bordered table-striped table-hover">
+								<tr>
+									<th>Carrera</th>
+									<th>Materia</th>
+									<th>Duracion</th>
+									<th>Mesa</th>
+								</tr>
+								<tr>
+									<td> {{ object.carrera }}</td>
+									<td>{{ materia.nombre }}</td>
+									<td> {{materia.duracion}}</td>
+									<td>
+										<select name="fecha">
+											{% for m in mesa %}
+											<option value"{{m.fecha|date:"Y-M-d"|lower}}">{{m.fecha|date:"Y-m-d"|lower}}</option>
+										{% endfor %} 
+									   </select></td>
+								</tr>					
+							</table>
 
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6">
-
-							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
-							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Inscribirse</button>
-							<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
-							<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+								<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
+								<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Inscribirse</button>
+								<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
+								<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+						</div>
 						</form>
-											</div>
-									
-									</div>
-
-                    
-                     
-                    
-				</div>
-				
+											
+					</div>
+					 </div>		
 			</aside>
-		 </section>
-			
+		 </section>			
 	</section>
 <script>
 

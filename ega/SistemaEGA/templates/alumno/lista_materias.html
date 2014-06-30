@@ -5,10 +5,10 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
-
 	         	<legend>
-	         		        <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
-	         		Listas de Materias a Cursar {{user.nombre_apellido}}</legend>
+	         		<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+	         		Listas de Materias a Cursar {{user.nombre_apellido}}
+	         	</legend>
 					<div class="table-responsive">
                  
 						<table class="table table-bordered table-striped table-hover">
@@ -18,27 +18,20 @@
 								<th>Nota</th>
 								<th>Fecha de Final</th>
 							</tr>
-					  {% for materias in lista_materias  %}
-							
+								  {% for materias in lista_materias  %}							
 							<tr>
 								<td>{{ materias.alumno}}</td>
 								<td>{{ materias.materia}}</td>
 								<td>{{ materias.nota}}</td>
 								<td>{{ materias.fecha}}</td>
 							</tr>
-							
-						
-						{% endfor %}
-
-							
+								{% endfor %}
 						</table>
 
 					</div>
-			<div class="imprimir">
-		  	    <a href="{% url 'imprimir-materias' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" alt="Descargar"></a>
-		   </div>
-					
-				
+					<div class="imprimir">
+				  	    <a href="{% url 'imprimir-materias' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar" alt="Descargar"></a>
+				   </div>
 			</aside>
 		 </section>
 			

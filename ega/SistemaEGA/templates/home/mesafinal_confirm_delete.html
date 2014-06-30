@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+	<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<div class="jumbotron">
+					<div class="container">
+	         				<h2>Eliminar Mesa de Examen Final</h2>
+
+		         		<form  method="post">{% csrf_token %}
+	    					<p>Esta seguro de eliminar la Mesa de Examen final "{{ object.materia }}" con codigo "{{ object.cod_mesa }} y que pertenece al turno de 
+	    						"{{ object.turno}}"?</p>
+	    				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />
+	    			   	<a href="{% url 'bedel:bedel' %}">No,cancelar.</a>
+					   </form>
+			      </div>
+				</div>
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

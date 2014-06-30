@@ -18,7 +18,6 @@ class FinalCreateView(LoginRequiredMixin, CreateView):
         return context
 
 #Muestra el detalle de la materia para inscribirse al examen final
-
 class FinalDetailView(LoginRequiredMixin, DetailView):
 
     template_name = 'home/create_final.html'
@@ -31,7 +30,6 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         mesa = MesaFinal()
         form_class = FinalForm()    
         context = super(FinalDetailView, self).get_context_data(**kwargs)
-        #materia = Materia.objects.filter(materia.id = kwargs['id'])
         context['mesa'] = MesaFinal.objects.filter(materia = context['object'])
         return context
 
@@ -59,7 +57,6 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
 
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
-        #context['total'] = Materia.objects.filter(regular = False)
         context['total_materias'] = Materia.objects.filter(carrera = carrera, inscripto = False)
         return context
         #materias = Materia.objects.filter(carrera = carrera)
@@ -86,7 +83,7 @@ class BedelView(LoginRequiredMixin, TemplateView):
 
     template_name = 'bedel/menu_bedel.html'
 
-
+#Eliminar Final
 class FinalDeleteView(LoginRequiredMixin, DeleteView):
 
     model = InscripcionFinal

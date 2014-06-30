@@ -63,9 +63,8 @@
 				<li class="dropdown">
 					 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Finales<b class="caret"></b></a>
 					<ul class="dropdown-menu ">
-						<li><a href="">Agregar mesa de examen final</a></li>
-						<li><a href="">Modificar mesa de examen final</a></li>		
-						<li><a href="">Eliminar Mesa de examen final</a></li>
+						<li><a href="{% url 'bedel:agregar_mesa_finales' %}">Agregar mesa de examen final</a></li>
+						<li><a href="{% url 'bedel:lista_mesas_finales' %}">Lista de Mesas de Examenes finales</a></li>		
 						<li><a href="{% url 'bedel:acta' %}">Generar Acta de Examen Final</a></li>
 					</ul>
 				<li class="dropdown">

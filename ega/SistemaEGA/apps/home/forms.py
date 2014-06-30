@@ -12,14 +12,14 @@ class FinalForm(ModelForm):
 
 		cod_inscripcion = forms.CharField(widget = forms.TextInput(attrs={
 	 				'class' : 'form-control',
-	 				'placeholder' : 'Ingrese su Domicilio Actual',
+	 				'placeholder' : 'Ingrese el codigo de la inscripcion',
 	 				'required' : 'required'
 	 			}))
 
 
 	 	mesa = forms.CharField(widget = forms.TextInput(attrs={
 	 				'class' : 'form-control',
-					'placeholder' : 'Ingrese su Domicilio Actual',
+					'placeholder' : 'Ingrese la mesa',
     				'required' : 'required'
 	 			}))
 

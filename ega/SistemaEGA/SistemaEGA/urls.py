@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^$', 'apps.alumno.views.index'),
     url(r'^cerrar/$', 'apps.alumno.views.cerrar'),
 
-    #APlicaciones
+    #Aplicaciones
     url(r'^', include('apps.alumno.urls', namespace='alumnos')),
     url(r'^', include('apps.home.urls', namespace='home')),
     url(r'^', include('apps.bedel.urls', namespace='bedel')),
@@ -27,7 +27,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
 # url para imprimir
-
    url(r'^imprimir-historial/$',ImprimirHistorial.as_view(),name= 'imprimir-historial'),
    url(r'^imprimir-materias/$',ImprimirMaterias.as_view(),name= 'imprimir-materias'),
    url(r'^imprimir-finales/$',ImprimirFinales.as_view(),name= 'imprimir-finales'),

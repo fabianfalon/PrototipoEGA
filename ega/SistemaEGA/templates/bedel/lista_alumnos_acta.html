@@ -10,28 +10,19 @@
 					 <div class="container">
 					 		<h3>Acta de examen</h3>
 					 	<table class="table table-bordered table-striped table-hover materias">		
-					<tr >
+							<tr >
 								<th align="center"><center>Materia</center></th>
 								<th align="center"><center>Nombre</center></th>
-								<th align="center"><center>Fecha</center></th>
 							</tr>
-							
 							{% for alumno in total_alumnos_acta %}
 							<tr>
                  		 		<td>{{alumno.materia.nombre}}<br></td><br>
                   				<td>{{alumno.alumno.nombre_apellido}}<br></td><br>
-                  				<td>{{alumno.mesa.fecha}}<br></td><br>
                  			 </tr>
-
                      		{% endfor %}
-							
 						</table>
 					</div>
-                    
-								 
-						</div>
-				</div>
-				
+                    </div>
 			</aside>
 		 </section>
 			

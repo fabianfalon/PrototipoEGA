@@ -6,26 +6,24 @@
 	         <aside>
 	         	<div class="formedit">
 					<legend>Modifique Sus Datos</legend>
-					<form role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+					  <form role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
 										 {{ form.as_p }}
 										 <br>
 						
-						<div class="row">														
-								<button type="submit" class="btn btn-labeled btn-success">
-								<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
-								<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
-								<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+							<div class="row">														
+									<button type="submit" class="btn btn-labeled btn-success">
+									<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
+									<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
+									<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
 
-				    	</div>
-					</form>
+					    	</div>
+					  </form>
 				</div>
-
 				<div class="imagenedit">
 
 						<img  src="{{MEDIA_URL}}{{usuario.imagen}}" alt="Perfil" class="img-responsive  imaedit">
 
-				</div>
-			
+				</div>			
 			</aside>
 		 </section>
 			

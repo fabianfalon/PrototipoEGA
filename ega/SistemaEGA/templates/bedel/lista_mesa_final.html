@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+<section id="contenedor">
+		<section id="principal" text-align="center" >
+	         <aside>
+	         	<legend>
+	         		<a href="{% url 'bedel:bedel' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+	         		Lista de Mesas de Examenes Finales</legend>
+					<div class="jumbotron">
+						<img src="/static/ima/materias.png" class="ima-materia">
+					 <div class="container">
+
+					 	<table class="table table-bordered table-striped table-hover materias">
+							<tr >
+								<th align="center"><center>Fecha</center></th>
+								<th align="center"><center>Materia</center></th>
+								<th align="center"><center>Turno</center></th>
+								<th align="center"><center>Codigo de Mesa</center></th>
+								<th align="center"><center>Eliminar</center></th>
+								<th align="center"><center>Modificar</center></th>
+
+							</tr>
+							
+									{% for mesa in lista_mesa_final %}
+							<tr>
+								<td>{{mesa.fecha}}</td>								
+			                  	<td>{{mesa.materia.nombre}}<br></td><br>
+			                  	<td>{{mesa.turno}}</td>
+			                  	<td>{{mesa.cod_mesa}}</td>
+				 				<td><a href="{% url 'bedel:mesa_confirm_delete' mesa.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td>
+								<td><a href="{% url 'bedel:editar_mesa' mesa.id %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
+                 			 </tr>
+
+                     				{% endfor %}
+							
+						</table>
+					</div>		 
+				</div>
+				
+			</aside>
+		 </section>
+			
+	</section>
+{% endblock %}

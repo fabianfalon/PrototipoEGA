@@ -6,33 +6,30 @@
 		<section id="principal" text-align="center" >
 			<aside>
 			<legend>
-				<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
-				Datos de {{usuario.nombre_apellido}}</legend>
+			<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+				Datos de {{usuario.nombre_apellido}}
+			</legend>
 				<div class="jumbotron" class ="datos1">
 					<div class="container">
 
-						<div  class="col-md-5" class="perfil">
-							
+						<div  class="col-md-5" class="perfil">				
 							<img  src="{{MEDIA_URL}}{{usuario.imagen}}" alt="Perfil" class=" img-responsive imaperfil">
-							
 						</div>
 						
 						<div class="datos">
 						
-						<label>Carrera: </label>{{usuario.carrera}}<br>
-						<label>Nombre Y Apellido: </label> {{usuario.nombre_apellido}}<br>
-						<label>Nombre de Usuario: </label> {{usuario.username}}<br>
-						<label>Email: </label>{{usuario.email}}<br>
-						<label>DNI: </label>{{usuario.dni}}<br>
-						<label>Usted Se logueo el dia:  </label>{{usuario.fecha}}<br>
+							<label>Carrera: </label>{{usuario.carrera}}<br>
+							<label>Nombre Y Apellido: </label> {{usuario.nombre_apellido}}<br>
+							<label>Nombre de Usuario: </label> {{usuario.username}}<br>
+							<label>Email: </label>{{usuario.email}}<br>
+							<label>DNI: </label>{{usuario.dni}}<br>
+							<label>Usted Se logueo el dia:  </label>{{usuario.fecha}}<br>
 
 						<a href="{% url 'alumnos:user_update' user.username %}"><input type="button" value="Modificar Datos" class="btn btn-primary btn-lg" ></a>	
 				
 						</div>
 					</div>
-				</div>
-					
-						
+				</div>						
 			</aside>
 		 </section>
 			

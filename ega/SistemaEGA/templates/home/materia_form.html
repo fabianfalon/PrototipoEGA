@@ -6,9 +6,10 @@
 		<section id="principal" text-align="center" >
 	         <aside>
 				<legend>
-					        <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
+			     <a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
 					Selecciona la materia en la que deseas inscribirte 
-	         		a rendir Final</legend>
+	         		a rendir Final
+	         	</legend>
 	         		<h3>Examenes Finales</h3>
 					<div class="jumbotron">
 						
@@ -18,19 +19,15 @@
 								<th align="center"><center>Año</center></th>
 								<th align="center"><center>Materias</center></th>
 							</tr>
-							
-							{% for materias in total_materias_finales %}
+								{% for materias in total_materias_finales %}
 							<tr>
 								<td>{{materias.anio}}</td>
-                  <td><a href="{% url 'home:create_final' materias.id %}">{{materias.nombre}}<br></a></td><br>
-                  </tr>
-                     		{% endfor %}
-												
+                 				<td><a href="{% url 'home:create_final' materias.id %}">{{materias.nombre}}<br></a></td><br>
+                  			</tr>
+                     			{% endfor %}						
 						</table>
 					</div>
-                    
-								 
-						</div>
+                    </div>
 
 
 					</div>

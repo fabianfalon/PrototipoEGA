@@ -3,8 +3,8 @@ from django.views.generic import TemplateView, FormView, DetailView, UpdateView,
 from braces.views import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from apps.alumno.models import User
-from apps.home.models import Carrera, Materia, HistorialAcademico, InscripcionMateria, InscripcionFinal
-from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm
+from apps.home.models import Carrera, Materia, HistorialAcademico, InscripcionMateria, InscripcionFinal, MesaFinal
+from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm, MesaFinalForm
 
 
 class BedelView(LoginRequiredMixin, TemplateView):
@@ -33,7 +33,7 @@ class CarreraView(LoginRequiredMixin, FormView):
 #Mostrar Carreras
 class CarrerasListaView(LoginRequiredMixin, TemplateView):
 
-	models = Carrera
+	model = Carrera
 	template_name = 'bedel/lista_carreras.html'
 
 	def get_context_data(self, **kwargs):
@@ -95,7 +95,7 @@ class MateriasView(LoginRequiredMixin, FormView):
 #Mostrar Materias
 class MateriasListaView(LoginRequiredMixin,TemplateView):
 
-	models = Materia
+	model = Materia
 	template_name = 'bedel/lista_materias.html'
 
 	def get_context_data(self, **kwargs):
@@ -137,7 +137,7 @@ class MateriaUpdateView(LoginRequiredMixin, UpdateView):
 #Mostrar Alumnos
 class AlumnosListaView(LoginRequiredMixin, TemplateView):
 
-	models = User
+	model = User
 	template_name = 'bedel/lista_alumnos.html'
 
 	def get_context_data(self, **kwargs):
@@ -166,14 +166,6 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
 	
-def consulta(request):
-
-	alumnos = User.objects.filter(titulo__icontains = request.GET['consulta'])
-	dic = {'alumnos': alumnos }
-	if alumnos:
-		return render(request, 'bedel/busqueda.html', dic)
-	else: 
-		return render(request, 'error/busquedaerror.html', dic)
 
 #Agregar Historial Academico
 class HistorialAcademicoView(LoginRequiredMixin, FormView):
@@ -197,11 +189,70 @@ class HistorialAcademicoView(LoginRequiredMixin, FormView):
 		
 		return super(HistorialAcademicoView, self).form_invalid(form)
 
+#Operaciones con Mesa de Examen final
+#Agregar Mesa de Examen Final
+class MesaFinalAddView(LoginRequiredMixin, FormView):
+
+	template_name = 'bedel/agregar_mesa_final.html'
+	form_class = MesaFinalForm
+	success_url = '/index-bedel/'
+	
+	def form_valid(self, form):
+
+		user = form.save() #asignamos a la variabe user el formulario
+		user.save() #guardamos el formulario
+		return super(MesaFinalAddView, self).form_valid(form)
+
+	def form_invalid(self, form):
+		
+		return super(MesaFinalAddView, self).form_invalid(form)
+
+
+#Mostrar Mesas
+class MesaFinalListaView(LoginRequiredMixin,TemplateView):
+
+	model =  MesaFinal
+	template_name = 'bedel/lista_mesa_final.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(MesaFinalListaView, self).get_context_data(**kwargs)
+		context['lista_mesa_final'] =  MesaFinal.objects.all()
+		return context
+
+#Eliminar Mesa
+class MesaFinalDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = MesaFinal
+    success_url = '/index-bedel/'
+
+    def delete(self, request, *args, **kwargs):
+
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
+
+#Actualizar datos de Mesa
+class MesaFinalUpdateView(LoginRequiredMixin, UpdateView):
+
+	model = MesaFinal
+	form_class = MesaFinalForm
+	template_name_suffix = '__update_form'
+	success_url = '/index-bedel/lista-materias'
+	context_object_name = 'mesafinal'
+	
+	def form_valid(self, form):
+		user = form.save() #asignamos a la variabe user el formulario
+		return super(MesaFinalUpdateView, self).form_valid(form)
+
+	def form_invalid(self, form):
+		
+		return super(MesaFinalUpdateView, self).form_invalid(form)
 
 #Lista de materias para generar Acta
 class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 
-	models = Materia
+	model = Materia
 	template_name = 'bedel/lista_materias_acta.html'
 
 	def get_context_data(self, **kwargs):
@@ -212,14 +263,14 @@ class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 
 
 #Mostrar Alumnos inscriptos en la materia que se hizo click
-class AlumnosListaActaView(LoginRequiredMixin, DetailView):
+class AlumnosListaActaDetailView(LoginRequiredMixin,DetailView):
 
-	model = InscripcionFinal
 	template_name = 'bedel/lista_alumnos_acta.html'
+	model = InscripcionFinal
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, *args, **kwargs):
 
-		context = super(AlumnosListaActaView, self).get_context_data(**kwargs)
-		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia = context['object'])
+		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
+		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia=context['object'])
 		print context['total_alumnos_acta']
 		return context
