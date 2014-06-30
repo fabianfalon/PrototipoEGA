@@ -32,10 +32,10 @@ def index(request):
 					login(request,user) #se loguea como alumno
 					return redirect('/index') #lo redirecciona al index
 				else:
-					return redirect('/error')
+					return redirect('/documentacion')
 		
 		else:
-			return redirect('/documentacion')
+			return redirect('/error')
 
 	else:
 

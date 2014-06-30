@@ -15,11 +15,13 @@
 
 					 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
+								<th align="center"><center>Año</center></th>
 								<th align="center"><center>Materias</center></th>
 							</tr>
 							
 							{% for mate in total_materias %}
 							<tr>
+								<td>{{mate.anio}}</td>
                   <td><a href="{% url 'home:materia_detail' mate.id %}">{{mate.nombre}}<br></a></td><br>
                   </tr>
                      		{% endfor %}

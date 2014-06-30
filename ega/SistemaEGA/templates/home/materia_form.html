@@ -15,11 +15,13 @@
 					 <div class="container">
 					 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
+								<th align="center"><center>Año</center></th>
 								<th align="center"><center>Materias</center></th>
 							</tr>
 							
 							{% for materias in total_materias_finales %}
 							<tr>
+								<td>{{materias.anio}}</td>
                   <td><a href="{% url 'home:create_final' materias.id %}">{{materias.nombre}}<br></a></td><br>
                   </tr>
                      		{% endfor %}

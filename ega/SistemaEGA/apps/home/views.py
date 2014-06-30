@@ -18,6 +18,7 @@ class FinalCreateView(LoginRequiredMixin, CreateView):
         return context
 
 #Muestra el detalle de la materia para inscribirse al examen final
+
 class FinalDetailView(LoginRequiredMixin, DetailView):
 
     template_name = 'home/create_final.html'
@@ -31,7 +32,7 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         form_class = FinalForm()    
         context = super(FinalDetailView, self).get_context_data(**kwargs)
         #materia = Materia.objects.filter(materia.id = kwargs['id'])
-        context['mesa'] = MesaFinal.objects.all()
+        context['mesa'] = MesaFinal.objects.filter(materia = context['object'])
         return context
 
     def post(self, request, *args, **kwargs):
@@ -40,7 +41,7 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         inscripcionfinal.alumno = request.user
         inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])
         inscripcionfinal.mesa = request.POST['fecha']
-        cpu = random.choice(range(10000))
+        cpu = random.choice(range(100000))
         materia = inscripcionfinal.materia
         numero = cpu , inscripcionfinal.materia
         inscripcionfinal.cod_inscripcion = numero
@@ -59,7 +60,7 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
         #context['total'] = Materia.objects.filter(regular = False)
-        context['total_materias'] = Materia.objects.filter(carrera = carrera)
+        context['total_materias'] = Materia.objects.filter(carrera = carrera, inscripto = False)
         return context
         #materias = Materia.objects.filter(carrera = carrera)
         #context['total_materias'] = materias
@@ -73,15 +74,13 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
 
     def post(self, request, *args, **kwargs):
 
-
         inscripcion = InscripcionMateria()
+        inscripcion.alumno = request.user
+        inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
+        inscripcion.regular = True
+        inscripcion.save()
 
-        if inscripcion.regular == False:
-            inscripcion.alumno = request.user
-            inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
-            inscripcion.regular = 'True'
-            inscripcion.save()
-            return redirect('/inscripcion-materias')
+        return redirect('/inscripcion-materias')
 
 class BedelView(LoginRequiredMixin, TemplateView):
 

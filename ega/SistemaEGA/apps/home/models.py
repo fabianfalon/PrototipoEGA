@@ -18,6 +18,7 @@ class Materia(models.Model):
 	nombre = models.CharField(max_length=500)
 	carrera = models.ForeignKey(Carrera)
 	duracion = models.CharField(max_length=25)
+	anio = models.IntegerField()
 	inscripto = models.BooleanField(default=False)
 
 

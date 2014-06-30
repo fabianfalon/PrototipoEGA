@@ -223,7 +223,9 @@ aside img{
   padding-right: 0.5em;
   
 }
-
+.tabla-alumno{
+  margin-top: -7em;
+}
 .lineavertical{
      background-color: white;
      border-radius: 5em;

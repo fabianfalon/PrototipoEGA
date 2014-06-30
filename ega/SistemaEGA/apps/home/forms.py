@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import InscripcionFinal, InscripcionMateria
+from .models import InscripcionFinal, InscripcionMateria, Materia
 
 class FinalForm(ModelForm):
 
@@ -30,4 +30,3 @@ class MateriaForm(ModelForm):
 
 		model = InscripcionMateria
 		fields = ('materia',)
-
