@@ -121,6 +121,7 @@ aside img{
   padding: 1.5em;
 
 }
+
 .historial-alumno{
   float: right;
   height: 50px;
@@ -160,6 +161,7 @@ aside img{
   padding-right: 2em;
   padding-top: -20em;
 }
+
 .ima-error{
   
   height: 750px;
@@ -183,7 +185,7 @@ aside img{
 
 
 .infocontacto{
-  width:200px ;
+  width:200px;
   height:300px;
   float: right;
   margin-left: 10em; 
@@ -212,6 +214,31 @@ aside img{
   width: 50px;
   float: right;
 
+}
+
+.rotarX{
+   transform:rotateX(0deg);
+   transition-duration: 2s;
+   -webkit-transform:rotateY(0deg);
+   -webkit-transition-duration: 2s;
+}
+.rotarX:hover{
+   transform:rotateX(180deg);
+   transition-duration: 2s;
+   -webkit-transform:rotateX(180deg);
+   -webkit-transition-duration: 2s;
+}
+
+.rotateMe {
+ -webkit-transition: -webkit-transform 1s ease-out;
+ -moz-transition: -moz-transform 1s ease-out;
+ transition: transform 1s ease-out;
+}
+
+.rotateMe:hover {
+ -webkit-transform: rotate(360deg);
+ -moz-transform: rotate(360deg);
+ transform: rotate(360deg);
 }
 
 .username{
@@ -245,10 +272,6 @@ footer{
   border-radius: 0.5em;
   margin: 0.5em auto;
   max-width: 1102px; 
-  max-height:150px;
   padding: 0.75em;
   text-align: center;
 }
-
-
-#id_fecha_nacimiento

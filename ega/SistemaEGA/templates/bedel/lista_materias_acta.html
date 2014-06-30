@@ -11,14 +11,12 @@
 					   <div class="container">
 
 					 	  <table class="table table-bordered table-striped table-hover materias">
-							  <tr >
+							  <tr>
 								  <th align="center"><center>Carrera</center></th>
 								  <th align="center"><center>Materias</center></th>
 							  </tr>
-							
-							     {% for materias in lista_materias_acta %}
+							      {% for materias in lista_materias_acta %}
 							  <tr>
-
 			  					  <td>{{ materias.carrera }}</td>								 	<td><a href="{% url 'bedel:alumnos_generar_acta' materias.id %}">
               				    	{{materias.nombre}}</a></td><br>
                 			  </tr>

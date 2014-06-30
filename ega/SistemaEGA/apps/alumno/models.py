@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from PIL import Image
 from django.core.mail import EmailMessage
+from django.core.validators import RegexValidator
 
 class UserManager(BaseUserManager):
 	def _create_user(self, username, email, password, is_staff,
@@ -30,7 +31,12 @@ class User(AbstractBaseUser,PermissionsMixin):
 	email = models.EmailField(max_length=50, unique=True)
 	cod_alumno = models.IntegerField(blank=True, null=True)
 	#carrera = models.CharField(max_length=50)	
-	dni = models.CharField(max_length=10, blank=True, null=True)
+	dni = models.CharField(max_length=10, blank=True, null=True, validators=[
+				RegexValidator(
+					 regex = '^[0-9]*$',
+					 message ='Solamente puede Ingresar Numeros'
+					)
+		])
 	lugar_nacimiento = models.CharField(max_length=500)
 	fecha_nacimiento = models.DateField(blank=True, null=True)
 	ciudad_actual = models.CharField(max_length=500)

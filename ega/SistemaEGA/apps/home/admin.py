@@ -7,6 +7,7 @@ class MateriaAdmin(admin.ModelAdmin):
 	search_fields = ('nombre','cod_materia',)
 
 class CarreraAdmin(admin.ModelAdmin):
+	filter_horizontal = ('alumno',)
 	list_display = ('nombre', 'duracion')
 	search_fields = ('nombre',)
 
