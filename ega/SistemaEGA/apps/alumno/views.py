@@ -199,7 +199,7 @@ class ImprimirMaterias(PDFTemplateView):
 
 #imprime las materias a rendir FInal
 class ImprimirFinales(PDFTemplateView):
-       filename = 'acta.pdf'
+       filename = 'permiso.pdf'
        template_name = 'pfd/pdf-finales.html'
        cmd_options = {
            'margin-top': 3,
@@ -209,6 +209,20 @@ class ImprimirFinales(PDFTemplateView):
 		   context = super(ImprimirFinales, self).get_context_data(**kwargs)
 		   context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
 		   return context
+
+# #Imprimir Acta de examen final
+class ImprimirActa(PDFTemplateView):
+
+ 	filename='acta.pdf'
+ 	template_name = 'pfd/pdf-acta.html'
+ 	cmd_options = {
+ 		'encoding': 'utf8', 'quiet': True
+ 	}
+
+ 	def get_context_data(self, **kwargs):
+           context = super(ImprimirActa, self).get_context_data(**kwargs)
+           context['total_alumnos_acta']=InscripcionFinal.objects.filter(materia=kwargs['pk'])
+           return context
 
 #Me muestra todas las materias en las que el alumno se inscribio para cursar
 class ListaMateriasView(TemplateView):

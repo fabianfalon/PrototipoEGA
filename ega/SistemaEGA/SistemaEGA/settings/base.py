@@ -24,6 +24,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
 	   #'south',
 	   'djrill',
+	   'wkhtmltopdf',
 	   #'sorl.thumbnail',
 
 	)
@@ -66,6 +67,11 @@ MEDIA_URL = 'http://localhost:8000/media/'
 TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 
 AUTH_USER_MODEL = 'alumno.User'
+
+WKHTMLTOPDF_CMD_OPTIONS = {
+   'encoding':'utf8',
+   'quiet':True,
+}
 
 #EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 

@@ -14,11 +14,14 @@
 							  <tr>
 								  <th align="center"><center>Carrera</center></th>
 								  <th align="center"><center>Materias</center></th>
+								  <th align="center"><center>Descargar</center></th>
 							  </tr>
 							      {% for materias in lista_materias_acta %}
 							  <tr>
 			  					  <td>{{ materias.carrera }}</td>								 	<td><a href="{% url 'bedel:alumnos_generar_acta' materias.id %}">
               				    	{{materias.nombre}}</a></td><br>
+              				     <td><div class="imprimir">
+				  	    			<a href="{% url 'imprimir-acta' materias.id %}"> <img class="pdf-tabla" src="/static/ima/pdf.png" title="Descargar" ></a></td>
                 			  </tr>
                      		    {% endfor %}
 						</table>

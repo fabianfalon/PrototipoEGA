@@ -266,12 +266,13 @@ class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 
 	template_name = 'bedel/lista_alumnos_acta.html'
-	model = InscripcionFinal	
+	model = InscripcionFinal
+	context_object_name = "acta"	
 
 	def get_context_data(self, **kwargs):
 		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
 		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia= kwargs['pk'])
-		print context['total_alumnos_acta']
+		#print context['total_alumnos_acta']
 		return context
 
 

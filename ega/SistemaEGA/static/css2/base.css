@@ -215,6 +215,11 @@ aside img{
   float: right;
 
 }
+.pdf-tabla{
+  height: 25px;
+  width: 25px;
+  float: right;
+}
 
 .rotarX{
    transform:rotateX(0deg);
