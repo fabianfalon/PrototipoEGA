@@ -14,7 +14,7 @@ class FinalCreateView(LoginRequiredMixin, CreateView):
 
         context = super(FinalCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
-        context['total_materias_finales'] = Materia.objects.filter(carrera = carrera)
+        context['total_materias_finales'] = Materia.objects.filter(carrera = carrera).order_by('anio')
         return context
 
 #Muestra el detalle de la materia para inscribirse al examen final
@@ -33,7 +33,7 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         context['mesa'] = MesaFinal.objects.filter(materia = context['object'])
         return context
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs): 
 
         inscripcionfinal = InscripcionFinal()
         inscripcionfinal.alumno = request.user
@@ -57,7 +57,7 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
 
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
-        context['total_materias'] = Materia.objects.filter(carrera = carrera, inscripto = False)
+        context['total_materias'] = Materia.objects.filter(carrera = carrera, inscripto = False).order_by('anio')
         return context
         #materias = Materia.objects.filter(carrera = carrera)
         #context['total_materias'] = materias

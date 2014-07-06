@@ -22,6 +22,7 @@
               				    	{{materias.nombre}}</a></td><br>
               				     <td><div class="imprimir">
 				  	    			<a href="{% url 'imprimir-acta' materias.id %}"> <img class="pdf-tabla" src="/static/ima/pdf.png" title="Descargar" ></a></td>
+				  	    		   </div>
                 			  </tr>
                      		    {% endfor %}
 						</table>

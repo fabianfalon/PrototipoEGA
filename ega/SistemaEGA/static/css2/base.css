@@ -83,6 +83,7 @@ aside img{
 
 }
 
+
 .eliminar{
   padding-top: -5em;
   height: 10px;
@@ -218,6 +219,7 @@ aside img{
 .pdf-tabla{
   height: 25px;
   width: 25px;
+  margin-right: 5em;
   float: right;
 }
 

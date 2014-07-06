@@ -264,69 +264,23 @@ table th[class*="col-"] {
 			</div>
 				<hr style="background-color:black;height:3px;width:850px; margin-top:6em;border-radius: 5em;">
 		</div>
-          <div class="jumbotron">
-          <div class="container">
-            <p><center><h1>PERMISO DE EXAMEN</h1></center></p>
-            </div>
-          </div>
-
-          <div class="nota">
-            <p><center>Conste por la presente que el alumno <strong>{{user.nombre_apellido}}</strong></center></p>
-              <p><center>Esta habilitado para rendir las Asignaturas que indica a continuacion.</center> 
-              </p> 
-          </div>
-
 	         <aside>
 
 	         	<legend style="margin-top:4em;align=center; ">
-	         		<center> </center>
+	         		<center><h1 style="margin-left:12em;  margin-right:7em;">Cerificado de Alumno Regular</h1></center>
 	         	</legend>
-					<div class="table">
-                 
-						<table class="table table-bordered table-striped table-hover">
-							<tr>
-								<th>N de Orden</th>
-								<th>Asignatura</th> 
-                <th>Curso</th>               
-                <th>Fecha</th>
-								<th>Calificacion</th>
-                <th>Firma presidente de mesa</th>
-								
-							</tr>
-					  {% for materias in lista_materias  %}
-							
-							<tr>
-                
-                <th>{{materias.id}}</th>
-								<td>{{ materias.materia}}</td>
-                <td></td>
-								<td>{{ materias.mesa}}</td>
-                <td></td>
-                <td></td>
-							</tr>
-							
-						
-						{% endfor %}
 
-							
-						</table>
-			
+            <p>Certificamos por este medio que el alumno <strong>{{user.nombre_apellido}}</strong>, se encuentra en condicion de regular en la Carrera <strong>{{carrera}}</strong>, pudiendo presentar este certificado ante cualquier autoridad que lo requiera. 
+           </p>
+                  <br>
+       <p> <center>_________________________</center> </p>
+       <p>     <center>Firma del Bedel</center> </p>
+
+			 
 					
 				
 			</aside>
-       <br>
-       <br>
-
-      <p>_______________________</p>
-          <p>Firma del Bedel</p>
 		 </section>
-     <p><h1>NOTAS</h1>
-        1) Para poder rendir examen, el alumno debera presentar a la mesa examinadora este permiso
-        y su documento de Identidad
-     </p>
-     <p>
-      2) Los examenes escritos deben ser tachados con tinta.
-     </p>
 			
 	</section>
 </body>

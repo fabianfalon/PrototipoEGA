@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from .views import IndexView, PerfilView, LoginView, PreinscripcionView, AlumnoUpdateView, ListaMateriasView
+from .views import IndexView, PerfilView, LoginView, PreinscripcionView, AlumnoUpdateView, ListaMateriasView, CertRegularView
 from .views import ErrorDocumentacionView, UserDetailView, ErrorDatosView, HistorialAcademicoView, ListaFinalView
 from apps.home.views import BedelView
 
@@ -18,6 +18,7 @@ urlpatterns = patterns('',
   	url(r'^historial-academico/$', HistorialAcademicoView.as_view(), name='historial'),
     url(r'^consulta-materias/$', ListaMateriasView.as_view(), name='materias-cursar'),
     url(r'^consulta-finales/$', ListaFinalView.as_view(), name='materias-final'),
+    url(r'^certificado-alumno-regular/$', CertRegularView.as_view(), name='certificado-regular'),
  
   	url(r'^contacto/$', 'apps.alumno.views.contacto_view', name='contacto'),
 

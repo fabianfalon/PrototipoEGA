@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 
 from django.contrib import admin
-from apps.alumno.views import ImprimirHistorial, ImprimirMaterias, ImprimirFinales, ImprimirActa
+from apps.alumno.views import ImprimirHistorial, ImprimirMaterias, ImprimirFinales, ImprimirActa, ImprimirCertificado
 #importamos lo que necesitamos para imprimir
 from wkhtmltopdf.views import PDFTemplateView
 from django.conf import settings
@@ -30,6 +30,7 @@ urlpatterns = patterns('',
    url(r'^imprimir-historial/$',ImprimirHistorial.as_view(),name= 'imprimir-historial'),
    url(r'^imprimir-materias/$',ImprimirMaterias.as_view(),name= 'imprimir-materias'),
    url(r'^imprimir-finales/$',ImprimirFinales.as_view(),name= 'imprimir-finales'),
+   url(r'^imprimir-certificado/$',ImprimirCertificado.as_view(),name= 'imprimir-certificado'),
    url(r'^imprimir-acta/(?P<pk>\d+)/$',ImprimirActa.as_view(),name= 'imprimir-acta'),
  )
 

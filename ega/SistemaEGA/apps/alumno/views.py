@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
 from apps.alumno.models import User
-from apps.home.models import HistorialAcademico, InscripcionMateria, InscripcionFinal
+from apps.home.models import HistorialAcademico, InscripcionMateria, InscripcionFinal, Carrera
 from .forms import UserForm, LoginForm, ContactForm, EditForm
 
 
@@ -247,3 +247,23 @@ class ListaFinalView(TemplateView):
         context = super(ListaFinalView, self).get_context_data(**kwargs)
         context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
         return context
+
+#Vista para solicitar Certificado de Alumno regular
+class CertRegularView(TemplateView):
+
+	model = User
+	template_name = 'alumno/certificado.html'
+
+#Imprimir Certificado de Alumno Regular
+class ImprimirCertificado(PDFTemplateView):
+
+       filename = 'certificado-regular.pdf'
+       template_name = 'pfd/pdfcertificado-regular.html'
+       cmd_options = {
+           'margin-top': 3,
+       }
+       
+       def get_context_data(self, **kwargs):
+		   context = super(ImprimirCertificado, self).get_context_data(**kwargs)
+		   context['carrera'] = Carrera.objects.get(alumno = self.request.user)
+		   return context

@@ -21,7 +21,6 @@ class Materia(models.Model):
 	anio = models.IntegerField()
 	inscripto = models.BooleanField(default=False)
 
-
 	def __unicode__(self):
 		return self.nombre
 
@@ -38,13 +37,11 @@ class MesaFinal(models.Model):
 
 	fecha = models.DateField()
 	materia = models.ForeignKey(Materia)
-	#profesor = models.ForeignKey(Profesor)
 	turno = models.CharField(max_length=100)
 	cod_mesa = models.IntegerField()
 
 	def __unicode__(self):
 		return self.turno
-
 
 
 from apps.alumno.models import User
