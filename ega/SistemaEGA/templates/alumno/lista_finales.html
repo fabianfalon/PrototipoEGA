@@ -18,6 +18,7 @@
 								<th>Materia</th>
 								<th>Nota</th>
 								<th>Fecha de Final</th>
+								<th>Hora</th>
 								<th>Eliminar Inscripcion</th>
 							</tr>
 					           {% for materias in lista_materias  %}	
@@ -26,7 +27,8 @@
 								<td>{{ materias.cod_inscripcion}}</td>
 								<td>{{ materias.materia }}</td>
 								<td>{{ materias.nota }}</td>
-								<td>{{ materias.mesa }}</td>
+								<td>{{ materias.mesa.fecha }}</td>
+								<td>{{materias.mesa.hora}}</td>
 								<td><a href="{% url 'home:final_confirm_delete' materias.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></td></a>
 							</tr>
 							

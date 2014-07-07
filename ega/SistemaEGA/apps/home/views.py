@@ -38,7 +38,7 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         inscripcionfinal = InscripcionFinal()
         inscripcionfinal.alumno = request.user
         inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])
-        inscripcionfinal.mesa = request.POST['fecha']
+        inscripcionfinal.mesa = MesaFinal.objects.get(fecha=request.POST['fecha'])
         cpu = random.choice(range(100000))
         materia = inscripcionfinal.materia
         numero = cpu , inscripcionfinal.materia
@@ -57,7 +57,7 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
 
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
-        context['total_materias'] = Materia.objects.filter(carrera = carrera, inscripto = False).order_by('anio')
+        context['total_materias'] = Materia.objects.filter(carrera = carrera).order_by('anio')
         return context
         #materias = Materia.objects.filter(carrera = carrera)
         #context['total_materias'] = materias
@@ -67,15 +67,15 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
 
     model = Materia
     form_class = MateriaForm
-    context_object_name = 'materia'
+    context_object_name = 'materia' 
 
     def post(self, request, *args, **kwargs):
-
-        inscripcion = InscripcionMateria()
-        inscripcion.alumno = request.user
-        inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
-        inscripcion.regular = True
-        inscripcion.save()
+        if Materia.correlativa:
+            inscripcion = InscripcionMateria()
+            inscripcion.alumno = request.user
+            inscripcion.materia = Materia.objects.get(pk = kwargs['pk'])
+            inscripcion.regular = True
+            inscripcion.save()
 
         return redirect('/inscripcion-materias')
 

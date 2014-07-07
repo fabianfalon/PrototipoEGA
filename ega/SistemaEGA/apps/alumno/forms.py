@@ -121,7 +121,14 @@ class ContactForm(forms.Form):
 	
 
 
-class EditForm(forms.Form):
+class EditForm(ModelForm):
+
+	class Meta:
+
+		model = User
+		fields = ('username','email', 'nombre_apellido', 
+				   'dni', 'lugar_nacimiento', 'fecha_nacimiento','ciudad_actual',
+				   'domicilio_actual' ,'imagen', 'password')
 
 	username = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',

@@ -17,6 +17,7 @@
 									<th>Materia</th>
 									<th>Duracion</th>
 									<th>Mesa</th>
+									<th>Hora</th>
 								</tr>
 								<tr>
 									<td> {{ object.carrera }}</td>
@@ -26,8 +27,13 @@
 										<select name="fecha">
 											{% for m in mesa %}
 											<option value"{{m.fecha|date:"Y-M-d"|lower}}">{{m.fecha|date:"Y-m-d"|lower}}</option>
+											<td>{{m.hora}}</td>
 										{% endfor %} 
-									   </select></td>
+
+									   </select>
+									</td>
+
+
 								</tr>					
 							</table>
 

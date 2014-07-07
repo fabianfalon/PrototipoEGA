@@ -5,15 +5,19 @@
 	<section id="contenedor">
 		<section id="principal" text-align="center" >
 	         <aside>
-			<p><h2>Entorno de Gestion Academica</h2></p>
-			<h3 style="color:white;">Usted podra imprimir certificado de alumno regular, pero 
-				debera asistir al establecimiento para su validacion antes de presentarlo a 
-				las autoridades que lo requieran.
-			</h3>
-			<hr>
-			<div class="imprimir">
+	         	<a href="{% url 'alumnos:index' %}" title="Volver">
+	         	<img src="/static/ima/volver.png" class="img-responsive boton-volver">
+	         	</a>
+				<p><h2>Entorno de Gestion Academica</h2></p>
+					<h3 style="color:white;">Usted podra imprimir certificado de alumno regular, pero 
+						debera asistir al establecimiento para su validacion antes de presentarlo a 
+						las autoridades que lo requieran.
+					</h3>
+					<hr>
+					<div class="imprimir">
 			 	    <a href="{% url 'imprimir-certificado' %}"> <img class="pdf" src="/static/ima/pdf.png" title="Descargar Certificado" ></a>
-		   </div>
+				   </div>
+
 			</aside>
 		 </section>
 			

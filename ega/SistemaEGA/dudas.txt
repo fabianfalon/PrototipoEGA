@@ -1,8 +1,8 @@
-
-Requerimientos.
+Dudas
 
 Para inscribirse a cursar en una materia debe verficiar:
-	1) Si esta regular en la materia correlativa o correlativas anterior 
+	1) Si esta regular en la materia correlativa o correlativas anterior (EN que modelo me fijo esto?
+	tengo que hacer otro modelo?)
 			Ej: Para cursar programacion II debe tener regular programacion I
 	2) No debe permitir inscribirse a cursar en Programacion III si no rindio el final de programacion I
 
@@ -12,6 +12,45 @@ Para inscribirse a rendir un examen final debe verificar casi lo mismo pero:
 	2) Debe verificar si tiene aprobando los finales de las correlativas anteriores
 			Ej: Para rendir el final de Programacion II debe haber rendido y aprobado
 			el final de Programacion I.
+
+
+
+
+
+
+Debemos hacer un atributo correlativa y que se relacione con el mismo modelo
+
+class Materia(models.Model):
+
+	cod_materia = models.IntegerField()
+	nombre = models.CharField(max_length=500)
+	carrera = models.ForeignKey(Carrera)
+	duracion = models.CharField(max_length=25)
+	anio = models.IntegerField()
+	correlativa = models.ManyToManyField('Materia', blank=True, null=True) 
+	es lo mismo ponerlo 
+	correlativa = models.ManyToManyField('Self', blank=True, null=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -28,5 +67,3 @@ class AlumnosListaActaView(LoginRequiredMixin, DetailView):
 		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia = context['object'])
 		print context['total_alumnos_acta']
 		return context
-
-

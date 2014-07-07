@@ -54,7 +54,7 @@ WSGI_APPLICATION = 'SistemaEGA.wsgi.application'
 LANGUAGE_CODE = 'es-AR'
 
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Buenos_Aires'
 
 USE_I18N = True
 
@@ -62,7 +62,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_URL = 'http://localhost:8000/media/'
+MEDIA_URL = 'http://192.168.0.105::8000/media/'
 
 TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 

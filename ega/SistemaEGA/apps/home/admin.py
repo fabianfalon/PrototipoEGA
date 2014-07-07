@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Carrera, Materia, Profesor, InscripcionFinal, MesaFinal, InscripcionMateria, HistorialAcademico
 
 class MateriaAdmin(admin.ModelAdmin):
+
 	list_display = ('nombre', 'carrera', 'duracion', 'cod_materia')
 	ordering = ('cod_materia',)
 	search_fields = ('nombre','cod_materia',)

@@ -13,7 +13,9 @@ from braces.views import LoginRequiredMixin
 from apps.alumno.models import User
 from apps.home.models import HistorialAcademico, InscripcionMateria, InscripcionFinal, Carrera
 from .forms import UserForm, LoginForm, ContactForm, EditForm
+from django.utils.timezone import utc
 
+import datetime
 
 #Vista de Login 
 def index(request):
@@ -60,6 +62,7 @@ class PreinscripcionView(FormView):
 	template_name = 'alumno/preinscripcion.html'
 	form_class = UserForm
 	success_url = '/'
+
 	
 	def form_valid(self, form):
 
@@ -74,11 +77,17 @@ class PreinscripcionView(FormView):
 
 #Index Alumno
 class IndexView(LoginRequiredMixin, TemplateView):
-
+	
 	template_name = 'alumno/index.html'
 	login_url = '/'
 	model = User
 	context_object_name = 'usuario'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(IndexView, self).get_context_data(**kwargs)
+		context['fecha'] = datetime.datetime.now().utcnow().replace(tzinfo=utc)
+		return context
 
 
 class PerfilView(LoginRequiredMixin, TemplateView):
@@ -92,6 +101,14 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 	model = User
 	context_object_name = 'usuario'
 	slug_field = 'username'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(UserDetailView, self).get_context_data(**kwargs)
+		context['carrera'] = Carrera.objects.get(alumno = self.request.user)
+		return context
+
+
 
 
 #Vista para mandar Correo al Administrador
@@ -150,7 +167,7 @@ class HistorialAcademicoView(TemplateView):
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 
 	model = User 
-	form_class = UserForm
+	form_class = EditForm
 	slug_field = 'username'
 	fields = ['nombre_apellido','username', 'email', 'dni', 'lugar_nacimiento','fecha_nacimiento', 'ciudad_actual', 'domicilio_actual', 'imagen', 'password']
 	template_name_suffix = '__update_form'

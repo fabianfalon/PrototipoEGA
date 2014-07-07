@@ -143,7 +143,7 @@ class AlumnosListaView(LoginRequiredMixin, TemplateView):
 	def get_context_data(self, **kwargs):
 
 		context = super(AlumnosListaView, self).get_context_data(**kwargs)
-		context['lista_alumnos'] = User.objects.filter(tipo_usuario = False)
+		context['lista_alumnos'] = User.objects.filter(tipo_usuario = False).order_by('nombre_apellido')
 		return context
 
 #Actualizar datos de alumno

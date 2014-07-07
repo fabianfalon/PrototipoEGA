@@ -36,7 +36,7 @@ class MateriaForm(ModelForm):
 	class Meta:
 
 		model = Materia
-		fields = ('cod_materia','nombre', 'carrera', 'duracion')
+		fields = ('cod_materia','nombre', 'carrera', 'duracion', 'anio')
 
 
 	cod_materia = forms.CharField(widget = forms.TextInput(attrs={

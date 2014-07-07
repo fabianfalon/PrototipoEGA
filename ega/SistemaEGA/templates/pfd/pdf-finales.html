@@ -1,4 +1,5 @@
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
 	<head>
 	<title>{% block title %}Imprimir Historial{% endblock %}</title>
@@ -289,6 +290,7 @@ table th[class*="col-"] {
 								<th>Asignatura</th> 
                 <th>Curso</th>               
                 <th>Fecha</th>
+                <th>Hora</th>
 								<th>Calificacion</th>
                 <th>Firma presidente de mesa</th>
 								
@@ -300,7 +302,8 @@ table th[class*="col-"] {
                 <th>{{materias.id}}</th>
 								<td>{{ materias.materia}}</td>
                 <td></td>
-								<td>{{ materias.mesa}}</td>
+								<td>{{ materias.mesa.fecha }}</td>
+                <td>{{materias.mesa.hora}}</td>
                 <td></td>
                 <td></td>
 							</tr>

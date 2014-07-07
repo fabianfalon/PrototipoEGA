@@ -19,7 +19,7 @@ class Materia(models.Model):
 	carrera = models.ForeignKey(Carrera)
 	duracion = models.CharField(max_length=25)
 	anio = models.IntegerField()
-	inscripto = models.BooleanField(default=False)
+	correlativa = models.ManyToManyField('Materia', blank=True, null=True)
 
 	def __unicode__(self):
 		return self.nombre
@@ -36,6 +36,7 @@ class Profesor(models.Model):
 class MesaFinal(models.Model):
 
 	fecha = models.DateField()
+	hora = models.TimeField(blank=True, null=True) 
 	materia = models.ForeignKey(Materia)
 	turno = models.CharField(max_length=100)
 	cod_mesa = models.IntegerField()
@@ -59,7 +60,7 @@ class InscripcionFinal(models.Model):
 	cod_inscripcion = models.CharField(max_length=60,  unique=True)
 	alumno = models.ForeignKey(User)
 	materia = models.ForeignKey(Materia)
-	mesa = models.DateField()
+	mesa = models.ForeignKey(MesaFinal)
 
 class HistorialAcademico(models.Model):
 

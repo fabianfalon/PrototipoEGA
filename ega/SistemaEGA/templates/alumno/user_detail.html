@@ -17,13 +17,15 @@
 						</div>
 						
 						<div class="datos">
-						
-							<label>Carrera: </label>{{usuario.carrera}}<br>
-							<label>Nombre Y Apellido: </label> {{usuario.nombre_apellido}}<br>
-							<label>Nombre de Usuario: </label> {{usuario.username}}<br>
-							<label>Email: </label>{{usuario.email}}<br>
-							<label>DNI: </label>{{usuario.dni}}<br>
-							<label>Usted Se logueo el dia:  </label>{{usuario.fecha}}<br>
+						 
+							<label>Carrera:&nbsp; </label>{{carrera}}<br>
+							<label>Nombre Y Apellido:&nbsp; </label> {{usuario.nombre_apellido}}<br>
+							<label>Nombre de Usuario:&nbsp; </label> {{usuario.username}}<br>
+							<label>Matricula:&nbsp; </label> {{usuario.cod_alumno}}<br>
+							<label>Fecha de Nacimiento:&nbsp; </label> {{usuario.fecha_nacimiento}}<br>
+							<label>Email:&nbsp; </label>{{usuario.email}}<br>
+							<label>DNI:&nbsp; </label>{{usuario.dni}}<br>
+							<label>Usted Se logueo el dia:&nbsp; </label>{{usuario.fecha}}<br>
 
 						<a href="{% url 'alumnos:user_update' user.username %}"><input type="button" value="Modificar Datos" class="btn btn-primary btn-lg" ></a>	
 				

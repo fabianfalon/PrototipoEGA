@@ -29,7 +29,7 @@ class User(AbstractBaseUser,PermissionsMixin):
 	nombre_apellido = models.CharField(max_length=800)
 	username = models.CharField(max_length=50, unique=True)
 	email = models.EmailField(max_length=50, unique=True)
-	cod_alumno = models.IntegerField(blank=True, null=True)
+	cod_alumno = models.CharField(max_length=60, blank=True, null=True)
 	#carrera = models.CharField(max_length=50)	
 	dni = models.CharField(max_length=10, blank=True, null=True, validators=[
 				RegexValidator(
