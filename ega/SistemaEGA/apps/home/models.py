@@ -1,6 +1,7 @@
 from django.db import models
 from apps.alumno.models import User
 
+
 class Carrera(models.Model):
 
 	cod_carrera = models.IntegerField()
@@ -8,7 +9,9 @@ class Carrera(models.Model):
 	resolucion = models.CharField(max_length=500, blank=True, null=True)
 	duracion = models.IntegerField()
 	alumno = models.ManyToManyField(User)
+
 	def __unicode__(self):
+		
 		return self.nombre
 
 

@@ -17,6 +17,66 @@ Para inscribirse a rendir un examen final debe verificar casi lo mismo pero:
 
 
 
+solo debes tener la logica
+porq la forma de hacer
+se busca se googla y se hace
+pero la logica
+tiene q estar bien hecha
+asi que ponme atencion
+cuando un alumno
+se inscribe a una materia
+tu obtienes el objeto de la materia a donde se va a inscribir
+hasta ahi estamos bien no ?
+ahora con esa materia
+tienes que ver si el alumno se puede matricular ahi
+para eso consultas a correlativas
+y la consultas
+por el obeto materia que ya tienes obtenido
+listo
+entonces
+ya tienes el objeto
+materia
+en donde el alumno quiere inscribirse
+con eso verificas si el atributo de correlativos
+que e suna lista
+obtienes esa lista de correlativos
+y la recorres con un for
+y por cada materia
+tienes que ir preguntando si ya paso el examen
+o lo que necesite pasar
+pero la idea
+esq
+recorrar
+la lsita de correlativas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Debemos hacer un atributo correlativa y que se relacione con el mismo modelo
 
@@ -30,30 +90,6 @@ class Materia(models.Model):
 	correlativa = models.ManyToManyField('Materia', blank=True, null=True) 
 	es lo mismo ponerlo 
 	correlativa = models.ManyToManyField('Self', blank=True, null=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #Mostrar Alumnos inscriptos en la materia que se hizo click
 class AlumnosListaActaView(LoginRequiredMixin, DetailView):

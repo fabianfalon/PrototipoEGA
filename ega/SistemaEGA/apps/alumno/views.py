@@ -24,7 +24,7 @@ def index(request):
 		username = request.POST['username']
 		password = request.POST['password']
 		user = authenticate(username=username, password=password)
-		if user is not None: #si los datos son correctos
+		if user is not None: #si los datos son correctos y no estan vacios
 			if user.is_active and user.documentacion_completa == True and user.tipo_usuario == True: #preguntamos si el usuario esta activo y si presento la documentacion
 				login(request,user) #se loguea como bedel
 				return redirect('/index-bedel') #lo redirecciona al index
@@ -108,9 +108,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 		context['carrera'] = Carrera.objects.get(alumno = self.request.user)
 		return context
 
-
-
-
 #Vista para mandar Correo al Administrador
 @login_required(login_url='/')
 def contacto_view(request):
@@ -157,11 +154,8 @@ class HistorialAcademicoView(TemplateView):
 
 		context = super(HistorialAcademicoView, self).get_context_data(**kwargs)
 		context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
-		#print context
+		#Filtramos en HistorialAcademico por alumno mientras sea igual a alumno logueado
 		return context
-        #historial_materias = HistorialAcademico.objects.filter(alumno = request.user)
-        #context['historial_materias'] = historial_materias
-    	
 
 #Vista para que el alumno pueda modificar sus datos
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):

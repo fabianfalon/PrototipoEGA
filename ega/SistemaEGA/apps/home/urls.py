@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
-from .views import  FinalCreateView, FinalDetailView, MateriaCreateView, MateriaDetailView, BedelView, FinalDeleteView
+from .views import  FinalCreateView, FinalDetailView, FinalDeleteView
+from .views import MateriaCreateView, MateriaDetailView, BedelView, ErrorInscripcionView
 
 urlpatterns = patterns('',
     #Operaciones con finales (Alumno)
@@ -14,5 +15,8 @@ urlpatterns = patterns('',
     
     #Operaciones del Bedel (Alumno)
     url(r'^eliminar-finales/(?P<pk>\d+)/$', FinalDeleteView.as_view(), name='final_confirm_delete'),
+
+    #error 
+    url(r'^error-inscripcion/$', ErrorInscripcionView.as_view(), name='error-inscripcion'),
   
 )

@@ -261,7 +261,6 @@ class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 		context['lista_materias_acta'] = Materia.objects.all()
 		return context
 
-
 #Mostrar Alumnos inscriptos en la materia que se hizo click
 class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 
@@ -272,7 +271,8 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
 		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia= kwargs['pk'])
-		#print context['total_alumnos_acta']
+		#Filtramos en InscripcionFinal por materia, y traemos todos los alumnos inscriptos en la materia
+		#cuyo pk es pasada como parametro
 		return context
 
 

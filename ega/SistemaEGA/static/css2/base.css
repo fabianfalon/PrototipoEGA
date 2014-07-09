@@ -217,10 +217,9 @@ aside img{
 
 }
 .pdf-tabla{
-  height: 25px;
-  width: 25px;
-  margin-right: 5em;
-  float: right;
+  height: 27px;
+  width: 27px;
+  float: center;
 }
 
 .rotarX{
