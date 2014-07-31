@@ -8,7 +8,11 @@ body{
 	background-color: #34A6C8;	
 }
 
+header{
+  height: 250px;
+  margin-bottom: -6em;
 
+}
 section#contenedor{
    margin: 0.5em auto;
    max-width: 1400px;
@@ -72,10 +76,7 @@ aside img{
 .datos{
   float: right;
   padding-top: 2em;
- 
-
-
-}
+ }
 
 .datos1{
  
@@ -129,6 +130,18 @@ aside img{
   width:50px;
 }
 
+#alumno{
+  border-radius: 0.2em;
+  box-shadow: 5px 5px 0px black;
+  width: 300px;
+}
+
+#materia{
+  margin-left: 275px;
+  float: center;
+  width: 300px;
+}
+
 .ima-materia{
   float: left;
   margin-top: -2em;
@@ -160,7 +173,7 @@ aside img{
   padding-left: 2em;
   height: 160px;
   padding-right: 2em;
-  padding-top: -20em;
+  margin-top: -5em;
 }
 
 .ima-error{
@@ -172,10 +185,12 @@ aside img{
 }
 
 .ima-header{
+  margin-top: -3em;
   padding-left: 2em;
   padding-right: 2em;
+  padding-bottom: 3em;
+  
 }
-
 
 .imprimir{
   
@@ -183,7 +198,6 @@ aside img{
   margin-top: 10px;
 
 }
-
 
 .infocontacto{
   width:200px;

@@ -5,6 +5,7 @@ from PIL import Image
 from django.core.mail import EmailMessage
 from django.core.validators import RegexValidator
 
+
 class UserManager(BaseUserManager):
 	def _create_user(self, username, email, password, is_staff,
 			    is_superuser, **extra_fields):
@@ -55,4 +56,3 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 	def get_short_name(self):
 		return self.username
-

@@ -4,6 +4,7 @@ from apps.bedel.views import MateriasView, MateriasListaView, MateriaDeleteView,
 from apps.bedel.views import AlumnosListaView, AlumnoUpdateView, HistorialAcademicoView
 from apps.bedel.views import ListaMateriasActaView, AlumnosListaActaDetailView
 from apps.bedel.views import MesaFinalListaView, MesaFinalDeleteView, MesaFinalUpdateView, MesaFinalAddView
+from apps.bedel.views import InscripcionMateriaAddView, InscripcionMateriaListaView, InscripcionMateriaUpdateView
 
 urlpatterns = patterns('',
 
@@ -38,6 +39,12 @@ urlpatterns = patterns('',
    url(r'^index-bedel/lista-mesa-finales/eliminar/(?P<pk>\d+)/$', MesaFinalDeleteView.as_view(), name='mesa_confirm_delete'),
    url(r'^index-bedel/lista-mesa-finales/editar/(?P<pk>\d+)/$', MesaFinalUpdateView.as_view(), name='editar_mesa'),
 
+   #Inscripcion Materia
+    url(r'^index-bedel/agregar-inscripcion-materia/$', InscripcionMateriaAddView.as_view(), name='agregar_inscripcion_materia'),
+    url(r'^index-bedel/lista-inscripcion-materias/$', InscripcionMateriaListaView.as_view(), name='lista_inscripcion_materia'),
+    url(r'^index-bedel/lista-inscripcion-materias/editar/(?P<pk>\d+)/$', InscripcionMateriaUpdateView.as_view(), name='editar_inscripcion_materia'),
 
+   #Probando Ajax
+   url(r'^ajax/url/$', 'apps.bedel.views.search', name='search'),
    
 )

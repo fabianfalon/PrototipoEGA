@@ -15,14 +15,14 @@
       				 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
 								<th align="center"><center>Carreras</center></th>
-								<th align="center"><center>Eliminar</center></th>
+								<!-- <th align="center"><center>Eliminar</center></th> -->
 								<th align="center"><center>Modificar</center></th>
 							</tr>
 							
 								{% for carrera in lista_carrera %}
 							<tr>
                   				<td><a href="">{{carrera.nombre}}<br></a></td><br>
-								<td><a href="{% url 'bedel:carrera_confirm_delete' carrera.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td>
+								<!-- <td><a href="{% url 'bedel:carrera_confirm_delete' carrera.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td> -->
 								<td><a href="{% url 'bedel:editar_carrera' carrera.id %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
                  			</tr>
                      			{% endfor %}

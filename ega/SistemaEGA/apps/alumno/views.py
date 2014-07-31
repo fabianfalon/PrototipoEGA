@@ -14,8 +14,8 @@ from apps.alumno.models import User
 from apps.home.models import HistorialAcademico, InscripcionMateria, InscripcionFinal, Carrera
 from .forms import UserForm, LoginForm, ContactForm, EditForm
 from django.utils.timezone import utc
-
 import datetime
+
 
 #Vista de Login 
 def index(request):
@@ -45,11 +45,13 @@ def index(request):
 		ctx = {'form':form}
 		return render(request, 'alumno/login.html', ctx )
 
+
 #Vista para Logout
 @login_required(login_url='/')
 def cerrar(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
 
 class LoginView(TemplateView):
 	
@@ -62,7 +64,6 @@ class PreinscripcionView(FormView):
 	template_name = 'alumno/preinscripcion.html'
 	form_class = UserForm
 	success_url = '/'
-
 	
 	def form_valid(self, form):
 
@@ -74,6 +75,7 @@ class PreinscripcionView(FormView):
 	def form_invalid(self, form):
 		
 		return super(PreinscripcionView, self).form_invalid(form)
+
 
 #Index Alumno
 class IndexView(LoginRequiredMixin, TemplateView):
@@ -95,6 +97,7 @@ class PerfilView(LoginRequiredMixin, TemplateView):
 	template_name = 'alumno/perfil.html'
 	login_url = '/'
 
+
 #Vista para el Perfil de Usuario
 class UserDetailView(LoginRequiredMixin, DetailView):
 
@@ -107,6 +110,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 		context = super(UserDetailView, self).get_context_data(**kwargs)
 		context['carrera'] = Carrera.objects.get(alumno = self.request.user)
 		return context
+
 
 #Vista para mandar Correo al Administrador
 @login_required(login_url='/')
@@ -134,15 +138,18 @@ def contacto_view(request):
 		ctx = {'form':formulario, 'email':email, 'titulo':titulo, 'texto':texto}
 		return render_to_response('alumno/contacto.html',ctx,context_instance=RequestContext(request))
 
+
 #Vista que muestra un error en el login si no presento la documentacion
 class ErrorDocumentacionView(TemplateView):
 	
 	template_name = 'errores/documentacion_incompleta.html'
 
+
 #Vista datos incorrectos en el form de login
 class ErrorDatosView(TemplateView):
 
 	template_name = 'errores/error_datos.html'
+
 
 #Visualizar el Historial Academico
 class HistorialAcademicoView(TemplateView):
@@ -156,6 +163,7 @@ class HistorialAcademicoView(TemplateView):
 		context['historial_materias'] = HistorialAcademico.objects.filter(alumno = self.request.user)
 		#Filtramos en HistorialAcademico por alumno mientras sea igual a alumno logueado
 		return context
+
 
 #Vista para que el alumno pueda modificar sus datos
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
@@ -181,6 +189,7 @@ class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
 		
 		return super(AlumnoUpdateView, self).form_invalid(form)
 
+
 #Imprimir Historial Academico
 class ImprimirHistorial(PDFTemplateView):
        filename = 'historial.pdf'
@@ -195,6 +204,7 @@ class ImprimirHistorial(PDFTemplateView):
 		  # context['historial']=Articulo.objects.get(id=kwargs['pk'])
 		   return context
 
+
 #imprime las materias a cursar
 class ImprimirMaterias(PDFTemplateView):
        filename = 'historial.pdf'
@@ -207,6 +217,7 @@ class ImprimirMaterias(PDFTemplateView):
 		   context = super(ImprimirMaterias, self).get_context_data(**kwargs)
 		   context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
 		   return context
+
 
 #imprime las materias a rendir FInal
 class ImprimirFinales(PDFTemplateView):
@@ -221,7 +232,8 @@ class ImprimirFinales(PDFTemplateView):
 		   context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
 		   return context
 
-# #Imprimir Acta de examen final
+
+ #Imprimir Acta de examen final
 class ImprimirActa(PDFTemplateView):
 
  	filename='acta.pdf'
@@ -235,6 +247,7 @@ class ImprimirActa(PDFTemplateView):
            context['total_alumnos_acta']=InscripcionFinal.objects.filter(materia=kwargs['pk'])
            return context
 
+
 #Me muestra todas las materias en las que el alumno se inscribio para cursar
 class ListaMateriasView(TemplateView):
 
@@ -246,6 +259,7 @@ class ListaMateriasView(TemplateView):
         context = super(ListaMateriasView, self).get_context_data(**kwargs)
         context['lista_materias'] = InscripcionMateria.objects.filter(alumno = self.request.user)
         return context
+
 
 #Me muestra todas las materias en las que el alumno se inscribio para rendir final
 class ListaFinalView(TemplateView):
@@ -259,11 +273,13 @@ class ListaFinalView(TemplateView):
         context['lista_materias'] = InscripcionFinal.objects.filter(alumno = self.request.user)
         return context
 
+
 #Vista para solicitar Certificado de Alumno regular
 class CertRegularView(TemplateView):
 
 	model = User
 	template_name = 'alumno/certificado.html'
+
 
 #Imprimir Certificado de Alumno Regular
 class ImprimirCertificado(PDFTemplateView):

@@ -62,7 +62,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_URL = 'http://192.168.0.105::8000/media/'
+MEDIA_URL = 'http://localhost:8000/media/'
 
 TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 

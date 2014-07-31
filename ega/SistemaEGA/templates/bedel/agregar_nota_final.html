@@ -8,21 +8,25 @@
 
 					<p>
 						<label>Alumno</label>
-						<input type="text" name="alumno">
+						<input type="text" name="alumno" class="form-control" placeholder="Ingrese el nombre del alumno" required>
 					</p>
 					<p>
 						<label>Materia</label>
-						<input type="text" name="materia">
+						<input type="text" name="materia" class="form-control" placeholder="Ingrese el nombre de la materia" required>
 					</p>
 					<p>
 						<label>Nota</label>
-				        	{{ form.nota }}
+				        	<input type="number" name="nota" class="form-control" placeholder="Ingrese la nota del alumno" required>
+					</p>
+					<p><label>Codigo de Acta</label>
+						{{form.cod_acta}}
 					</p>
 					<p>
 					    <label>Fecha</label>
-						{{ form.fecha }}
-						<h4  style="color:red">Introduzca la fecha en formato AAAA-MM-DD</h4>	
+						<input type="date" name="fecha" id="alumno" required>
+						<!-- <h4  style="color:red">Introduzca la fecha en formato AAAA-MM-DD</h4> -->	
 					</p>
+
 							 
 				 <div class="row">								
 						<div class="col-xs-6 col-sm-6 col-md-6">
@@ -42,5 +46,27 @@
      
 
       }
+
+function searchOpen() {
+    var search = $('#txtSearch').val()
+    var data = {
+        search: search
+    };
+    $.ajax({
+        url: '/ajax/url/',
+        data: data,
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        jsonpCallback: 'searchResult'
+    });
+}
+
+
+function searchResult(data) {
+	
+    $( "#txtSearch" ).autocomplete ({
+        source: data
+    });
+}
 </script>
 {% endblock %}

@@ -27,11 +27,10 @@
 										<select name="fecha">
 											{% for m in mesa %}
 											<option value"{{m.fecha|date:"Y-M-d"|lower}}">{{m.fecha|date:"Y-m-d"|lower}}</option>
-											<td>{{m.hora}}</td>
 										{% endfor %} 
-
 									   </select>
 									</td>
+									<td>{{materia.hora}}</td>
 
 
 								</tr>					

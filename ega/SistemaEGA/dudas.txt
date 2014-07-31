@@ -56,7 +56,30 @@ la lsita de correlativas
 
 
 
-
+				<div class="form">			 
+					<p>
+						<label>Fecha</label>
+						<input type="date" name="fecha" id="materia" class="form-control" required>
+					</p>
+					<p>
+						<label>Hora</label>
+						<input type="time" name="materia" id="materia" class="form-control" required>
+					</p>
+					<p>
+						<label>Materia</label>
+						{{ form.materia }}
+					</p>
+					<p>
+					    <label>Turno</label>
+						<input type="text" name="fecha" id="materia" class="form-control" required>
+				
+					</p>
+					<p>
+						<label>Cod_mesa</label>
+						<input type="text" name="materia" id="materia" class="form-control" required>
+					</p>
+					<hr>
+				</div>
 
 
 

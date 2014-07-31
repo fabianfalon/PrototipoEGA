@@ -16,7 +16,9 @@ class FinalCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
 
         context = super(FinalCreateView, self).get_context_data(**kwargs)
+        #Consultamos en que carrera esta inscripto el Alumno logueado
         carrera = Carrera.objects.get(alumno__in = [self.request.user])
+        #Traemos la lista de materias de la carrera en la que esta inscripto el Usuario
         context['total_materias_finales'] = Materia.objects.filter(carrera = carrera).order_by('anio')
         return context
 
@@ -34,16 +36,18 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         mesa = MesaFinal()
         form_class = FinalForm()    
         context = super(FinalDetailView, self).get_context_data(**kwargs)
+        #Filtramos la materia en la que hicimos click para que nos muestre su detalle
         context['mesa'] = MesaFinal.objects.filter(materia = context['object'])
         return context
-
 
     def post(self, request, *args, **kwargs): 
 
         inscripcionfinal = InscripcionFinal()
-        inscripcionfinal.alumno = request.user#Guardamos el usuario que esta haciendo la peticion
-        inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])#Buscamos la materia que sea igual pk pasada por parametro
-        inscripcionfinal.mesa = MesaFinal.objects.get(fecha=request.POST['fecha'])#Filtramos mesa final segun la mesa que se paso por POST
+        inscripcionfinal.alumno = request.user# Guardamos el usuario que esta haciendo la peticion
+        inscripcionfinal.materia = Materia.objects.get(pk = kwargs['pk'])
+        # Buscamos la materia que sea igual pk pasada por parametro
+        inscripcionfinal.mesa = MesaFinal.objects.get(fecha = request.POST['fecha'])
+        # Filtramos mesa final segun la mesa que se paso por POST
         cpu = random.choice(range(100000))#Generamos numero aleatorio
         materia = inscripcionfinal.materia
         numero = cpu , inscripcionfinal.materia
@@ -51,7 +55,8 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
         inscripcioncorrelativa = Materia.objects.filter(materia__pk = kwargs['pk'])
         #Consulta: Me trae una lista de materias correlativas de la materia en la que hice click
         validacion = InscripcionMateria.objects.filter(materia = inscripcioncorrelativa, alumno = inscripcionfinal.alumno)
-        # Con el resultado de la consulta anterior preguntamos en InscripcionMateria si tenemos una inscripcion de ese tipo
+        # Preguntamos en InscripcionMateria si hay registro cuya materia sea igual a la consulta anterior 
+        #y si ese registro pertenece al alumno logueado
         if validacion:
             inscripcionfinal.save()
             return redirect('/inscripcion-finales')
@@ -62,7 +67,7 @@ class FinalDetailView(LoginRequiredMixin, DetailView):
             return render(request, 'errores/error-inscripcion.html', contexto)
 
 
-#Muestra lista de materias para inscribirse a cursar
+# Muestra lista de materias para inscribirse a cursar
 class MateriaCreateView(LoginRequiredMixin, CreateView):
 
     model = InscripcionMateria
@@ -71,13 +76,16 @@ class MateriaCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
 
         context = super(MateriaCreateView, self).get_context_data(**kwargs)
-        carrera = Carrera.objects.get(alumno__in = [self.request.user])#Filtramos en la clase Carrera segun el usuario registrado
-        context['total_materias'] = Materia.objects.filter(carrera = carrera).order_by('anio')#FIltramos las materias de esa carrera
+        carrera = Carrera.objects.get(alumno__in = [self.request.user])
+        # Filtramos en la clase Carrera segun el usuario registrado
+        context['total_materias'] = Materia.objects.filter(carrera = carrera).order_by('anio')
+        # FIltramos las materias de esa carrera
         return context
         #materias = Materia.objects.filter(carrera = carrera)
         #context['total_materias'] = materias
 
-#Muestra el detalle de las materias a inscribirse a cursar
+
+# Muestra el detalle de las materias a inscribirse a cursar
 class MateriaDetailView(LoginRequiredMixin, DetailView):
 
     model = Materia
@@ -92,7 +100,6 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
         inscripcioncorrelativa = Materia.objects.filter(materia__pk = kwargs['pk'])
         inscripcion.regular = True
         validacion = InscripcionMateria.objects.filter(materia = inscripcioncorrelativa, alumno = inscripcion.alumno)
-        #validacionuser = InscripcionMateria.objects.get(alumno = inscripcion.alumno)
         if validacion:
             inscripcion.save()
             return redirect('/inscripcion-materias')
@@ -103,17 +110,19 @@ class MateriaDetailView(LoginRequiredMixin, DetailView):
             return render(request, 'errores/error-inscripcion.html', contexto)
 
 
+# Muestra el template de Error
 class ErrorInscripcionView(LoginRequiredMixin, TemplateView):
 
     template_name = 'errores/error-inscripcion.html'
 
 
+# Muestra el template del menu para el bedel
 class BedelView(LoginRequiredMixin, TemplateView):
 
     template_name = 'bedel/menu_bedel.html'
 
 
-#Eliminar Final
+# Eliminar Final
 class FinalDeleteView(LoginRequiredMixin, DeleteView):
 
     model = InscripcionFinal
@@ -124,5 +133,3 @@ class FinalDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
-
-

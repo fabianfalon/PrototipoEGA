@@ -10,7 +10,7 @@
 	         				<h2>Eliminar Carrera</h2>
 
 	         		<form  method="post">{% csrf_token %}
-    					<p>Esta seguro de eliminar la carrera"{{ object.nombre }}" con 
+    					<p>Estas seguro de eliminar la carrera"{{ object.nombre }}" con 
     						codigo "{{ object.cod_carrera }}"?</p>
     				<input type="submit" value="Confirmar" class="btn btn-labeled btn-success"  />
     				<a href="{% url 'bedel:bedel' %}">No,cancelar.</a>

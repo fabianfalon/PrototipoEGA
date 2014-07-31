@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+{% block title %}E.G.A{% endblock %}
+
+{% block content %}
+<div class="jumbotron loginbox">
+	<legend>Ingrese los datos de la carrera</legend>
+		<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 		
+
+					<p>
+						<label>Alumno</label>
+						<input type="text" name="alumno" class="form-control" placeholder="Ingrese el nombre del alumno" required>
+					</p>
+					<p>
+						<label>Materia</label>
+						<input type="text" name="materia" class="form-control" placeholder="Ingrese el nombre de la materia" required>
+					</p>
+				
+				<div class="row">
+												
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
+							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Guardar</button>
+							<button type="button" class="btn btn-labeled btn-danger" onclick="apreteCancelar()">
+							<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Cancelar</button>
+						</div>
+							
+					</div>
+									
+                                   
+		</form>
+
+</div>
+
+<script>
+   function apreteCancelar(){
+   		
+		window.location='/index-bedel/';
+     
+
+      }
+</script>
+{% endblock %}

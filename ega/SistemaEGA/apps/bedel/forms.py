@@ -30,6 +30,12 @@ class CarreraForm(ModelForm):
 					
 				}))
 
+	duracion = forms.IntegerField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese la duracion de la carrera',
+					
+				}))
+
 class MateriaForm(ModelForm):
 
 
@@ -48,6 +54,16 @@ class MateriaForm(ModelForm):
 	nombre = forms.CharField(widget = forms.TextInput(attrs={
 					'class' : 'form-control',
 					'placeholder' : 'Ingrese nombre de la Materia',
+					
+				}))
+	duracion = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese la duracion de la materia',
+					
+				}))
+	anio = forms.IntegerField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese el anio al que pertenece la materia',
 					
 				}))
 
@@ -77,6 +93,24 @@ class MesaFinalForm(ModelForm):
 
 		model = MesaFinal
 
+class InscripcionMateriaForm(ModelForm):
+
+	class Meta:
+		model = InscripcionMateria
+		fields = ('alumno','materia')
+
+
+	alumno = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese el nombre del alumno',
+					'required' : 'required'
+				}))
+
+	materia = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese nombre de la Materia',
+					
+				}))
 		
 
 

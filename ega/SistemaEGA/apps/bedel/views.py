@@ -4,7 +4,7 @@ from braces.views import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from apps.alumno.models import User
 from apps.home.models import Carrera, Materia, HistorialAcademico, InscripcionMateria, InscripcionFinal, MesaFinal
-from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm, MesaFinalForm
+from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm, MesaFinalForm, InscripcionMateriaForm
 
 
 class BedelView(LoginRequiredMixin, TemplateView):
@@ -30,6 +30,7 @@ class CarreraView(LoginRequiredMixin, FormView):
 		
 		return super(CarreraView, self).form_invalid(form)
 
+
 #Mostrar Carreras
 class CarrerasListaView(LoginRequiredMixin, TemplateView):
 
@@ -42,6 +43,7 @@ class CarrerasListaView(LoginRequiredMixin, TemplateView):
 		context['lista_carrera'] = Carrera.objects.all()
 		return context
 
+
 #Eliminar Carreras
 class CarreraDeleteView(LoginRequiredMixin, DeleteView):
 
@@ -53,6 +55,7 @@ class CarreraDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
+
 
 #Actualizar datos de Carrera
 class CarreraUpdateView(LoginRequiredMixin, UpdateView):
@@ -70,7 +73,6 @@ class CarreraUpdateView(LoginRequiredMixin, UpdateView):
 	def form_invalid(self, form):
 		
 		return super(CarreraUpdateView, self).form_invalid(form)
-
 
 
 #Operaciones con Materias
@@ -92,6 +94,7 @@ class MateriasView(LoginRequiredMixin, FormView):
 		
 		return super(MateriasView, self).form_invalid(form)
 
+
 #Mostrar Materias
 class MateriasListaView(LoginRequiredMixin,TemplateView):
 
@@ -104,6 +107,7 @@ class MateriasListaView(LoginRequiredMixin,TemplateView):
 		context['lista_materias'] = Materia.objects.all()
 		return context
 
+
 #Eliminar Materias
 class MateriaDeleteView(LoginRequiredMixin, DeleteView):
 
@@ -115,6 +119,7 @@ class MateriaDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
+
 
 #Actualizar datos de Materia
 class MateriaUpdateView(LoginRequiredMixin, UpdateView):
@@ -145,6 +150,7 @@ class AlumnosListaView(LoginRequiredMixin, TemplateView):
 		context = super(AlumnosListaView, self).get_context_data(**kwargs)
 		context['lista_alumnos'] = User.objects.filter(tipo_usuario = False).order_by('nombre_apellido')
 		return context
+
 
 #Actualizar datos de alumno
 class AlumnoUpdateView(LoginRequiredMixin, UpdateView):
@@ -220,6 +226,7 @@ class MesaFinalListaView(LoginRequiredMixin,TemplateView):
 		context['lista_mesa_final'] =  MesaFinal.objects.all()
 		return context
 
+
 #Eliminar Mesa
 class MesaFinalDeleteView(LoginRequiredMixin, DeleteView):
 
@@ -231,6 +238,7 @@ class MesaFinalDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
+
 
 #Actualizar datos de Mesa
 class MesaFinalUpdateView(LoginRequiredMixin, UpdateView):
@@ -249,6 +257,7 @@ class MesaFinalUpdateView(LoginRequiredMixin, UpdateView):
 		
 		return super(MesaFinalUpdateView, self).form_invalid(form)
 
+
 #Lista de materias para generar Acta
 class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 
@@ -260,6 +269,7 @@ class ListaMateriasActaView(LoginRequiredMixin,TemplateView):
 		context = super(ListaMateriasActaView, self).get_context_data(**kwargs)
 		context['lista_materias_acta'] = Materia.objects.all()
 		return context
+
 
 #Mostrar Alumnos inscriptos en la materia que se hizo click
 class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
@@ -275,16 +285,64 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 		#cuyo pk es pasada como parametro
 		return context
 
+from django.utils import simplejson
 
-# class AlumnosListaActaDetailView(LoginRequiredMixin,DetailView):
+def search(request):
+	auto = request.REQUEST['search']
+	search_qs = User.objects.filter(nombre_apellido__startswith = auto)
+	results = []
+	for r in search_qs:
+		print r
+		results.append(r.nombre_apellido)
+	resp = request.REQUEST['callback'] + '(' + simplejson.dumps(result) + ');'
+	return HttpResponse(resp, content_type='application/json')
 
-# 	template_name = 'bedel/lista_alumnos_acta.html'
-# 	model = InscripcionFinal
+#Inscripcion a materia
+#Agregar Inscripcion a Materia
+class InscripcionMateriaAddView(LoginRequiredMixin, FormView):
 
-# 	def get_context_data(self, *args, **kwargs):
+	template_name = 'bedel/agregar_inscripcion_materia.html'
+	form_class = InscripcionMateriaForm
+	success_url = '/index-bedel/'
+	
+	def post(self, request, *args, **kwargs):
+		post = super(InscripcionMateriaAddView, self).post(request, *args, **kwargs)
+		alumno = request.POST['alumno']
+		materia = request.POST['materia']
+		InscripcionMateria.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia))
+		return post
 
-# 		context = super(AlumnosListaActaDetailView, self).get_context_data(**kwargs)
-# 		context['total_alumnos_acta'] = InscripcionFinal.objects.filter(materia=context['object'])
-# 		print inscripcionfinal
-# 		print context['total_alumnos_acta']
-# 		return context
+	def form_invalid(self, form):
+		
+		return super(InscripcionMateriaAddView, self).form_invalid(form)
+
+
+#Mostrar  Inscripcion a Materia
+class InscripcionMateriaListaView(LoginRequiredMixin,TemplateView):
+
+	model =  InscripcionMateria
+	template_name = 'bedel/lista_inscripcion_materias.html'
+
+	def get_context_data(self, **kwargs):
+
+		context = super(InscripcionMateriaListaView, self).get_context_data(**kwargs)
+		context['lista_inscripcion_materias'] =  InscripcionMateria.objects.all()
+		return context
+
+
+#Actualizar datos de  Inscripcion a Materia
+class InscripcionMateriaUpdateView(LoginRequiredMixin, UpdateView):
+
+	model = InscripcionMateria
+	form_class = InscripcionMateriaForm
+	template_name_suffix = '__update_form'
+	success_url = '/index-bedel/lista-inscripcion-materias'
+	context_object_name = 'inscripcionmateria'
+	
+	def form_valid(self, form):
+		user = form.save() #asignamos a la variabe user el formulario
+		return super(InscripcionMateriaUpdateView, self).form_valid(form)
+
+	def form_invalid(self, form):
+		
+		return super(InscripcionMateriaUpdateView, self).form_invalid(form)

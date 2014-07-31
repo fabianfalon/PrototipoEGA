@@ -17,7 +17,7 @@
 					        <tr >
 								<th align="center"><center>Carrera</center></th>
 								<th align="center"><center>Nombre</center></th>
-								<th align="center"><center>Eliminar</center></th>
+								<!-- <th align="center"><center>Eliminar</center></th> -->
 								<th align="center"><center>Modificar</center></th>
 							</tr>
 							
@@ -25,7 +25,7 @@
 							<tr>
                   				<td>{{alumnos.carrera}}<br></td><br>
                   				<td>{{alumnos.nombre_apellido}}<br></td><br>
-				  				<td><a href=""><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td>
+				  				<!-- <td><a href=""><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td> -->
 				  				<td><a href="{% url 'bedel:user_update' alumnos.username %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
                  			</tr>
 
