@@ -9,7 +9,7 @@
 	         	<legend>
 	         		<a href="{% url 'alumnos:index' %}" title="Volver">
 	         			<img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
-	         		Historial Academico {{user.nombre_apellido}}</legend>
+	         		<h2 style="color:#FF8000; font-family: 'Acme', sans-serif;">Historial Academico {{user.nombre_apellido}} </h2></legend>
 					<div class="table-responsive">
                  
 						<table class="table table-bordered table-striped table-hover">
@@ -22,7 +22,7 @@
 							</tr>
 					  {% for historial in historial_materias  %}
 							
-							<tr>
+							<tr style="color:black; font-family: 'Acme', sans-serif;">
 								<td>{{ historial.alumno}}</td>
 								<td>{{ historial.materia}}</td>
 								<td>{{ historial.nota}}</td>

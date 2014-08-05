@@ -7,7 +7,9 @@
 	         <aside>
 	         	<legend>
 	         		<a href="{% url 'alumnos:index' %}" title="Volver"><img src="/static/ima/volver.png" class="img-responsive boton-volver"></a>
-	         		Listas de Materias a Cursar {{user.nombre_apellido}}
+	         		<h2 style="color:#FF8000; font-family: 'Acme', sans-serif;">
+	         			Listas de Materias a Cursar {{user.nombre_apellido}}
+	         		</h2>
 	         	</legend>
 					<div class="table-responsive">
                  
@@ -19,7 +21,7 @@
 								<th>Fecha de Final</th>
 							</tr>
 								  {% for materias in lista_materias  %}							
-							<tr>
+							<tr style="color:black; font-family: 'Acme', sans-serif;">
 								<td>{{ materias.alumno}}</td>
 								<td>{{ materias.materia}}</td>
 								<td>{{ materias.nota}}</td>
