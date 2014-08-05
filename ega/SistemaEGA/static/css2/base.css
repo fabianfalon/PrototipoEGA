@@ -101,10 +101,8 @@ aside img{
   text-align: center;
   margin-left: 15em;
   margin-top: 0.8em;
-  margin-bottom: 0.5em;
-  
+  margin-bottom: 0.5em;  
   vertical-align: top;
-
 }
 
 .errormsj
@@ -117,11 +115,9 @@ aside img{
   padding: 0.5em 0.5em 0 0;
 }
 
-
 .formedit{
   float: left;
   padding: 1.5em;
-
 }
 
 .historial-alumno{
@@ -177,7 +173,6 @@ aside img{
 }
 
 .ima-error{
-  
   height: 750px;
   width: 750px;
   padding-right: 2em;
@@ -189,14 +184,11 @@ aside img{
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 3em;
-  
 }
 
 .imprimir{
-  
   margin-right: 34px;
   margin-top: 10px;
-
 }
 
 .infocontacto{
@@ -208,17 +200,14 @@ aside img{
 
 
 .materias{
-
   margin-top: -5em;
   margin-bottom: 1em;
 }
 .navegadorperfil{
   float: right;
-
 }
 
 .perfil{
-
   float: left;
   margin-left: 5em
 }

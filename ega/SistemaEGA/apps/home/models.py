@@ -74,7 +74,7 @@ class HistorialAcademico(models.Model):
 	nota = models.IntegerField()
 	fecha = models.DateField()
 	cod_acta = models.CharField(max_length=50)
-	
+	 
 # isncripcion = InscripcionFinal.objects.filter(user = request.user )
 # inscripcion.materia
 # inscripcion.materia.carrera

@@ -265,23 +265,26 @@ table th[class*="col-"] {
 		</div>
           <div class="jumbotron">
           <div class="container">
-            <p><center><h1>Acta de Examen Final</h1></center></p>
+            <p><center><h1>ACTA VOLANTE DE EXAMENES</h1></center></p>
             </div>
           </div>
 	         <aside>
-              <p><center><h3>Instituto Superior de Formacion Docente Dr Jose S. Salinas</h3></center></p>
-              <p> <center><h5>Documento emitido por Bedelia</h5></center></p>
+              <p><center><h3><strong>Establecimiento: </strong>Instituto Superior de Formacion Docente Dr Jose S. Salinas</h3></center></p>
+              <p> <center><h5>Examenes de alumnos regulares {{object_list.materia.nombre}}</h5></center></p>
+              <p> <center><h5><strong>Folio N:</strong></h5></center></p>
 					<div class="table">
 						<table class="table table-bordered table-striped table-hover">
 							<tr>
 								<th>Asignatura</th> 
                 <th>Alumno</th>               
-                <th>Nota</th>
-                <th>Detalle</th>
+                <th>Calificacion Escrita</th>
+                <th>Calificacion Oral</th>
+                <th>Numero de bolillas Oral</th>
+                <th>Numero de bolillas Escrito</th>
                 <th>Fecha</th>
-                <th>Firma</th>
-								
-              
+                <th>Firma alumno</th>
+                <th>DNI</th>
+		              
 							</tr>
 	             {% for alumno in total_alumnos_acta %}
               <tr>
@@ -289,16 +292,24 @@ table th[class*="col-"] {
                         <td>{{alumno.alumno.nombre_apellido}}<br></td><br>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
                         <td>{{alumno.fecha}}</td>
                         <td></td>
+                        <td>{{alumno.alumno.dni}}</td>
               </tr>
                 {% endfor %}
 						</table>
 			</aside>
        <br>
-       <p> <center>_________________________</center> </p>
-       <p> <center>Firma del Profesor Titular</center> </p>
-
+       <div  style="width:900; height:350; background-color:#D3D3D3; border-radius:0.5em;">
+        <legend>Firmas Autoridades</legend>
+      <center><p> Presidente : _________________________   Vocal : _________________________  Vocal : _________________________</p></center>
+       <p> <center>Total de Alumnos : _________</center> </p>
+       <p> <center>Aprobados : ______________</center> </p>
+       <p> <center>Aplazados : ______________</center> </p>
+       <p> <center>Ausentes : ______________</center> </p>
+     </div>
 		 </section>
 	</section>
 </body>

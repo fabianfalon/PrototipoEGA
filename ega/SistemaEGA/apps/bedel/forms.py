@@ -77,7 +77,52 @@ class UserForm(ModelForm):
 					'documentacion_completa','imagen', 'password')
 
 
+	username = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Usuario',
+					'required' : 'required'
+				}))
 
+	email = forms.EmailField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Email',
+					'required' : 'required'
+				}))
+
+	nombre_apellido = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Nombre y Apellido',
+					'required' : 'required'
+				}))
+
+	dni = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su DNI',
+					'required' : 'required'
+				}))
+
+	lugar_nacimiento = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su lugar de Nacimiento',
+					'required' : 'required'
+				}))
+
+	ciudad_actual = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese la ciudad donde recide actualmente',
+					'required' : 'required'
+				}))
+
+	domicilio_actual = forms.CharField(widget = forms.TextInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese su Domicilio Actual',
+					'required' : 'required'
+				}))
+
+	password = forms.CharField(widget = forms.PasswordInput(attrs={
+					'class' : 'form-control',
+					'placeholder' : 'Ingrese la clave del alumno en caso de que quiera cambiarla'
+				}))
 
 
 class HistorialForm(ModelForm):
