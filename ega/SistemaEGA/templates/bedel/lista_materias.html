@@ -11,7 +11,14 @@
 					<div class="jumbotron">
 						<img src="/static/ima/materias.png" class="ima-materia">
 					 <div class="container">
-
+			  	  		<div class="buscador">
+			  	  			<form action="buscarmaterias/" method="POST"> {% csrf_token %}  		
+  								<div class="input-group" style="height:20px;">    	   					
+  									<input  class="form-control" type="search" name="buscalo" 
+  									placeholder="Escriba el nombre de la Materia y presione enter...">
+  									<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+  							</form>
+  						</div>
 					 	<table class="table table-bordered table-striped table-hover materias">
 							<tr >
 								<th align="center"><center>Carreras</center></th>
@@ -21,7 +28,7 @@
 							</tr>
 							
 								{% for materia in lista_materias %}
-							<tr>
+						 	<tr>
 								<td>{{ materia.carrera }}</td>								
                   				<td>{{materia.nombre}}<br></td><br>
 								<!-- <td><a href="{% url 'bedel:materia_confirm_delete' materia.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td> -->

@@ -12,28 +12,21 @@
 					<div class="jumbotron">
 						<img src="/static/ima/materias.png" class="ima-materia">
 					  <div class="container">
-			  	  		<div class="buscador">
-    	   								<form action="buscar/" method="POST"> {% csrf_token %}  		
-  											<div class="input-group" style="height:20px;">	
-	  										<input  class="form-control" type="search" name="buscalo" placeholder="Escriba el nombre del alumnos a buscar y presione enter...">
-  											<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-  										</form>
-  						</div>
+			  	  		
 
 					 	<table class="table table-bordered table-striped table-hover materias">
 					        <tr >
 								<th align="center"><center>Carrera</center></th>
-								<th align="center"><center>Nombre</center></th>
+								<th align="center"><center>Materia</center></th>
 								<!-- <th align="center"><center>Eliminar</center></th> -->
 								<th align="center"><center>Modificar</center></th>
 							</tr>
 							
-							{% for alumnos in lista_alumnos %}
+							{% for m in materia %}
 							<tr>
-                  	 			<td>{{alumnos.carrera}}<br></td><br>
-                  				<td>{{alumnos.nombre_apellido}}<br></td><br>
-				  				<!-- <td><a href=""><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td> -->
-				  				<td><a href="{% url 'bedel:user_update' alumnos.username %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
+                  	 			<td>{{m.carrera}}<br></td><br>
+                  				<td>{{m.nombre}}<br></td><br>
+				  				<td><a href="{% url 'bedel:user_update' m.id %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
                  			</tr>
 
                      		{% endfor %}

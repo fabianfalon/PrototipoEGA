@@ -5,6 +5,7 @@ from apps.bedel.views import AlumnosListaView, AlumnoUpdateView, HistorialAcadem
 from apps.bedel.views import ListaMateriasActaView, AlumnosListaActaDetailView
 from apps.bedel.views import MesaFinalListaView, MesaFinalDeleteView, MesaFinalUpdateView, MesaFinalAddView
 from apps.bedel.views import InscripcionMateriaAddView, InscripcionMateriaListaView, InscripcionMateriaUpdateView
+from apps.bedel.views import BuscarView, BuscarMateriasView, BuscarMesaFinalesView
 
 urlpatterns = patterns('',
 
@@ -46,5 +47,10 @@ urlpatterns = patterns('',
 
    #Probando Ajax
    url(r'^ajax/url/$', 'apps.bedel.views.search', name='search'),
+
+   #buscar
+   url(r'^index-bedel/lista-alumnos/buscar/$', BuscarView.as_view(), name='buscar'),
+   url(r'^index-bedel/lista-materias/buscarmaterias/$', BuscarMateriasView.as_view(), name='buscarmaterias'),
+   url(r'^index-bedel/lista-mesa-finales/buscarmesafinales/$', BuscarMesaFinalesView.as_view(), name='buscarmesafinales'),
    
 )

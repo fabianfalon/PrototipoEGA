@@ -346,3 +346,28 @@ class InscripcionMateriaUpdateView(LoginRequiredMixin, UpdateView):
 	def form_invalid(self, form):
 		
 		return super(InscripcionMateriaUpdateView, self).form_invalid(form)
+
+class BuscarView(TemplateView):
+	
+	def post(self, request, *args, **kwargs):
+		buscar = request.POST['buscalo']
+		alumnos = User.objects.filter(nombre_apellido__contains=buscar)
+		dni =  User.objects.filter(dni__contains=buscar)
+		return render(request, 'bedel/buscar.html', 
+				{'alumnos' : alumnos})
+
+class BuscarMateriasView(TemplateView):
+
+	def post(self, request, *args, **kwargs):
+		buscarm = request.POST['buscalo']
+		materia = Materia.objects.filter(nombre__contains=buscarm)
+		return render(request, 'bedel/buscarmateria.html', 
+				{'materia' : materia})
+
+class BuscarMesaFinalesView(TemplateView):
+
+	def post(self, request, *args, **kwargs):
+		buscarm = request.POST['buscalo']
+		mesafinal = MesaFinal.objects.filter(fecha__contains=buscarm)
+		return render(request, 'bedel/buscarmesafinal.html', 
+				{'mesafinal' : mesafinal})
