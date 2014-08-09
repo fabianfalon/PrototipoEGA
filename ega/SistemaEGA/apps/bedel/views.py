@@ -181,6 +181,13 @@ class HistorialAcademicoView(LoginRequiredMixin, FormView):
 	form_class = HistorialForm
 	success_url = '/index-bedel/'
 
+	def get_context_data(self, **kwargs):
+
+		context = super(HistorialAcademicoView, self).get_context_data(**kwargs)
+		context['lista_alumnos'] = User.objects.filter(tipo_usuario = False).order_by("nombre_apellido")
+		return context
+
+
 	def post(self, request, *args, **kwargs):
 		post = super(HistorialAcademicoView, self).post(request, *args, **kwargs)
 		alumno = request.POST['alumno']
