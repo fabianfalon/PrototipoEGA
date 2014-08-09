@@ -292,17 +292,23 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 		#cuyo pk es pasada como parametro
 		return context
 
-from django.utils import simplejson
-
+		
 def search(request):
-	auto = request.REQUEST['search']
-	search_qs = User.objects.filter(nombre_apellido__startswith = auto)
-	results = []
-	for r in search_qs:
-		print r
-		results.append(r.nombre_apellido)
-	resp = request.REQUEST['callback'] + '(' + simplejson.dumps(result) + ');'
-	return HttpResponse(resp, content_type='application/json')
+ 
+    if request.method=='GET' or not request.POST.__contains__('start'):
+        return HttpResponseForbidden()
+ 
+    # Hacemos la consulta para aquellos elementos que empiecen por start ordenados por nombre
+    query = Model.objects.filter(name__istartswith=request.POST['start']).order_by('name')
+ 
+    # Serializamos
+    objects = u'{items: [\n'
+    for i in query:
+        objects += u'{"0":"%s"},\n' % (i.name.replace('"',''))
+    objects=objects.strip(",\n");
+    objects+=u']}\n'
+ 
+    return HttpResponse(objects,mimetype="text/plain")
 
 #Inscripcion a materia
 #Agregar Inscripcion a Materia

@@ -14,7 +14,7 @@
 						<input type="text" name="alumno" class="form-control"  id="addAlumno" placeholder="Ingrese el nombre del alumno" required>
 
 						<span class="input-group-addon"> 
-							<a  href="" class="btn btn-btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" style="width:65px;height:40px; "><img class="eliminar" src="/static/ima/add.png" style="height: 20px;width: 20px;" title="Agregar"></a>
+							<a  href="" class="btn btn-btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" style="width:50px;height:40px; "><i class="glyphicon glyphicon-plus"></i></a>
 						</span>
 						</div>	
 					</p>
@@ -101,26 +101,35 @@ $(document).ready(function(){
      
       }
 
-function searchOpen() {
-    var search = $('#txtSearch').val()
-    var data = {
-        search: search
-    };
-    $.ajax({
-        url: '/ajax/url/',
-        data: data,
-        dataType: 'jsonp',
-        jsonp: 'callback',
-        jsonpCallback: 'searchResult'
-    });
-}
+
+$('input').autocomplete({
+    minLength:3,
+    source: function(req, add){
+        $.ajax({
+            url: '/ajax/url/',
+            async: false,
+            dataType:'json',
+            type:'POST',
+            data: {
+                start: function() { return $(this).val(); },
+            },
+            success: function(data) {
+ 
+                //create array for response objects
+                var suggestions = [];
+ 
+                //process response
+                $.each(data.items, function(i, val){
+                    suggestions.push(val[0]);
+                });
+ 
+                //pass array to callback
+                add(suggestions);
+            }
+        });
+    }
+});
 
 
-function searchResult(data) {
-	
-    $( "#txtSearch" ).autocomplete ({
-        source: data
-    });
-}
 </script>
 {% endblock %}
