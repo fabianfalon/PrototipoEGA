@@ -66,6 +66,9 @@ class InscripcionFinal(models.Model):
 	materia = models.ForeignKey(Materia)
 	mesa = models.ForeignKey(MesaFinal)
 
+	def __unicode__(self):
+		return self.cod_inscripcion
+
 
 class HistorialAcademico(models.Model):
 
@@ -74,6 +77,8 @@ class HistorialAcademico(models.Model):
 	nota = models.IntegerField()
 	fecha = models.DateField()
 	cod_acta = models.CharField(max_length=50)
+	def __unicode__(self):
+		return self.cod_acta
 	 
 # isncripcion = InscripcionFinal.objects.filter(user = request.user )
 # inscripcion.materia

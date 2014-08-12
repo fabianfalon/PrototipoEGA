@@ -194,7 +194,8 @@ class HistorialAcademicoView(LoginRequiredMixin, FormView):
 		materia = request.POST['materia']
 		nota = request.POST['nota']
 		fecha = request.POST['fecha']
-		HistorialAcademico.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia), nota=nota, fecha=fecha)
+		cod_acta = request.POST['cod_acta'] 
+		HistorialAcademico.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia), nota=nota, fecha=fecha, cod_acta=cod_acta)
 		return post
 
 
@@ -292,7 +293,7 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 		#cuyo pk es pasada como parametro
 		return context
 
-		
+
 def search(request):
  
     if request.method=='GET' or not request.POST.__contains__('start'):

@@ -235,7 +235,6 @@ class ImprimirFinales(PDFTemplateView):
 
  #Imprimir Acta de examen final
 class ImprimirActa(PDFTemplateView):
-
  	filename='acta.pdf'
  	template_name = 'pfd/pdf-acta.html'
  	cmd_options = {
@@ -243,6 +242,7 @@ class ImprimirActa(PDFTemplateView):
  	}
 
  	def get_context_data(self, **kwargs):
+
            context = super(ImprimirActa, self).get_context_data(**kwargs)
            context['total_alumnos_acta']=InscripcionFinal.objects.filter(materia=kwargs['pk'])
            return context
