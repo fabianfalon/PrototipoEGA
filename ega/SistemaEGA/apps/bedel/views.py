@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, FormView, DetailView, UpdateView, DeleteView 
 from braces.views import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
+from django.http import HttpResponse
 from apps.alumno.models import User
 from apps.home.models import Carrera, Materia, HistorialAcademico, InscripcionMateria, InscripcionFinal, MesaFinal
 from .forms import CarreraForm, MateriaForm, UserForm, HistorialForm, MesaFinalForm, InscripcionMateriaForm
@@ -254,7 +255,7 @@ class MesaFinalUpdateView(LoginRequiredMixin, UpdateView):
 	model = MesaFinal
 	form_class = MesaFinalForm
 	template_name_suffix = '__update_form'
-	success_url = '/index-bedel/lista-materias'
+	success_url = '/index-bedel/lista-mesa-finales'
 	context_object_name = 'mesafinal'
 	
 	def form_valid(self, form):
@@ -293,24 +294,7 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
 		#cuyo pk es pasada como parametro
 		return context
 
-
-def search(request):
  
-    if request.method=='GET' or not request.POST.__contains__('start'):
-        return HttpResponseForbidden()
- 
-    # Hacemos la consulta para aquellos elementos que empiecen por start ordenados por nombre
-    query = Model.objects.filter(name__istartswith=request.POST['start']).order_by('name')
- 
-    # Serializamos
-    objects = u'{items: [\n'
-    for i in query:
-        objects += u'{"0":"%s"},\n' % (i.name.replace('"',''))
-    objects=objects.strip(",\n");
-    objects+=u']}\n'
- 
-    return HttpResponse(objects,mimetype="text/plain")
-
 #Inscripcion a materia
 #Agregar Inscripcion a Materia
 class InscripcionMateriaAddView(LoginRequiredMixin, FormView):
@@ -385,3 +369,14 @@ class BuscarMesaFinalesView(TemplateView):
 		mesafinal = MesaFinal.objects.filter(fecha__contains=buscarm)
 		return render(request, 'bedel/buscarmesafinal.html', 
 				{'mesafinal' : mesafinal})
+
+from django.core import serializers
+
+def search(self, request):
+	search= request.POST['search']
+	query = User.objects.filter(nombre_apellido__contains=search).order_by('nombre_apellido')
+	data = serializers.serialize('json', query,
+			fields = {'nombre_apellido'})
+	return HttpResponse(data, content_type='aplication/json')
+	#return render(request, 'bedel/agregar_nota_final.html', {'query' : query})
+ 

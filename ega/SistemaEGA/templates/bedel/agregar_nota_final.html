@@ -4,11 +4,9 @@
 {% block content %}
 <div class="jumbotron loginbox">
 	<legend>Ingrese los datos del alumno a cargar en el historial</legend>
-		<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
-					
+		<form  role="form" method="POST" enctype="multipart/form-data">{% csrf_token %} 					
   					
 					<p>
-						
 						<label>Alumno</label>
 						<div class="input-group">	
 						<input type="text" name="alumno" class="form-control"  id="addAlumno" placeholder="Ingrese el nombre del alumno" required>
@@ -18,7 +16,6 @@
 						</span>
 						</div>	
 					</p>
-					
 					<p>
 						<label>Materia</label>
 						<input type="text" name="materia" class="form-control" placeholder="Ingrese el nombre de la materia" required>
@@ -36,7 +33,6 @@
 						<!-- <h4  style="color:red">Introduzca la fecha en formato AAAA-MM-DD</h4> -->	
 					</p>
 
-							 
 				 <div class="row">								
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<button type="submit" class="btn btn-labeled btn-success" onclick="Guardar()">
@@ -61,10 +57,22 @@
           <div class="form-group">
             <div class="col-sm-10">
              <table>
-             	{% for alumno in lista_alumnos %}
-             	<input type="checkbox" name="alumnolista" value="{{alumno.nombre_apellido}}">
+              <form>{% csrf_token %}
+                <input type "search" name="search" id="search" placeholder="Ingrese el nombre del alumno" style="width:500px;"><br><br>
+              </form>
+               <ul id="search-result">
+            
+            	{% for alumno in lista_alumnos %}
+              <tr>
+                <td>
+                <input type="checkbox" name="alumnolista" id="alumnolista" value="{{alumno.nombre_apellido}}">
              	{{alumno.nombre_apellido}}<br>	          	
-             	{% endfor %}
+             
+               </td>
+              </tr>
+             	{% endfor %} 
+             </ul>
+              
              </table>
             </div>
           </div>
@@ -79,17 +87,35 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script>
+/*  $('#search').keyup(function(){
+      $.ajax({
+          type : "GET",
+          url: "/index-bedel/search/",
+          dataType : 'json',
+          data : { 'search' : search}
+          success : function(data){
+            var html;
+            for (var i = 0; i < data.length; i++){
+              html +='<div><tr><td>
+                      <input type="checkbox" name="alumnolista" id="alumnolista" value="'+data[i].fields.nombre_apellido +'">
+                      '+data[i].fields.nombre_apellido +'<br></td></tr>';
+                        }
+            $('#search-result').html(html);
+          }
+  });*/
 
 $(document).ready(function(){
+  
     $('#enviar').click(function() {
         var alumnos = new Array();
         $("[name='alumnolista']:checked").each(function() {
             alumnos.push($(this).val());
         });
-
+      //Agregamos el valor seleccionado en el check al input del formulario
     	var input = $( "#addAlumno" );
-		input.val(alumnos);
-
+		  input.val(alumnos);
+      // Deselecciona el checkbox una vez que se envian los datos
+      $("[name='alumnolista']:checked").prop('checked', false);
     });
 });
 
@@ -100,36 +126,6 @@ $(document).ready(function(){
 		window.location='/index-bedel/';
      
       }
-
-
-$('input').autocomplete({
-    minLength:3,
-    source: function(req, add){
-        $.ajax({
-            url: '/ajax/url/',
-            async: false,
-            dataType:'json',
-            type:'POST',
-            data: {
-                start: function() { return $(this).val(); },
-            },
-            success: function(data) {
- 
-                //create array for response objects
-                var suggestions = [];
- 
-                //process response
-                $.each(data.items, function(i, val){
-                    suggestions.push(val[0]);
-                });
- 
-                //pass array to callback
-                add(suggestions);
-            }
-        });
-    }
-});
-
 
 </script>
 {% endblock %}

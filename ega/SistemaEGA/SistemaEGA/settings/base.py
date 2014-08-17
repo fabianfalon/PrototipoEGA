@@ -25,7 +25,6 @@ THIRD_PARTY_APPS = (
 	   #'south',
 	   'djrill',
 	   'wkhtmltopdf',
-	   #'sorl.thumbnail',
 
 	)
 

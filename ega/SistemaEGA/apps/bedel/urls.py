@@ -46,7 +46,7 @@ urlpatterns = patterns('',
     url(r'^index-bedel/lista-inscripcion-materias/editar/(?P<pk>\d+)/$', InscripcionMateriaUpdateView.as_view(), name='editar_inscripcion_materia'),
 
    #Probando Ajax
-   url(r'^ajax/url/$', 'apps.bedel.views.search', name='search'),
+   url(r'^search/$', 'apps.bedel.views.search', name='search'),
 
    #buscar
    url(r'^index-bedel/lista-alumnos/buscar/$', BuscarView.as_view(), name='buscar'),

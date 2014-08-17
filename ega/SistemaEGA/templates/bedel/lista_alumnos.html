@@ -32,7 +32,7 @@
 							
 							{% for alumnos in lista_alumnos %}
 							<tr>
-                  	 			<td>{{alumnos.carrera}}<br></td><br>
+                  	 			<td>{{alumnos.carrera.nombre}}<br></td><br>
                   				<td>{{alumnos.nombre_apellido}}<br></td><br>
 				  				<!-- <td><a href=""><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td> -->
 				  				<td><a href="{% url 'bedel:user_update' alumnos.username %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
