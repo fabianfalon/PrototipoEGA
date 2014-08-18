@@ -1,0 +1,286 @@
+
+html{
+
+
+}
+
+body{
+	background-color: #34A6C8;	
+}
+
+header{
+  height: 250px;
+  margin-bottom: -6em;
+
+}
+section#contenedor{
+   margin: 0.5em auto;
+   max-width: 1400px;
+   padding: 0;
+}
+section#principal{
+   background: #1e6381;
+   border-radius: 0.5em;
+   
+   margin: 0.5em auto;
+   max-width: 1102px;
+   min-height:250px;
+   padding: 0.25em;
+   vertical-align:top;
+   width:100%;
+   text-align: center;
+   
+}
+
+aside{
+   width:60%;
+   background: #1e6381;
+   border-radius: 0.5em;
+   display:inline-block;
+   margin: 0.5em auto;
+   max-width: 1110px;
+   min-height:464px;
+   padding: 0.25em;
+   vertical-align:top;
+   width:95%;
+   text-align: center;
+}
+aside img{
+ border-radius: 0.5em;
+}
+
+.boton-volver{
+  height: 50px;
+  width: 50px;
+  margin-top: -0.8em;
+  float: left;
+}
+.contenedorform{
+  background-color: white;
+  border-radius: 0.5em;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+  padding: 1.2em;  
+
+
+}
+.contenedorcont{
+  float: right;
+  padding-right: 8em;
+  padding: 2em;
+  display: inline-block;
+
+}
+
+.datos{
+  float: right;
+  padding-top: 2em;
+ }
+
+.datos1{
+ 
+  padding-top: 2em;
+
+}
+
+
+.eliminar{
+  padding-top: -5em;
+  height: 10px;
+  width: 10px;
+
+
+}
+.error1{
+
+  height: 390px;
+  width: 600px;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  vertical-align: center;
+  text-align: center;
+  margin-left: 15em;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;  
+  vertical-align: top;
+}
+
+.errormsj
+{
+  color: red;
+  font-size: 22px;
+  font-style: normal;
+  margin: 0;
+  margin-left: 5em;
+  padding: 0.5em 0.5em 0 0;
+}
+
+.formedit{
+  float: left;
+  padding: 1.5em;
+}
+
+.historial-alumno{
+  float: right;
+  height: 50px;
+  width:50px;
+}
+
+#alumno{
+  border-radius: 0.2em;
+  box-shadow: 5px 5px 0px black;
+  width: 300px;
+}
+
+#materia{
+  margin-left: 275px;
+  float: center;
+  width: 300px;
+}
+
+.ima-materia{
+  float: left;
+  margin-top: -2em;
+  margin-left: -3em;
+  height: 55px;
+  width: 55px;
+
+}
+.imagenedit{
+  float: right;
+}
+
+.imaedit{
+  box-shadow: 10px 20px 90px black;
+  margin-top: 10em;
+  margin-right: 5em;
+  height: 360px;
+  width: 340px;
+}
+
+.imaperfil{
+  border-radius: 0.5em;
+  box-shadow: 10px 20px 90px black;
+  height: 300px;
+  width: 260px;
+}
+
+.ima-footer{
+  padding-left: 2em;
+  height: 160px;
+  padding-right: 2em;
+  margin-top: -5em;
+}
+
+.ima-error{
+  height: 750px;
+  width: 750px;
+  padding-right: 2em;
+
+}
+
+.ima-header{
+  margin-top: -3em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 3em;
+}
+
+.imprimir{
+  margin-right: 34px;
+  margin-top: 10px;
+}
+
+.infocontacto{
+  width:200px;
+  height:300px;
+  float: right;
+  margin-left: 10em; 
+}
+
+
+.materias{
+  margin-top: -5em;
+  margin-bottom: 1em;
+}
+.navegadorperfil{
+  float: right;
+}
+
+.perfil{
+  float: left;
+  margin-left: 5em
+}
+
+.pdf{
+  padding-top: -5em;
+  height: 50px;
+  width: 50px;
+  float: right;
+
+}
+.pdf-tabla{
+  height: 27px;
+  width: 27px;
+  float: center;
+}
+
+.rotarX{
+   transform:rotateX(0deg);
+   transition-duration: 2s;
+   -webkit-transform:rotateY(0deg);
+   -webkit-transition-duration: 2s;
+}
+.rotarX:hover{
+   transform:rotateX(180deg);
+   transition-duration: 2s;
+   -webkit-transform:rotateX(180deg);
+   -webkit-transition-duration: 2s;
+}
+
+.rotateMe {
+ -webkit-transition: -webkit-transform 1s ease-out;
+ -moz-transition: -moz-transform 1s ease-out;
+ transition: transform 1s ease-out;
+}
+
+.rotateMe:hover {
+ -webkit-transform: rotate(360deg);
+ -moz-transform: rotate(360deg);
+ transform: rotate(360deg);
+}
+
+.username{
+  color: black;
+  font-size: 15px;
+  font-style: italic;
+  font-family: fantasy;
+  padding-top:1.5em;
+  padding-right: 0.5em;
+  
+}
+.tabla-alumno{
+  margin-top: -7em;
+}
+.lineavertical{
+     background-color: white;
+     border-radius: 5em;
+     display: inline-block;
+     margin-left: -12em;
+     margin-top: 8em ;
+     height: 550px; 
+     width: 3px;
+     float: center;
+     border-right: 2px ;  
+}
+
+footer{
+  background: #1e6381;
+  color:#000;
+  font-size:0.85em;
+  border-radius: 0.5em;
+  margin: 0.5em auto;
+  max-width: 1102px; 
+  padding: 0.75em;
+  text-align: center;
+}

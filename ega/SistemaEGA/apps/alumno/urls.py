@@ -24,4 +24,7 @@ urlpatterns = patterns('',
 
     #operaciones del bedel
     url(r'^index-bedel/$', BedelView.as_view()  , name='bedel'),
+
+
 )
+handler404 = 'apps.alumno.views.handler404'

@@ -1,0 +1,27 @@
+html{
+
+
+}
+body{
+	background-color: #34A6C8;	
+}
+.loginbox{
+	border-radius: 7px;
+    background-color: #1e6381;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#id_fecha_nacimiento{
+  
+}

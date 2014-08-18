@@ -294,3 +294,8 @@ class ImprimirCertificado(PDFTemplateView):
 		   context = super(ImprimirCertificado, self).get_context_data(**kwargs)
 		   context['carrera'] = Carrera.objects.get(alumno = self.request.user)
 		   return context
+
+
+def handler404(request):
+    return render(request, 'errores/404.html')
+ 

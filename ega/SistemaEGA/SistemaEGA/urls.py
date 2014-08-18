@@ -32,7 +32,11 @@ urlpatterns = patterns('',
    url(r'^imprimir-finales/$',ImprimirFinales.as_view(),name= 'imprimir-finales'),
    url(r'^imprimir-certificado/$',ImprimirCertificado.as_view(),name= 'imprimir-certificado'),
    url(r'^imprimir-acta/(?P<pk>\d+)/$',ImprimirActa.as_view(),name= 'imprimir-acta'),
+
+
  )
+
+handler404 = 'apps.alumno.views.handler404'
 
 from django.conf.urls.static import static
 
