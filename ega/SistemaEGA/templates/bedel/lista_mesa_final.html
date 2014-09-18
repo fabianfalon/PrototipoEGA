@@ -23,7 +23,7 @@
   							</form>
   						</div>
 <br>
-					 	<table class="table table-bordered table-striped table-hover materias">
+					 	<table class="table table-bordered table-striped table-hover mesafinales">
 							<tr >
 								<th align="center"><center>Fecha</center></th>
 								<th align="center"><center>Materia</center></th>
@@ -42,8 +42,8 @@
 			                  	<td>{{mesa.hora}}</td>
 			                  	<td>{{mesa.turno}}</td>
 			                  	<td>{{mesa.cod_mesa}}</td>
-				 				<td><a href="{% url 'bedel:mesa_confirm_delete' mesa.id %}"><img class="eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td>
-								<td><a href="{% url 'bedel:editar_mesa' mesa.id %}"><img class="eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
+				 				<td><a href="{% url 'bedel:mesa_confirm_delete' mesa.id %}"><img class=" img-responsive eliminar" src="/static/ima/eliminar.png" style="height: 25px;width: 25px;" title="Eliminar"></a></td>
+								<td><a href="{% url 'bedel:editar_mesa' mesa.id %}"><img class="img-responsive eliminar" src="/static/ima/editar.png" style="height: 25px;width: 25px;" title="Editar"></a></td>
                  			 </tr>
 
                      				{% endfor %}
