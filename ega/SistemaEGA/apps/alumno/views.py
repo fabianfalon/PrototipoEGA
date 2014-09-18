@@ -298,4 +298,3 @@ class ImprimirCertificado(PDFTemplateView):
 
 def handler404(request):
     return render(request, 'errores/404.html')
- 

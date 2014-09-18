@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, DetailView, UpdateView, DeleteView 
+from django.views.generic import TemplateView, FormView, DetailView, UpdateView, DeleteView, ListView 
 from braces.views import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from django.http import HttpResponse
@@ -297,19 +297,22 @@ class AlumnosListaActaDetailView(LoginRequiredMixin, TemplateView):
  
 #Inscripcion a materia
 #Agregar Inscripcion a Materia
+
 class InscripcionMateriaAddView(LoginRequiredMixin, FormView):
 
 	template_name = 'bedel/agregar_inscripcion_materia.html'
 	form_class = InscripcionMateriaForm
 	success_url = '/index-bedel/'
-	
+
 	def post(self, request, *args, **kwargs):
+
 		post = super(InscripcionMateriaAddView, self).post(request, *args, **kwargs)
 		alumno = request.POST['alumno']
 		materia = request.POST['materia']
-		InscripcionMateria.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia))
-		return post
-
+		InscripcionMateria.objects.create(alumno=User.objects.get(nombre_apellido=alumno), materia=Materia.objects.get(nombre=materia), regular= True)
+		return post 
+		
+		
 	def form_invalid(self, form):
 		
 		return super(InscripcionMateriaAddView, self).form_invalid(form)
@@ -344,6 +347,7 @@ class InscripcionMateriaUpdateView(LoginRequiredMixin, UpdateView):
 	def form_invalid(self, form):
 		
 		return super(InscripcionMateriaUpdateView, self).form_invalid(form)
+
 
 class BuscarView(TemplateView):
 	

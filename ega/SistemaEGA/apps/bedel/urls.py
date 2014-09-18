@@ -51,6 +51,5 @@ urlpatterns = patterns('',
    #buscar
    url(r'^index-bedel/lista-alumnos/buscar/$', BuscarView.as_view(), name='buscar'),
    url(r'^index-bedel/lista-materias/buscarmaterias/$', BuscarMateriasView.as_view(), name='buscarmaterias'),
-   url(r'^index-bedel/lista-mesa-finales/buscarmesafinales/$', BuscarMesaFinalesView.as_view(), name='buscarmesafinales'),
-   
+   url(r'^index-bedel/lista-mesa-finales/buscarmesafinales/$', BuscarMesaFinalesView.as_view(), name='buscarmesafinales'),   
 )

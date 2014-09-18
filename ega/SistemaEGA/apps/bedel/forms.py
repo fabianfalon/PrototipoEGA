@@ -141,6 +141,7 @@ class MesaFinalForm(ModelForm):
 class InscripcionMateriaForm(ModelForm):
 
 	class Meta:
+		
 		model = InscripcionMateria
 		fields = ('alumno','materia')
 

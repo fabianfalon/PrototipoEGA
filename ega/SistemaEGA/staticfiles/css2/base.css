@@ -114,6 +114,23 @@ aside img{
   margin-left: 5em;
   padding: 0.5em 0.5em 0 0;
 }
+.errorinscripciontitulo{
+  margin-top: 70px;
+  padding-top: 70px;
+  font-size: 64px;
+
+}
+
+.errorinscripcioncontenido{
+  font-size: 34px;
+}
+
+.error404{
+  width: 700px;
+  height: 500px;
+
+
+}
 
 .formedit{
   float: left;
